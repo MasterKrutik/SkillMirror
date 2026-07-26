@@ -12,7 +12,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { computeRoadmap, runVerificationTests, formatWeeksToMonths } from '@/lib/roadmapEngine';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
 
 // Run verification once on server cold start
 let _booted = false;

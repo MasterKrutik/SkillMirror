@@ -184,6 +184,21 @@ function LoginForm() {
                 </BlobPanel>
               )}
 
+              {/* One-Click Demo Sign-In */}
+              <div className="mb-4">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail('guest@skillmirror.ai');
+                    setPassword('guestpass');
+                    handleEmailLogin({ preventDefault: () => {} });
+                  }}
+                  className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#4A5B8C] to-[#5C6F9E] text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>⚡ Instant Demo Sign-In</span>
+                </button>
+              </div>
+
               {/* Google Auth Button Container */}
               <div className="mb-6">
                 <div id="google-signin-button" className="w-full h-11 flex items-center justify-center"></div>

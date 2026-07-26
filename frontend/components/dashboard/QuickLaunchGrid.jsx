@@ -5,6 +5,7 @@ import Link from 'next/link';
 import BlobPanel from '@/components/ui/BlobPanel';
 
 export default function QuickLaunchGrid({ sessionSummary }) {
+  const toolStats = sessionSummary?.toolUsageStats || {};
   const recentSess = sessionSummary?.recentSessions?.[0];
   const lastDate = recentSess?.date || 'Today';
   const lastElo = sessionSummary?.latestElo || 1340;

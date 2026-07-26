@@ -1,4 +1,4 @@
-﻿export async function POST(req) {
+export async function POST(req) {
   try {
     const formData = await req.formData();
     const file = formData.get('resume');
@@ -15,8 +15,8 @@
     analysisFormData.append('resume', file);
 
     // Call the resume-analysis API
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const analysisResponse = await fetch(`${baseUrl}/api/resume-analysis`, {
+    const origin = req.nextUrl?.origin || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000');
+    const analysisResponse = await fetch(`${origin}/api/resume-analysis`, {
       method: 'POST',
       body: analysisFormData
     });
