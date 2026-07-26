@@ -1,0 +1,262 @@
+[
+  {
+    "id": "ba-001",
+    "topic": "requirements",
+    "difficulty_rating": 1350,
+    "question": "How do you translate ambiguous executive requests into structured functional specifications and testable user story acceptance criteria?",
+    "model_answer": "Translating ambiguous requests involves conducting stakeholder elicitation interviews, breaking down objectives into user personas and user stories, and establishing clear Given-When-Then acceptance criteria with measurable success metrics.",
+    "key_points": [
+      "Stakeholder elicitation interviews and scope discovery",
+      "User story formulation (As a [role], I want [feature], So that [benefit])",
+      "Given-When-Then (BDD) testable acceptance criteria",
+      "Validating functional specs with engineering and business leads"
+    ]
+  },
+  {
+    "id": "ba-002",
+    "topic": "process_mapping",
+    "difficulty_rating": 1380,
+    "question": "How do you conduct a Gap Analysis and map As-Is vs To-Be business processes using BPMN diagrams?",
+    "model_answer": "Gap Analysis identifies differences between current state (As-Is) and desired future state (To-Be). BPMN swimlane diagrams document process steps, handoffs, and decision gateways, revealing bottlenecks and manual workarounds.",
+    "key_points": [
+      "As-Is process mapping to document current baseline",
+      "To-Be process design optimizing workflows",
+      "BPMN 2.0 swimlanes, events, activities, and gateways",
+      "Identifying operational gaps, redundancies, and cost drivers"
+    ]
+  },
+  {
+    "id": "ba-003",
+    "topic": "stakeholder_alignment",
+    "difficulty_rating": 1360,
+    "question": "How do you resolve conflicting business requirements between Operations, Sales, and Engineering leads?",
+    "model_answer": "Resolving conflict requires organizing a alignment workshop, mapping requirements against overall strategic business goals, evaluating ROI and technical feasibility, and negotiating compromise trade-offs transparently.",
+    "key_points": [
+      "Facilitating structured requirement alignment workshops",
+      "Evaluating trade-offs against high-level business OKRs",
+      "Using objective scoring matrices (MoSCoW / Benefit vs Effort)",
+      "Documenting agreed scope decisions and sign-offs"
+    ]
+  },
+  {
+    "id": "ba-004",
+    "topic": "acceptance_criteria",
+    "difficulty_rating": 1310,
+    "question": "Explain Given-When-Then (BDD) specification format for writing precise acceptance test scenarios.",
+    "model_answer": "Given-When-Then structures scenarios: `Given` an initial state/precondition, `When` an action or event occurs, `Then` verify the expected state outcome. This aligns business analysts, developers, and QA testers.",
+    "key_points": [
+      "Given (precondition setup state)",
+      "When (user action or trigger event)",
+      "Then (expected system outcome and state change)",
+      "BDD alignment across BA, Dev, and QA roles"
+    ]
+  },
+  {
+    "id": "ba-005",
+    "topic": "gap_analysis",
+    "difficulty_rating": 1400,
+    "question": "How do you evaluate commercial Off-The-Shelf (COTS) software build vs buy decisions for core enterprise functions?",
+    "model_answer": "Build vs Buy evaluates: 1) Core competitive advantage (build core IP, buy commodity software). 2) Total Cost of Ownership (TCO over 3-5 years). 3) Integration complexity and customization capabilities. 4) Vendor stability and SLA terms.",
+    "key_points": [
+      "Strategic alignment (Core IP build vs Commodity buy)",
+      "Total Cost of Ownership (TCO including licensing, maintenance, integration)",
+      "Vendor RFP evaluation and feature matrix scoring",
+      "Implementation timeline and vendor lock-in risks"
+    ]
+  },
+  {
+    "id": "ba-006",
+    "topic": "requirements",
+    "difficulty_rating": 1300,
+    "question": "How do you conduct MoSCoW (Must have, Should have, Could have, Won’t have) requirement prioritization workshops?",
+    "model_answer": "MoSCoW categorizes requirements: Must Have (non-negotiable launch blockers), Should Have (important but workaround exists), Could Have (desirable quality of life), and Won't Have (explicitly out of scope for current release).",
+    "key_points": [
+      "Must Have (non-negotiable release criteria)",
+      "Should Have (high priority with temporary workarounds)",
+      "Could Have (desirable secondary enhancements)",
+      "Won't Have (agreed out of scope for current iteration)"
+    ]
+  },
+  {
+    "id": "ba-007",
+    "topic": "process_mapping",
+    "difficulty_rating": 1370,
+    "question": "Explain Value Stream Mapping and how identifying process bottlenecks optimizes enterprise operational efficiency.",
+    "model_answer": "Value Stream Mapping analyzes the flow of material and information required to bring a product to a customer. It measures Process Time vs Lead Time, identifying waste (waiting, overproduction, defects) to streamline throughput.",
+    "key_points": [
+      "Process Time (active work) vs Lead Time (total elapsed duration)",
+      "Identifying 7 Lean wastes (Waiting, Defects, Processing waste)",
+      "Mapping information flow alongside physical/digital handoffs",
+      "Calculating Process Cycle Efficiency (PCE)"
+    ]
+  },
+  {
+    "id": "ba-008",
+    "topic": "stakeholder_alignment",
+    "difficulty_rating": 1290,
+    "question": "How do you create a RACI Matrix (Responsible, Accountable, Consulted, Informed) for complex cross-department projects?",
+    "model_answer": "A RACI matrix assigns project roles per task: Responsible (does the work), Accountable (single decision owner), Consulted (provides two-way input), Informed (kept updated one-way). Only ONE Accountable role per task.",
+    "key_points": [
+      "Responsible (task executor) vs Accountable (single decision maker)",
+      "Consulted (two-way domain experts) vs Informed (one-way updates)",
+      "Rule: Exactly one Accountable owner per task",
+      "Eliminating role ambiguity and duplicate decision-making"
+    ]
+  },
+  {
+    "id": "ba-009",
+    "topic": "acceptance_criteria",
+    "difficulty_rating": 1350,
+    "question": "How do you define non-functional requirements (NFRs) for system throughput, security, audit logging, and availability?",
+    "model_answer": "NFRs define system quality attributes: Performance (response time < 200ms at 5000 RPS), Availability (99.9% uptime), Security (OAuth2/AES-256), and Compliance (audit logging immutable retain for 7 years).",
+    "key_points": [
+      "Quantifiable performance metrics (RPS, P99 latency)",
+      "Availability and disaster recovery SLAs",
+      "Security and encryption compliance NFRs",
+      "Audit logging and regulatory retention requirements"
+    ]
+  },
+  {
+    "id": "ba-010",
+    "topic": "gap_analysis",
+    "difficulty_rating": 1330,
+    "question": "How do you perform Root Cause Analysis using Fishbone (Ishikawa) diagrams and the 5 Whys technique?",
+    "model_answer": "Root Cause Analysis investigates defects beyond symptoms. Fishbone diagrams categorize potential causes (People, Process, Equipment, Environment). The 5 Whys iteratively drills into cause-and-effect chains to uncover systemic root causes.",
+    "key_points": [
+      "Fishbone (Ishikawa) cause categories (Process, Tech, People, Policy)",
+      "5 Whys iterative questioning method",
+      "Distinguishing root causes from superficial symptoms",
+      "Formulating corrective and preventive action (CAPA) plans"
+    ]
+  },
+  {
+    "id": "ba-011",
+    "topic": "requirements",
+    "difficulty_rating": 1340,
+    "question": "How do UML Use Case diagrams and Activity diagrams clarify complex multi-actor system interactions?",
+    "model_answer": "UML Use Case diagrams map system boundaries, actors (users/external systems), and use cases (`<<include>>` / `<<extend>>`). Activity diagrams illustrate sequential execution logic, decision branches, and parallel workflows.",
+    "key_points": [
+      "Actors, System Boundaries, and Use Cases",
+      "<<include>> (mandatory step) vs <<extend>> (optional step) relationships",
+      "Activity diagram decision nodes and parallel swimlanes",
+      "Bridging business process models to technical specifications"
+    ]
+  },
+  {
+    "id": "ba-012",
+    "topic": "process_mapping",
+    "difficulty_rating": 1320,
+    "question": "How do you document Data Flow Diagrams (DFD) mapping data inputs, storage entities, transformations, and outputs?",
+    "model_answer": "DFDs visualize how data flows through a system. Level 0 (Context Diagram) shows high-level system boundaries. Level 1 decomposes the system into processes, data stores, external entities, and data flows.",
+    "key_points": [
+      "External Entities, Processes, Data Stores, and Data Flows",
+      "Context Diagram (Level 0) high-level system scope",
+      "Level 1 and Level 2 process decomposition",
+      "Verifying input/output data conservation rules"
+    ]
+  },
+  {
+    "id": "ba-013",
+    "topic": "stakeholder_alignment",
+    "difficulty_rating": 1390,
+    "question": "How do you facilitate Change Management strategies when rolling out software that changes daily employee workflows?",
+    "model_answer": "Change Management (Prosci ADKAR model) drives adoption: Awareness of need for change, Desire to participate, Knowledge on how to change, Ability to execute, and Reinforcement to sustain the change through training and support.",
+    "key_points": [
+      "ADKAR model (Awareness, Desire, Knowledge, Ability, Reinforcement)",
+      "Stakeholder impact assessment and resistance management",
+      "User training programs and champion network rollout",
+      "Measuring adoption metrics post-go-live"
+    ]
+  },
+  {
+    "id": "ba-014",
+    "topic": "acceptance_criteria",
+    "difficulty_rating": 1360,
+    "question": "How do you write traceability matrices linking business requirements directly to engineering QA test scripts?",
+    "model_answer": "A Requirements Traceability Matrix (RTM) maps each Business Requirement ID to corresponding Functional Specification IDs, System Design Modules, and QA Test Case IDs, ensuring 100% test coverage and zero orphan requirements.",
+    "key_points": [
+      "Forward and backward requirement traceability",
+      "Mapping Business Req ID -> Functional Spec -> Test Case ID",
+      "Ensuring 100% test coverage for critical requirements",
+      "Detecting scope creep and un-tested requirements"
+    ]
+  },
+  {
+    "id": "ba-015",
+    "topic": "gap_analysis",
+    "difficulty_rating": 1420,
+    "question": "How do you conduct Cost-Benefit Analysis (ROI, NPV, Payback Period) to justify technology capital expenditures?",
+    "model_answer": "Cost-Benefit Analysis evaluates: Capital Expenditure (CapEx) and Operational Expenditure (OpEx) against tangible financial benefits (cost savings, revenue growth). Metrics include Net Present Value (NPV), ROI, and Payback Period.",
+    "key_points": [
+      "Tangible vs Intangible costs and benefits",
+      "Net Present Value (NPV) calculation using discount rates",
+      "Return on Investment (ROI %) formula",
+      "Payback Period months to break even"
+    ]
+  },
+  {
+    "id": "ba-016",
+    "topic": "requirements",
+    "difficulty_rating": 1370,
+    "question": "How do you handle scope creep when stakeholders submit continuous out-of-scope requirement changes mid-sprint?",
+    "model_answer": "Handling scope creep requires enforcing formal Change Control processes: evaluating the requested change's impact on schedule, budget, and resources, requiring steering committee sign-off, or pushing new requests to the next release backlog.",
+    "key_points": [
+      "Change Request impact assessment (Cost, Schedule, Scope, Quality)",
+      "Formal Change Control Board (CCB) approval process",
+      "Protecting current sprint commitments",
+      "Managing backlog prioritization transparently"
+    ]
+  },
+  {
+    "id": "ba-017",
+    "topic": "process_mapping",
+    "difficulty_rating": 1280,
+    "question": "Explain Swimlane Diagrams and how clarifying cross-departmental handoffs eliminates process latency.",
+    "model_answer": "Swimlane diagrams organize process steps into horizontal/vertical lanes per department or role. Highlighting cross-lane arrows exposes handoff delays, redundant approvals, and communication gaps between departments.",
+    "key_points": [
+      "Departmental / Role lane segregation",
+      "Identifying handoff points between teams",
+      "Exposing wait times and approval bottlenecks",
+      "Streamlining cross-functional process workflows"
+    ]
+  },
+  {
+    "id": "ba-018",
+    "topic": "stakeholder_alignment",
+    "difficulty_rating": 1310,
+    "question": "How do you conduct User Acceptance Testing (UAT) sign-off sessions with non-technical business stakeholders?",
+    "model_answer": "UAT sessions provide business users with pre-scripted real-world test scenarios in a staging environment. BAs log defect severity, verify acceptance criteria compliance, and secure formal business sign-off before production deployment.",
+    "key_points": [
+      "UAT test plan and business scenario script creation",
+      "Staging environment data preparation",
+      "Defect classification (Blocker vs Major vs Minor)",
+      "Securing formal business stakeholder sign-off"
+    ]
+  },
+  {
+    "id": "ba-019",
+    "topic": "acceptance_criteria",
+    "difficulty_rating": 1300,
+    "question": "Explain Data Dictionary definitions and business rule specifications for compliance auditing.",
+    "model_answer": "Data Dictionaries define database attributes: Data Type, Length, Nullability, Allowed Values, Description, and Source of Truth. Business Rule Specifications document deterministic logic rules (e.g. `If Age < 18 then Status = Ineligible`).",
+    "key_points": [
+      "Data dictionary attribute definitions and constraints",
+      "Documenting golden source of truth for business data",
+      "Formulating explicit, deterministic business rules",
+      "Compliance audit trail documentation"
+    ]
+  },
+  {
+    "id": "ba-020",
+    "topic": "gap_analysis",
+    "difficulty_rating": 1380,
+    "question": "How do you document Business Risk Registers identifying technical mitigation strategies before project kickoff?",
+    "model_answer": "A Risk Register logs potential project risks, assessing Likelihood (1-5) and Impact (1-5) to calculate Risk Severity. For high-severity risks, explicit mitigation strategies (Avoid, Transfer, Mitigate, Accept) and contingency plans are assigned.",
+    "key_points": [
+      "Risk Identification (Technical, Resource, Operational)",
+      "Risk Severity Scoring (Likelihood x Impact)",
+      "Risk Response Strategies (Mitigate, Avoid, Transfer, Accept)",
+      "Assigning Risk Owners and review schedules"
+    ]
+  }
+]

@@ -1,0 +1,262 @@
+[
+  {
+    "id": "de-001",
+    "topic": "pipelines",
+    "difficulty_rating": 1480,
+    "question": "Compare Apache Spark DAG execution with modern streaming engines like Apache Flink for event streaming.",
+    "model_answer": "Apache Spark uses micro-batch processing (Structured Streaming), bundling events into small time slices. Apache Flink is a true event-driven streaming engine, processing each record individually with low latency and native stateful memory management.",
+    "key_points": [
+      "Spark Micro-batching vs Flink true event-by-event processing",
+      "Latency trade-offs (sub-second Flink vs 100ms+ Spark)",
+      "Stateful stream processing and RocksDB state backend in Flink",
+      "Spark Catalyst optimizer and unified Batch/Stream API"
+    ]
+  },
+  {
+    "id": "de-002",
+    "topic": "warehousing",
+    "difficulty_rating": 1420,
+    "question": "Explain dimensional modeling (Star Schema vs Snowflake Schema) and partitioning strategies in cloud data warehouses.",
+    "model_answer": "Star Schema connects a central Fact table directly to denormalized Dimension tables. Snowflake Schema normalizes dimension tables into sub-dimensions. Cloud warehouses partition/cluster large tables by high-cardinality date or tenant keys to prune scanned data.",
+    "key_points": [
+      "Fact table (numerical events) vs Dimension table (context attributes)",
+      "Star Schema (denormalized, fast query joins) vs Snowflake Schema (normalized)",
+      "Data Warehouse partitioning and clustering keys (Snowflake/BigQuery)",
+      "Columnar storage layout skipping unneeded columns"
+    ]
+  },
+  {
+    "id": "de-003",
+    "topic": "lakehouse",
+    "difficulty_rating": 1460,
+    "question": "How do ACID storage layers like Apache Iceberg or Delta Lake enable schema evolution and time travel on object storage?",
+    "model_answer": "Lakehouse formats (Iceberg/Delta) add an immutable JSON/Avro metadata transaction log alongside Parquet data files. Schema evolution updates metadata without rewriting files. Time travel reads historical manifest snapshots.",
+    "key_points": [
+      "ACID transactions on object storage (S3/GCS)",
+      "Metadata transaction logs (Delta Log / Iceberg manifest files)",
+      "Schema evolution without table rewrites",
+      "Time travel point-in-time snapshot querying"
+    ]
+  },
+  {
+    "id": "de-004",
+    "topic": "streaming",
+    "difficulty_rating": 1520,
+    "question": "Explain Exactly-Once Semantics (EOS) in distributed streaming pipelines using transactional producers and consumer offsets.",
+    "model_answer": "Exactly-Once Semantics require: 1) Idempotent producers. 2) Two-phase transactional writes across Kafka topics. 3) Atomic read-process-write loops committing offset markers and output state together.",
+    "key_points": [
+      "At-most-once, At-least-once, and Exactly-Once definitions",
+      "Kafka transactional producer API (initTransactions, sendOffsetsToTransaction)",
+      "Idempotent message sequence numbers",
+      "Downstream sink idempotency requirements"
+    ]
+  },
+  {
+    "id": "de-005",
+    "topic": "orchestration",
+    "difficulty_rating": 1390,
+    "question": "Compare Airflow DAG dependency management with modern asset-based data orchestrators like Dagster / Prefect.",
+    "model_answer": "Airflow models workflows as task execution DAGs (`TaskA >> TaskB`) without native data payload awareness. Dagster/Prefect model workflows around Data Assets, tracking data lineage, schemas, and asset state transitions natively.",
+    "key_points": [
+      "Task-based orchestration (Airflow) vs Asset-based orchestration (Dagster)",
+      "Data lineage and schema awareness in modern orchestrators",
+      "Local testing and dynamic parameterization",
+      "Airflow Celery / Kubernetes Executors scaling"
+    ]
+  },
+  {
+    "id": "de-006",
+    "topic": "pipelines",
+    "difficulty_rating": 1490,
+    "question": "Explain Apache Spark memory management (Execution Memory vs Storage Memory) and how to resolve OutOfMemory (OOM) driver crashes.",
+    "model_answer": "Spark JVM heap splits into Execution Memory (shuffles/joins) and Storage Memory (caching). Driver OOM occurs when `collect()` fetches massive datasets to the driver node. Fixes: avoid `collect()`, increase `spark.driver.memory`, or repartition skewed data.",
+    "key_points": [
+      "Unified Memory Manager (Execution vs Storage fraction)",
+      "Driver OOM (collect() abuse) vs Executor OOM (heavy shuffles / data skew)",
+      "Spark partition tuning (`spark.sql.shuffle.partitions`)",
+      "Off-heap memory allocation"
+    ]
+  },
+  {
+    "id": "de-007",
+    "topic": "warehousing",
+    "difficulty_rating": 1470,
+    "question": "What is Data Skew in distributed joins? Explain broadcast joins vs salting keys to redistribute skewed records.",
+    "model_answer": "Data Skew occurs when one partition key contains 90% of data, overloading one worker node. Broadcast Hash Join copies a small dimension table to all nodes, skipping shuffles. Salting adds random prefixes to skewed keys to distribute records evenly.",
+    "key_points": [
+      "Data skew manifestation in long-running 99% Spark tasks",
+      "Broadcast Hash Join for small-table joins",
+      "Key Salting technique to split heavy key partitions",
+      "Adaptive Query Execution (AQE) in Spark 3"
+    ]
+  },
+  {
+    "id": "de-008",
+    "topic": "lakehouse",
+    "difficulty_rating": 1500,
+    "question": "How do Z-Ordering and Liquid Clustering optimize file compaction and data skipping in Delta Lake tables?",
+    "model_answer": "Parquet data skipping uses min/max metadata per file. Z-Ordering maps multi-dimensional columns onto a space-filling curve, clustering related values into the same files to maximize data skipping during multi-column filter queries.",
+    "key_points": [
+      "Data skipping using Parquet file min/max statistics",
+      "Z-Ordering space-filling curve algorithm",
+      "Liquid Clustering dynamic layout adaptation",
+      "OPTIMIZE file compaction maintenance jobs"
+    ]
+  },
+  {
+    "id": "de-009",
+    "topic": "streaming",
+    "difficulty_rating": 1440,
+    "question": "Compare Event Time vs Processing Time vs Ingestion Time in stream windowing (Tumbling, Hopping, Session windows).",
+    "model_answer": "Event Time is when the event occurred at the source. Ingestion Time is when it reached the pipeline. Processing Time is when a worker processes it. Tumbling windows are non-overlapping fixed windows; Hopping windows overlap; Session windows group by activity gaps.",
+    "key_points": [
+      "Event Time (timestamp on payload) vs Processing Time (clock on server)",
+      "Tumbling (fixed non-overlapping) vs Hopping (sliding) vs Session windows",
+      "Handling out-of-order event arrivals",
+      "Watermark delays"
+    ]
+  },
+  {
+    "id": "de-010",
+    "topic": "orchestration",
+    "difficulty_rating": 1410,
+    "question": "How do you design idempotent data pipelines where re-running failed backfills does not generate duplicate records?",
+    "model_answer": "Idempotent pipelines produce identical outputs regardless of run frequency. In data warehouses, this uses `MERGE INTO` (upsert) queries on unique primary keys or dynamic partition overwrites (`INSERT OVERWRITE`) for historical date partitions.",
+    "key_points": [
+      "Idempotency definition in data engineering",
+      "MERGE INTO / Upsert patterns using target primary keys",
+      "Atomic partition replacement (INSERT OVERWRITE)",
+      "Avoiding non-deterministic SQL functions (NOW(), RAND()) in ETL"
+    ]
+  },
+  {
+    "id": "de-011",
+    "topic": "pipelines",
+    "difficulty_rating": 1430,
+    "question": "Explain Parquet column-oriented storage, dictionary encoding, and predicate pushdown query optimization.",
+    "model_answer": "Parquet stores data column-by-column rather than row-by-row. Dictionary encoding replaces repetitive strings with small integer keys. Predicate pushdown evaluates query `WHERE` clauses directly at the storage layer, skipping unneeded row groups.",
+    "key_points": [
+      "Row-oriented (CSV/Avro) vs Column-oriented (Parquet/ORC) layout",
+      "Dictionary encoding and Snappy/Gzip compression efficiency",
+      "Row Groups, Column Chunks, and Page statistics",
+      "Predicate pushdown storage filtering"
+    ]
+  },
+  {
+    "id": "de-012",
+    "topic": "warehousing",
+    "difficulty_rating": 1380,
+    "question": "Compare Slowly Changing Dimensions (SCD Type 1 vs Type 2 vs Type 3) implementation patterns in dbt models.",
+    "model_answer": "SCD Type 1 overwrites old attribute values (no history). SCD Type 2 creates new dimension rows with `valid_from`, `valid_to`, and `is_current` flags (full history). SCD Type 3 adds a `previous_attribute` column.",
+    "key_points": [
+      "SCD Type 1 (overwrite current value)",
+      "SCD Type 2 (append new record with timestamp versioning)",
+      "SCD Type 3 (add previous_value column)",
+      "dbt snapshots implementing automated SCD Type 2 tracking"
+    ]
+  },
+  {
+    "id": "de-013",
+    "topic": "lakehouse",
+    "difficulty_rating": 1480,
+    "question": "How does Copy-on-Write (CoW) vs Merge-on-Read (MoR) impact read/write trade-offs in Apache Hudi tables?",
+    "model_answer": "Copy-on-Write rewrites entire Parquet files upon record updates, resulting in fast read performance but high write amplification. Merge-on-Read writes delta updates to columnar Avro log files, merging logs with Parquet base files at query time.",
+    "key_points": [
+      "Copy-on-Write (CoW) write amplification vs fast read performance",
+      "Merge-on-Read (MoR) low-latency writes vs query-time merge cost",
+      "Compaction scheduling in MoR tables",
+      "Selecting table types based on update frequency"
+    ]
+  },
+  {
+    "id": "de-014",
+    "topic": "streaming",
+    "difficulty_rating": 1460,
+    "question": "What is Late-Arriving Data handling in streaming engines? Explain Watermarking mechanisms in Flink/Spark Streaming.",
+    "model_answer": "Late-arriving data arrives after window execution has closed due to network lag. Watermarks define an allowed latency boundary `T - max_out_of_orderness`. Events behind the watermark trigger side outputs or late window updates.",
+    "key_points": [
+      "Late-arriving data root causes (mobile offline sync, network lag)",
+      "Watermark definition as a monotonic time progress bound",
+      "Allowed lateness window configuration",
+      "Side outputs vs accumulation mode for late events"
+    ]
+  },
+  {
+    "id": "de-015",
+    "topic": "orchestration",
+    "difficulty_rating": 1360,
+    "question": "How do dbt (data build tool) DAGs execute SQL transformations with automated data quality testing (Great Expectations)?",
+    "model_answer": "dbt compiles modular SQL `SELECT` statements into DAG execution order, creating views/tables via Jinja templating. Automated tests assert unique keys, non-null values, and foreign key references against target warehouses.",
+    "key_points": [
+      "Transformations executed via SELECT statements inside data warehouse",
+      "Jinja macro templating and dbt ref() dependency graph",
+      "Schema tests (not_null, unique, relationships, accepted_values)",
+      "Documentation generation and column-level data lineage"
+    ]
+  },
+  {
+    "id": "de-016",
+    "topic": "pipelines",
+    "difficulty_rating": 1450,
+    "question": "Explain Change Data Capture (CDC) using Debezium and Kafka Connect for real-time database replication.",
+    "model_answer": "CDC captures row-level database mutations directly from database transaction logs (Postgres WAL / MySQL binlog) using Debezium connectors, streaming change events (INSERT, UPDATE, DELETE) into Kafka without polling source tables.",
+    "key_points": [
+      "Database transaction log tailing (WAL / binlog)",
+      "Debezium Kafka Connect source architecture",
+      "Zero impact on database query CPU compared to SELECT polling",
+      "Event payload structure (before state, after state, operation type)"
+    ]
+  },
+  {
+    "id": "de-017",
+    "topic": "warehousing",
+    "difficulty_rating": 1330,
+    "question": "How do Materialized Views differ from standard SQL Views regarding refresh schedules and query performance?",
+    "model_answer": "Standard SQL Views run the underlying query computation dynamically on every invocation (zero storage cost, slower reads). Materialized Views pre-compute and physically store query results on disk, requiring incremental or scheduled refreshes.",
+    "key_points": [
+      "Standard Views (virtual query shorthand) vs Materialized Views (physically stored table)",
+      "Query execution speed vs storage cost trade-offs",
+      "Incremental refresh vs full view refresh strategies",
+      "Automated query rewrite optimization"
+    ]
+  },
+  {
+    "id": "de-018",
+    "topic": "lakehouse",
+    "difficulty_rating": 1470,
+    "question": "How does Object Storage (S3 / GCS) rate limiting impact parallel read/write performance when operating thousands of Spark workers?",
+    "model_answer": "AWS S3 enforces rate limits per prefix (3,500 PUT/POST and 5,500 GET requests/sec). Having thousands of Spark executors write to a single folder prefix triggers HTTP 503 Slow Down throttling, resolved by partition hashing prefixes.",
+    "key_points": [
+      "AWS S3 request limits per prefix (3,500 PUT / 5,500 GET per sec)",
+      "HTTP 503 Slow Down throttling in massive Spark clusters",
+      "Hashing prefix structures to distribute partition requests",
+      "Multipart upload parallelism optimization"
+    ]
+  },
+  {
+    "id": "de-019",
+    "topic": "streaming",
+    "difficulty_rating": 1350,
+    "question": "Explain Dead Letter Queues (DLQ) in streaming ingestion pipelines for handling corrupted JSON schemas.",
+    "model_answer": "When a worker encounters malformed JSON or schema parse failures, crashing the worker blocks pipeline execution. A Dead Letter Queue (DLQ) reroutes corrupted messages to an isolated storage queue for auditing while the pipeline continues.",
+    "key_points": [
+      "Poison pill message handling in stream processing",
+      "Rerouting un-parseable messages to isolated DLQ topic",
+      "Preventing consumer group head-of-line blocking",
+      "Alerting and reprocessing tools for DLQ inspection"
+    ]
+  },
+  {
+    "id": "de-020",
+    "topic": "orchestration",
+    "difficulty_rating": 1400,
+    "question": "How do you design a Data Quality SLA alert system verifying schema contract compliance before loading production analytics tables?",
+    "model_answer": "A Data Quality SLA pipeline runs automated pre-ingestion checks (schema validation, anomaly threshold checks, row count drops). If data contracts fail, the pipeline halts downstream loading and alerts data engineering on-call teams.",
+    "key_points": [
+      "Data Contract definitions between producers and data platform",
+      "Pre-ingestion quality gates checking schema, nulls, and volume drop-offs",
+      "Circuit breaker pipeline halting to prevent bad data propagation",
+      "SLI tracking for data freshness and accuracy"
+    ]
+  }
+]

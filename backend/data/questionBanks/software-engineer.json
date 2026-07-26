@@ -1,0 +1,262 @@
+[
+  {
+    "id": "swe-001",
+    "topic": "system_design",
+    "difficulty_rating": 1300,
+    "question": "How would you design a rate limiter for a high-throughput public REST API?",
+    "model_answer": "A strong answer outlines Token Bucket or Sliding Window Counter algorithms, enforcing rate limits at the API Gateway layer using a fast distributed in-memory cache like Redis. It details client identification by API key or IP, handling concurrency with Redis Lua scripts, and returning HTTP 429 Too Many Requests status codes with Retry-After and X-RateLimit headers.",
+    "key_points": [
+      "Token bucket or sliding window counter algorithms",
+      "API Gateway enforcement with Redis distributed cache",
+      "Client identification via API key, user ID, or IP",
+      "HTTP 429 status code and Retry-After headers"
+    ]
+  },
+  {
+    "id": "swe-002",
+    "topic": "databases",
+    "difficulty_rating": 1450,
+    "question": "Explain the trade-offs between SQL ACID compliance and NoSQL eventual consistency with real examples.",
+    "model_answer": "SQL databases prioritize ACID (Atomicity, Consistency, Isolation, Durability) for financial transactions where strict consistency is non-negotiable. NoSQL databases prioritize BASE (Basically Available, Soft-state, Eventual consistency) for horizontal scaling, partitioning, and high throughput, accepting temporary data lag across replicas.",
+    "key_points": [
+      "ACID vs BASE principles",
+      "Strong consistency for financial/relational data",
+      "Eventual consistency for high-throughput horizontal scaling",
+      "CAP theorem trade-offs (Consistency vs Availability)"
+    ]
+  },
+  {
+    "id": "swe-003",
+    "topic": "data_structures",
+    "difficulty_rating": 1350,
+    "question": "Describe how an LRU Cache is implemented in memory using a Doubly Linked List and Hash Map.",
+    "model_answer": "An LRU (Least Recently Used) cache achieves O(1) lookup and O(1) insertion/deletion by pairing a Hash Map with a Doubly Linked List. The Hash Map maps keys directly to list nodes. When accessed or updated, the node moves to the head. When capacity is exceeded, the node at the tail is evicted.",
+    "key_points": [
+      "Doubly Linked List for O(1) node movement and eviction",
+      "Hash Map for O(1) key-to-node memory lookup",
+      "Head insertion for MRU and tail eviction for LRU",
+      "Capacity constraint and concurrency locking"
+    ]
+  },
+  {
+    "id": "swe-004",
+    "topic": "networking",
+    "difficulty_rating": 1500,
+    "question": "Walk through what happens under the hood when a browser makes an HTTPS GET request to a server.",
+    "model_answer": "The process begins with DNS resolution to find the server IP address. Next, a 3-way TCP handshake (SYN, SYN-ACK, ACK) establishes the connection. TLS 1.3 handshake negotiates cipher suites and exchanges keys. The browser sends an encrypted HTTP GET request, the server processes it, returns HTTP response headers and body, and TCP teardown or keep-alive occurs.",
+    "key_points": [
+      "DNS resolution and IP lookup",
+      "3-way TCP handshake (SYN, SYN-ACK, ACK)",
+      "TLS 1.3 handshake and asymmetric key exchange",
+      "HTTP GET request/response cycle over encrypted socket"
+    ]
+  },
+  {
+    "id": "swe-005",
+    "topic": "algorithms",
+    "difficulty_rating": 1300,
+    "question": "Explain how Binary Search and QuickSort operate, analyzing their time and space complexity.",
+    "model_answer": "Binary Search operates on sorted arrays in O(log N) time by halving the search space per step. QuickSort uses a divide-and-conquer strategy selecting a pivot to partition elements into sub-arrays, executing in O(N log N) average time and O(log N) space.",
+    "key_points": [
+      "Binary search O(log N) time on sorted arrays",
+      "QuickSort pivot partitioning strategy",
+      "Average O(N log N) vs worst-case O(N^2) time complexity",
+      "In-place space complexity O(log N)"
+    ]
+  },
+  {
+    "id": "swe-006",
+    "topic": "concurrency",
+    "difficulty_rating": 1420,
+    "question": "How do thread pool executors prevent thread starvation and race conditions in concurrent multi-threaded applications?",
+    "model_answer": "Thread pools reuse a fixed set of worker threads reading from a thread-safe task queue, eliminating thread creation overhead. Mutexes, semaphores, and atomic variables prevent race conditions by enforcing synchronized memory access.",
+    "key_points": [
+      "Fixed worker thread pool reading from thread-safe queue",
+      "Avoidance of thread creation/destruction overhead",
+      "Synchronization mechanisms (Mutex, Semaphore, Atomic variables)",
+      "Prevention of thread starvation via work stealing or FIFO queues"
+    ]
+  },
+  {
+    "id": "swe-007",
+    "topic": "system_design",
+    "difficulty_rating": 1520,
+    "question": "Design a distributed unique ID generator system like Twitter Snowflake capable of generating millions of IDs per second.",
+    "model_answer": "Twitter Snowflake generates 64-bit k-sortable unique IDs without coordination using bitwise layout: 1 bit sign, 41 bits timestamp in milliseconds, 10 bits machine/datacenter ID, and 12 bits sequence number per millisecond.",
+    "key_points": [
+      "64-bit k-sortable ID structure",
+      "41-bit millisecond timestamp epoch",
+      "Datacenter and worker machine ID bits",
+      "12-bit sequence counter handling up to 4096 IDs per ms"
+    ]
+  },
+  {
+    "id": "swe-008",
+    "topic": "databases",
+    "difficulty_rating": 1380,
+    "question": "Explain database indexing using B-Trees and Hash Indexes. When would an index degrade write performance?",
+    "model_answer": "B-Trees maintain a balanced tree structure ideal for O(log N) range queries and sorting. Hash Indexes provide O(1) point lookups but cannot support range scans. Adding indexes degrades write performance because every INSERT, UPDATE, or DELETE requires updating index pointers and balancing tree nodes.",
+    "key_points": [
+      "B-Tree O(log N) balance for range scans and sorting",
+      "Hash Index O(1) point lookups without range support",
+      "Write amplification on INSERT, UPDATE, and DELETE",
+      "Disk I/O overhead and index fragmentation"
+    ]
+  },
+  {
+    "id": "swe-009",
+    "topic": "data_structures",
+    "difficulty_rating": 1360,
+    "question": "Explain the Trie (Prefix Tree) data structure. How is it optimized for autocomplete search indexing?",
+    "model_answer": "A Trie is a tree-like search structure where each node represents a character. It enables prefix-based autocomplete lookups in O(K) time where K is word length, independent of total dataset size.",
+    "key_points": [
+      "Tree node character branching structure",
+      "O(K) search time complexity where K is key length",
+      "Prefix matching efficiency for search autocomplete",
+      "Memory optimization via Compressed Tries (Radix Trees)"
+    ]
+  },
+  {
+    "id": "swe-010",
+    "topic": "algorithms",
+    "difficulty_rating": 1440,
+    "question": "How does Dijkstra’s shortest path algorithm differ from A* search algorithm? What is the role of the heuristic function?",
+    "model_answer": "Dijkstra explores paths uniformly using distance from source (f = g). A* optimizes search towards a target destination using a heuristic estimate (f = g + h). An admissible heuristic never overestimates actual cost, guaranteeing optimal paths.",
+    "key_points": [
+      "Dijkstra uniform cost search (f = g)",
+      "A* heuristic guided search (f = g + h)",
+      "Admissible and consistent heuristic properties",
+      "Priority Queue min-heap node relaxation"
+    ]
+  },
+  {
+    "id": "swe-011",
+    "topic": "system_design",
+    "difficulty_rating": 1560,
+    "question": "How would you design a real-time collaborative document editor like Google Docs handling simultaneous edits?",
+    "model_answer": "Real-time collaborative editors use Operational Transformation (OT) or Conflict-free Replicated Data Types (CRDTs) to resolve concurrent character insertions and deletions over WebSockets with server-side document revision history.",
+    "key_points": [
+      "Operational Transformation (OT) vs CRDTs",
+      "Full-duplex WebSocket communication",
+      "Client-side optimistic rendering and server vector clocks",
+      "Document state snapshotting and delta persistence"
+    ]
+  },
+  {
+    "id": "swe-012",
+    "topic": "concurrency",
+    "difficulty_rating": 1410,
+    "question": "Compare optimistic locking vs pessimistic locking in database transactions with concurrency conflict resolution.",
+    "model_answer": "Pessimistic locking locks rows on read (`SELECT FOR UPDATE`), preventing concurrent updates. Optimistic locking relies on version checks during commit; if the version changed, the transaction aborts and retries.",
+    "key_points": [
+      "Pessimistic locking with SELECT FOR UPDATE",
+      "Optimistic locking using version column or timestamp",
+      "High contention vs low contention performance trade-offs",
+      "Deadlock risk in pessimistic vs retry loop overhead in optimistic"
+    ]
+  },
+  {
+    "id": "swe-013",
+    "topic": "networking",
+    "difficulty_rating": 1390,
+    "question": "Explain how WebSockets establish long-lived full-duplex connections compared to HTTP Long Polling.",
+    "model_answer": "WebSockets initiate via HTTP 101 Switching Protocols handshake, upgrading to a persistent, full-duplex TCP socket with minimal 2-14 byte frame overhead. Long Polling repeatedly opens HTTP requests held open until data arrives.",
+    "key_points": [
+      "HTTP 101 Switching Protocols handshake",
+      "Full-duplex persistent TCP communication",
+      "Low framing overhead compared to heavy HTTP headers",
+      "Long polling request-response cycle latency"
+    ]
+  },
+  {
+    "id": "swe-014",
+    "topic": "algorithms",
+    "difficulty_rating": 1460,
+    "question": "Explain Dynamic Programming using the Knapsack Problem. Compare Top-Down Memoization vs Bottom-Up Tabulation.",
+    "model_answer": "Dynamic Programming breaks problems into overlapping subproblems. Top-Down Memoization uses recursion with a cache dictionary. Bottom-Up Tabulation fills a 2D matrix iteratively, optimizing space from O(N*W) to O(W).",
+    "key_points": [
+      "Overlapping subproblems and optimal substructure",
+      "Top-Down memoization with recursion",
+      "Bottom-Up iterative DP table construction",
+      "Space optimization from 2D table to 1D array"
+    ]
+  },
+  {
+    "id": "swe-015",
+    "topic": "system_design",
+    "difficulty_rating": 1370,
+    "question": "Design a scalable URL Shortening Service (like bit.ly) handling 10,000 writes and 100,000 reads per second.",
+    "model_answer": "A URL shortener converts auto-incrementing 64-bit integer IDs to Base62 strings (a-z, A-Z, 0-9). High read throughput is served via Redis caching and CDN HTTP 301 redirects, with PostgreSQL storing long-to-short URL mappings.",
+    "key_points": [
+      "Base62 encoding of auto-increment integer IDs",
+      "High read-to-write ratio architecture",
+      "Redis caching and HTTP 301 vs 302 redirect trade-offs",
+      "Database schema and unique constraint indexing"
+    ]
+  },
+  {
+    "id": "swe-016",
+    "topic": "databases",
+    "difficulty_rating": 1490,
+    "question": "Explain database sharding strategies (Hash-based vs Range-based). How do you handle cross-shard queries?",
+    "model_answer": "Hash-based sharding distributes rows evenly using `hash(shard_key) % num_shards`. Range-based sharding groups rows by range. Cross-shard queries require a scatter-gather coordinator or denormalized query views.",
+    "key_points": [
+      "Hash sharding for uniform data distribution",
+      "Range sharding for efficient range scans",
+      "Scatter-gather coordinator for cross-shard aggregation",
+      "Resharding challenges and Consistent Hashing"
+    ]
+  },
+  {
+    "id": "swe-017",
+    "topic": "data_structures",
+    "difficulty_rating": 1430,
+    "question": "How does a Bloom Filter work? Why are false positives possible while false negatives are impossible?",
+    "model_answer": "A Bloom Filter uses a bit array and multiple hash functions. Inserting an item sets corresponding bit indexes to 1. Querying returns false if any bit is 0 (definitely not present), but bits could be set by other items (false positive possible).",
+    "key_points": [
+      "Bit array and multiple independent hash functions",
+      "Zero false negatives property",
+      "Controlled false positive probability based on bit array size",
+      "High memory efficiency for set membership testing"
+    ]
+  },
+  {
+    "id": "swe-018",
+    "topic": "networking",
+    "difficulty_rating": 1330,
+    "question": "What is DNS resolution? Walk through recursive vs iterative DNS queries and how TTL caching works.",
+    "model_answer": "DNS maps domain names to IP addresses. Recursive queries ask a resolver to return the final answer. Iterative queries return referrals to Root, TLD, and Authoritative DNS servers. TTL specifies cache duration.",
+    "key_points": [
+      "Domain name to IP address translation",
+      "Recursive vs Iterative query resolution flow",
+      "Root, TLD (.com), and Authoritative DNS hierarchy",
+      "TTL (Time to Live) caching at browser, OS, and ISP level"
+    ]
+  },
+  {
+    "id": "swe-019",
+    "topic": "concurrency",
+    "difficulty_rating": 1470,
+    "question": "Explain the Deadlock condition (4 Coffman conditions) and how to prevent deadlocks in distributed locks.",
+    "model_answer": "Deadlocks require 4 Coffman conditions: Mutual Exclusion, Hold and Wait, No Preemption, Circular Wait. Deadlocks are prevented by locking resources in strict total order and imposing lease timeouts on locks.",
+    "key_points": [
+      "4 Coffman conditions (Mutual Exclusion, Hold & Wait, No Preemption, Circular Wait)",
+      "Strict global lock ordering to break Circular Wait",
+      "TTL lock expiry and fencing tokens in distributed locks",
+      "Deadlock detection algorithms and lock wait timeouts"
+    ]
+  },
+  {
+    "id": "swe-020",
+    "topic": "system_design",
+    "difficulty_rating": 1450,
+    "question": "How do you design a high-availability notification engine sending SMS, Email, and Push notifications under peak load?",
+    "model_answer": "A notification engine uses an API Gateway, an async message broker (Kafka/RabbitMQ) partitioned by channel, worker pools interfacing with third-party providers (Twilio/SendGrid), idempotency keys, and rate limiters.",
+    "key_points": [
+      "Async message queues (Kafka/RabbitMQ) for load leveling",
+      "Channel-specific worker pools and third-party integrations",
+      "Idempotency keys to prevent duplicate notifications",
+      "Fallback provider routing and dead-letter queues"
+    ]
+  }
+]

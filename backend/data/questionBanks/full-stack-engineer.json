@@ -1,0 +1,262 @@
+[
+  {
+    "id": "fs-001",
+    "topic": "architecture",
+    "difficulty_rating": 1400,
+    "question": "Walk me through end-to-end authentication using JWTs, HTTP-only cookies, and refresh token rotation in modern web apps.",
+    "model_answer": "Access tokens (short-lived, 15m) are passed in HTTP headers or HttpOnly cookies. Refresh tokens (long-lived, 7d) are stored in HttpOnly, SameSite=Strict cookies. When access tokens expire, the client sends the refresh token to receive a new token pair while invalidating the old refresh token.",
+    "key_points": [
+      "Short-lived Access Token vs long-lived Refresh Token",
+      "HttpOnly, Secure, SameSite=Strict cookie storage",
+      "Refresh token rotation to detect token theft reuse",
+      "Stateless JWT validation vs DB token revocation checks"
+    ]
+  },
+  {
+    "id": "fs-002",
+    "topic": "performance",
+    "difficulty_rating": 1450,
+    "question": "How do you optimize server-side rendering (SSR) data fetching with edge caching and client hydration in Next.js/Remix?",
+    "model_answer": "SSR pages fetch data on the server, streaming HTML to the client. CDN Edge caching (`s-maxage`) serves pre-rendered HTML globally. Client hydration attaches event listeners to server HTML, matching DOM trees to avoid hydration errors.",
+    "key_points": [
+      "Server-side parallel data fetching",
+      "CDN edge caching headers (s-maxage, stale-while-revalidate)",
+      "Streaming HTML with React Suspense",
+      "Hydration error prevention and bundle optimization"
+    ]
+  },
+  {
+    "id": "fs-003",
+    "topic": "db_migrations",
+    "difficulty_rating": 1480,
+    "question": "How do you execute zero-downtime database schema migrations when adding required columns on tables with millions of records?",
+    "model_answer": "Zero-downtime migrations use the Expand and Contract pattern: 1) Add new nullable column to DB. 2) Deploy app version reading old and writing to both old/new. 3) Backfill historical rows asynchronously. 4) Add NOT NULL constraint. 5) Deploy app reading new column. 6) Drop old column.",
+    "key_points": [
+      "Expand and Contract (Parallel Run) migration pattern",
+      "Nullable column addition to avoid long table locks",
+      "Dual-write application deployment stage",
+      "Asynchronous background data backfill batching"
+    ]
+  },
+  {
+    "id": "fs-004",
+    "topic": "realtime",
+    "difficulty_rating": 1410,
+    "question": "Compare WebSockets, Server-Sent Events (SSE), and WebRTC for building real-time collaboration dashboards.",
+    "model_answer": "WebSockets provide bi-directional TCP socket streams. Server-Sent Events (SSE) provide lightweight text-based server-to-client streaming over HTTP. WebRTC provides low-latency peer-to-peer UDP audio/video/data streams.",
+    "key_points": [
+      "WebSockets bi-directional full-duplex communication",
+      "SSE mono-directional HTTP streaming (ideal for AI token streams)",
+      "WebRTC P2P UDP data channels for audio/video",
+      "Reconnection handling and firewall/proxy traversal"
+    ]
+  },
+  {
+    "id": "fs-005",
+    "topic": "security",
+    "difficulty_rating": 1350,
+    "question": "How do CORS (Cross-Origin Resource Sharing) headers work under the hood? Explain preflight OPTIONS requests.",
+    "model_answer": "Browsers enforce Same-Origin Policy. When making cross-origin non-simple HTTP requests (custom headers, PUT/DELETE), the browser sends a preflight `OPTIONS` request asking `Access-Control-Allow-Origin` and `Access-Control-Allow-Methods` permissions before issuing the main request.",
+    "key_points": [
+      "Same-Origin Policy browser enforcement",
+      "Preflight OPTIONS request triggers (custom headers, methods)",
+      "Access-Control-Allow-Origin, Methods, and Headers responses",
+      "Access-Control-Allow-Credentials for cookie forwarding"
+    ]
+  },
+  {
+    "id": "fs-006",
+    "topic": "architecture",
+    "difficulty_rating": 1460,
+    "question": "Explain Server-Driven UI architecture and how backend responses drive dynamic component rendering.",
+    "model_answer": "Server-Driven UI returns structured component JSON schemas from the backend specifying component types, props, and layout hierarchy, allowing frontend apps to update UI flows dynamically without releasing new client builds.",
+    "key_points": [
+      "Backend JSON payload specifying component type and layout",
+      "Client component factory mapping schema to UI components",
+      "Dynamic flow updates without app store/client redeployment",
+      "Schema versioning and fallback rendering for unsupported nodes"
+    ]
+  },
+  {
+    "id": "fs-007",
+    "topic": "performance",
+    "difficulty_rating": 1370,
+    "question": "How do you debug hydration mismatch errors when SSR HTML differs from client-rendered DOM trees?",
+    "model_answer": "Hydration errors occur when server HTML differs from initial client render (e.g. using `typeof window`, random numbers, or date functions). Debugging involves isolating dynamic client-only state into `useEffect` hooks or using `suppressHydrationWarning`.",
+    "key_points": [
+      "Root cause: server HTML vs client initial DOM discrepancy",
+      "Common triggers (localStorage reads, Date.now(), window checks)",
+      "Deferring client-only logic to useEffect / useState mounted flag",
+      "SSR-safe dynamic components with ssr: false"
+    ]
+  },
+  {
+    "id": "fs-008",
+    "topic": "db_migrations",
+    "difficulty_rating": 1470,
+    "question": "Explain the Expand and Contract (Parallel Run) migration pattern for renaming database columns without downtime.",
+    "model_answer": "Renaming columns requires: 1) Add new column `new_name`. 2) Deploy app version writing to both columns. 3) Backfill historical rows. 4) Update app to read from `new_name`. 5) Remove dual-write logic. 6) Drop old column `old_name`.",
+    "key_points": [
+      "Dual-column database state during transition",
+      "Multi-step application deployment sequencing",
+      "Data synchronization between legacy and new columns",
+      "Safe cleanup of deprecated database artifacts"
+    ]
+  },
+  {
+    "id": "fs-009",
+    "topic": "api_middleware",
+    "difficulty_rating": 1390,
+    "question": "How do API Gateway middleware handle rate limiting, JWT validation, and request sanitization before reaching microservices?",
+    "model_answer": "An API Gateway intercepts incoming HTTP requests, validating JWT signatures at the perimeter, enforcing Redis rate limits, stripping internal headers, and sanitizing payloads before proxying requests to downstream microservices.",
+    "key_points": [
+      "Perimeter JWT signature validation and user ID header injection",
+      "Centralized rate limiting before service routing",
+      "Request body sanitization and XSS stripping",
+      "Reverse proxy routing and load balancing"
+    ]
+  },
+  {
+    "id": "fs-010",
+    "topic": "realtime",
+    "difficulty_rating": 1430,
+    "question": "How do you design a real-time notifications engine with fallback from WebSockets to SSE and polling?",
+    "model_answer": "The client attempts a WebSocket connection first. If connection fails due to proxy/firewall blocking, it falls back to Server-Sent Events (SSE). If SSE is unsupported, it defaults to HTTP short polling, maintaining transparent event subscription interfaces.",
+    "key_points": [
+      "Transport priority chain (WebSocket -> SSE -> Polling)",
+      "Client abstraction layer wrapping event subscriptions",
+      "Heartbeat ping/pong connection health monitoring",
+      "Message deduplication using sequence IDs"
+    ]
+  },
+  {
+    "id": "fs-011",
+    "topic": "architecture",
+    "difficulty_rating": 1380,
+    "question": "Compare Monolith vs Modular Monolith vs Microservices for mid-stage startup scaling.",
+    "model_answer": "Monoliths offer single codebase speed but couple deployments. Modular Monoliths enforce strict module domain boundaries in a single repo with clean interfaces. Microservices decouple deployments and scaling per team at the cost of high distributed systems complexity.",
+    "key_points": [
+      "Monolith development speed vs deployment coupling",
+      "Modular Monolith domain boundaries and shared database",
+      "Microservices independent deployment and operational overhead",
+      "Evolutionary architecture matching team size growth"
+    ]
+  },
+  {
+    "id": "fs-012",
+    "topic": "security",
+    "difficulty_rating": 1360,
+    "question": "How do CSRF tokens mitigate cross-site request forgery when using session cookies vs JWT bearer headers?",
+    "model_answer": "Cookies are automatically sent by browsers with cross-site requests (CSRF risk). Anti-CSRF tokens require a secret token in request headers that malicious sites cannot read. JWTs stored in memory and sent via `Authorization: Bearer` headers are immune to CSRF.",
+    "key_points": [
+      "Automatic cookie submission mechanism in CSRF attacks",
+      "Synchronizer Token Pattern (Anti-CSRF headers)",
+      "Authorization: Bearer header immune to automatic browser submission",
+      "SameSite=Strict/Lax cookie attribute protections"
+    ]
+  },
+  {
+    "id": "fs-013",
+    "topic": "performance",
+    "difficulty_rating": 1440,
+    "question": "Explain Incremental Static Regeneration (ISR) and Stale-While-Revalidate strategies for high-traffic content sites.",
+    "model_answer": "ISR statically pre-renders pages at build time. When a request arrives past the `revalidate` window, the stale cached HTML is served immediately while the CDN triggers background page regeneration for future requests.",
+    "key_points": [
+      "Static page generation speed with dynamic revalidation",
+      "Stale HTML instant delivery to users",
+      "Asynchronous background page regeneration",
+      "Reduced origin server load during high traffic spikes"
+    ]
+  },
+  {
+    "id": "fs-014",
+    "topic": "db_migrations",
+    "difficulty_rating": 1420,
+    "question": "How do ORM query generators (Prisma/Drizzle/Hibernate) generate SQL, and how do you detect hidden N+1 performance bottlenecks?",
+    "model_answer": "ORMs map object calls to SQL queries. Hidden N+1 queries occur when fetching a list of N items triggers N individual sub-queries for nested relations. Detection is done via query logging, APM tools, and resolved via JOINs or DataLoader batching.",
+    "key_points": [
+      "ORM query mapping mechanics",
+      "N+1 query detection via SQL log inspection and APMs",
+      "Eager loading with JOINs vs Lazy loading sub-queries",
+      "DataLoader and raw SQL overrides for performance-critical paths"
+    ]
+  },
+  {
+    "id": "fs-015",
+    "topic": "api_middleware",
+    "difficulty_rating": 1310,
+    "question": "Explain how global error handling middleware intercept uncaught exceptions and format standardized JSON responses.",
+    "model_answer": "Global error middleware catch uncaught exceptions, log stack traces internally, map domain errors to HTTP status codes (400, 404, 401, 500), and sanitize error payloads sent to clients to prevent internal stack trace leakage.",
+    "key_points": [
+      "Centralized error handling middleware signature",
+      "Mapping domain exceptions to standard HTTP status codes",
+      "Sanitizing stack traces in production environments",
+      "Standardized error JSON payload structure ({ error, code, message })"
+    ]
+  },
+  {
+    "id": "fs-016",
+    "topic": "architecture",
+    "difficulty_rating": 1400,
+    "question": "How do you implement full-stack feature flags (LaunchDarkly / Unleash) with zero-latency client evaluation?",
+    "model_answer": "Full-stack feature flags evaluate rules on server startup or edge nodes, pushing flag states to the client via initial page load context or SSE updates, eliminating blocking client-side HTTP evaluations.",
+    "key_points": [
+      "Server/Edge feature flag rule evaluation",
+      "Bootstrap client state in SSR HTML payload",
+      "SSE/WebSocket live flag updates",
+      "Targeting user segments and percentage rollouts"
+    ]
+  },
+  {
+    "id": "fs-017",
+    "topic": "security",
+    "difficulty_rating": 1390,
+    "question": "How do Content Security Policy (CSP) and HTTP security headers (HSTS, X-Frame-Options) protect full-stack web applications?",
+    "model_answer": "CSP restricts script/style origins to block XSS. HSTS forces browsers to connect exclusively via HTTPS. X-Frame-Options prevents clickjacking by restricting iframe embedding.",
+    "key_points": [
+      "Content Security Policy (CSP) origin restrictions",
+      "HTTP Strict Transport Security (HSTS) HTTPS enforcement",
+      "X-Frame-Options DENY / SAMEORIGIN clickjacking defense",
+      "X-Content-Type-Options nosniff directive"
+    ]
+  },
+  {
+    "id": "fs-018",
+    "topic": "realtime",
+    "difficulty_rating": 1410,
+    "question": "Explain optimistic state updates on the frontend coupled with asynchronous backend message queues.",
+    "model_answer": "The frontend updates UI state immediately and fires an API request. The backend enqueues the task into a message queue (Kafka/RabbitMQ) for async processing, responding 202 Accepted. If queue processing fails, a notification websocket triggers a client rollback.",
+    "key_points": [
+      "Frontend instant state update",
+      "Backend HTTP 202 Accepted and async queue processing",
+      "Websockets notification channel for async completion/failure",
+      "Client rollback handling on async task rejection"
+    ]
+  },
+  {
+    "id": "fs-019",
+    "topic": "performance",
+    "difficulty_rating": 1450,
+    "question": "How do CDN edge functions (Cloudflare Workers / Vercel Edge) execute middleware logic near users?",
+    "model_answer": "Edge functions run lightweight V8 isolates in 300+ global CDN edge locations. They inspect request headers, handle authentication, perform geo-routing, and rewrite requests before reaching origin servers.",
+    "key_points": [
+      "V8 isolate lightweight runtime vs heavy Node container",
+      "Global CDN edge execution (< 10ms response latency)",
+      "Edge authentication and A/B testing header rewrites",
+      "Origin server request offloading"
+    ]
+  },
+  {
+    "id": "fs-020",
+    "topic": "architecture",
+    "difficulty_rating": 1470,
+    "question": "Design an end-to-end file upload feature handling multi-gigabyte video uploads directly to S3 via signed URLs.",
+    "model_answer": "The client requests a presigned S3 URL from the backend API. The client uploads the binary video directly to AWS S3 using multipart PUT requests, bypassing backend web servers. S3 triggers an event notification to transcode the video asynchronously.",
+    "key_points": [
+      "Presigned S3 upload URL generation with expiration",
+      "Direct browser-to-S3 multipart upload bypassing backend",
+      "S3 Event Notifications triggering async video encoding worker",
+      "CORS configuration on S3 buckets for browser uploads"
+    ]
+  }
+]

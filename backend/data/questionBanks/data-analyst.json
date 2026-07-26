@@ -1,0 +1,262 @@
+[
+  {
+    "id": "da-001",
+    "topic": "databases",
+    "difficulty_rating": 1350,
+    "question": "How do Window Functions like DENSE_RANK(), LAG(), and ROW_NUMBER() work in complex SQL analytical queries?",
+    "model_answer": "Window functions perform calculations across a set of table rows related to the current row without collapsing rows via GROUP BY. `ROW_NUMBER()` assigns unique sequential integers; `DENSE_RANK()` handles ties without rank gaps; `LAG()` fetches prior row values.",
+    "key_points": [
+      "OVER (PARTITION BY ... ORDER BY ...) clause syntax",
+      "ROW_NUMBER() vs RANK() vs DENSE_RANK() handling of duplicate ties",
+      "LAG() and LEAD() for offset time-series comparison",
+      "Non-collapsing analytical processing vs GROUP BY"
+    ]
+  },
+  {
+    "id": "da-002",
+    "topic": "statistics",
+    "difficulty_rating": 1400,
+    "question": "Explain how A/B test hypothesis testing is set up and how p-values and confidence intervals determine statistical significance.",
+    "model_answer": "A/B testing establishes a Null Hypothesis (H0: no difference) and Alternative Hypothesis (H1). The p-value measures probability of observing results under H0. If p < alpha (0.05), we reject H0. Confidence intervals provide plausible effect size ranges.",
+    "key_points": [
+      "Null (H0) vs Alternative (H1) hypothesis setup",
+      "p-value definition and alpha threshold (0.05 significance level)",
+      "Confidence interval (95% CI) interpretation",
+      "Sample size determination and statistical power (80%)"
+    ]
+  },
+  {
+    "id": "da-003",
+    "topic": "cohorts",
+    "difficulty_rating": 1380,
+    "question": "How do you construct a monthly user retention cohort matrix using SQL CTEs and group aggregations?",
+    "model_answer": "1) Find user signup month using `MIN(DATE_TRUNC('month', created_at))` in a CTE. 2) Join user activity logs on user_id. 3) Calculate month index difference `(activity_month - signup_month)`. 4) Aggregate unique users grouped by signup month and month index.",
+    "key_points": [
+      "CTE to isolate initial user signup cohort month",
+      "Joining activity log events on user_id",
+      "Calculating relative month index (Month 0, Month 1, etc.)",
+      "Pivoting results into a retention percentage cohort matrix"
+    ]
+  },
+  {
+    "id": "da-004",
+    "topic": "metrics",
+    "difficulty_rating": 1320,
+    "question": "Explain Customer Acquisition Cost (CAC), Lifetime Value (LTV), and how an LTV:CAC ratio below 3:1 signals operational inefficiency.",
+    "model_answer": "CAC is total marketing/sales spend divided by new customers acquired. LTV is gross margin per customer divided by churn rate. An LTV:CAC ratio below 3:1 means acquisition costs burn too much capital relative to long-term customer gross profit.",
+    "key_points": [
+      "CAC formula (Sales & Marketing Spend / New Customers)",
+      "LTV formula (ARPU * Gross Margin % / Churn Rate)",
+      "3:1 benchmark ratio for SaaS business health",
+      "Payback period payback months metric"
+    ]
+  },
+  {
+    "id": "da-005",
+    "topic": "funnels",
+    "difficulty_rating": 1340,
+    "question": "How do you diagnose conversion rate drop-offs across a multi-step user onboarding checkout funnel?",
+    "model_answer": "Funnel analysis tracks step-by-step conversion percentages. By segmenting drop-offs by device, traffic source, region, or user demographic, analysts isolate specific technical bugs, high-friction forms, or UX drop-off steps.",
+    "key_points": [
+      "Step-by-step conversion and drop-off percentage modeling",
+      "Demographic and device/browser segmentation",
+      "Isolating high-friction form steps vs page load drop-offs",
+      "Session replay and event logging correlation"
+    ]
+  },
+  {
+    "id": "da-006",
+    "topic": "databases",
+    "difficulty_rating": 1250,
+    "question": "Explain the difference between WHERE and HAVING clauses in SQL when filtering aggregated metric outputs.",
+    "model_answer": "`WHERE` filters individual table rows BEFORE aggregation occurs. `HAVING` filters aggregated group results AFTER the `GROUP BY` clause has been executed.",
+    "key_points": [
+      "WHERE filters individual rows prior to GROUP BY",
+      "HAVING filters aggregated groups post GROUP BY",
+      "Execution order (FROM -> WHERE -> GROUP BY -> HAVING -> SELECT)",
+      "Using HAVING with aggregate functions (COUNT, SUM, AVG)"
+    ]
+  },
+  {
+    "id": "da-007",
+    "topic": "statistics",
+    "difficulty_rating": 1440,
+    "question": "What is Simpson’s Paradox? Provide a business scenario where aggregated data contradicts sub-group analytics.",
+    "model_answer": "Simpson's Paradox occurs when a trend appears in several groups of data but reverses when the groups are combined. E.g., overall conversion rate increases, but conversion decreases in both desktop and mobile sub-groups due to a shift in traffic mix.",
+    "key_points": [
+      "Reversal of trend upon data aggregation vs sub-group breakdown",
+      "Confounding variables and traffic mix shifts",
+      "Real-world business case example (conversion, A/B testing)",
+      "Importance of granular segmentation"
+    ]
+  },
+  {
+    "id": "da-008",
+    "topic": "cohorts",
+    "difficulty_rating": 1370,
+    "question": "How do you calculate 7-day and 30-day Rolling Active Users using SQL window frames (ROWS BETWEEN 6 PRECEDING AND CURRENT ROW)?",
+    "model_answer": "Rolling active users sum daily distinct users across a moving window frame: `COUNT(DISTINCT user_id) OVER (ORDER BY date_col ROWS BETWEEN 29 PRECEDING AND CURRENT ROW)`.",
+    "key_points": [
+      "Window frame specification (ROWS / RANGE BETWEEN)",
+      "7-day vs 30-day rolling active user calculations",
+      "Handling missing calendar dates using spine tables",
+      "Smoothing out day-of-week seasonality"
+    ]
+  },
+  {
+    "id": "da-009",
+    "topic": "metrics",
+    "difficulty_rating": 1300,
+    "question": "Explain Net Promoter Score (NPS), Churn Rate, and Monthly Recurring Revenue (MRR) expansion metrics for SaaS business analysis.",
+    "model_answer": "NPS measures customer advocacy (% Promoters minus % Detractors). Churn Rate is % of customers lost per month. Net MRR Expansion measures revenue growth from existing customers (upgrades minus downgrades/churn).",
+    "key_points": [
+      "NPS scoring methodology (Promoters 9-10, Passives 7-8, Detractors 0-6)",
+      "Logo Churn vs Revenue Churn",
+      "Expansion MRR vs Contraction MRR vs Net New MRR",
+      "Net Retention Rate (NRR > 100% benchmark)"
+    ]
+  },
+  {
+    "id": "da-010",
+    "topic": "funnels",
+    "difficulty_rating": 1280,
+    "question": "How do you handle missing data (Imputation vs Exclusion) when analyzing survey datasets or tracking event logs?",
+    "model_answer": "Missing data can be handled by deletion (Listwise/Pairwise) if missing completely at random (MCAR). Imputation replaces missing values with mean/median or model predictions. Excluding non-random missing data risks bias.",
+    "key_points": [
+      "MCAR, MAR, and MNAR missing data classifications",
+      "Mean/Median imputation vs predictive model imputation",
+      "Listwise deletion hazards and sample bias",
+      "Flagging imputed values for auditing"
+    ]
+  },
+  {
+    "id": "da-011",
+    "topic": "databases",
+    "difficulty_rating": 1260,
+    "question": "Compare FULL OUTER JOIN, LEFT JOIN, and INNER JOIN results when analyzing disparate tracking tables.",
+    "model_answer": "`INNER JOIN` returns matching rows in both tables. `LEFT JOIN` returns all rows from the left table and matched right rows (NULL if missing). `FULL OUTER JOIN` returns all rows from both tables, filling NULLs where no match exists.",
+    "key_points": [
+      "INNER JOIN intersection logic",
+      "LEFT JOIN preserving primary table records",
+      "FULL OUTER JOIN combining non-matching datasets",
+      "Handling NULL values in analytical aggregations"
+    ]
+  },
+  {
+    "id": "da-012",
+    "topic": "statistics",
+    "difficulty_rating": 1410,
+    "question": "Explain Minimum Detectable Effect (MDE) and sample size calculations in A/B test experimental design.",
+    "model_answer": "MDE is the smallest relative uplift an experiment is powered to detect. Smaller MDEs require exponentially larger sample sizes. Sample size depends on baseline variance, statistical power (80%), and significance level (5%).",
+    "key_points": [
+      "MDE (Minimum Detectable Effect) relationship to sample size",
+      "Statistical Power (1 - beta = 0.80)",
+      "Significance Level (alpha = 0.05)",
+      "Experiment duration trade-offs"
+    ]
+  },
+  {
+    "id": "da-013",
+    "topic": "cohorts",
+    "difficulty_rating": 1360,
+    "question": "How do you identify Power Users (D1/D7/D30 frequency distribution curves) using user activity telemetry?",
+    "model_answer": "Power user curves (L7 / L30 histograms) plot the distribution of days users were active out of the last 7 or 30 days. A smile-shaped curve indicates strong core power user retention.",
+    "key_points": [
+      "L7 and L30 activity histograms",
+      "Identifying smile-shaped retention distribution curves",
+      "Segmenting power users by feature usage frequency",
+      "Correlating power user traits with long-term LTV"
+    ]
+  },
+  {
+    "id": "da-014",
+    "topic": "metrics",
+    "difficulty_rating": 1390,
+    "question": "What is Data Anomaly Detection? How do Z-Score thresholds identify metric spikes or tracking ingestion failures?",
+    "model_answer": "Z-Score measures standard deviations from the mean: `Z = (X - mu) / sigma`. Values with `|Z| > 3` indicate statistically significant anomalies, alerting teams to tracking drop-offs or system failures.",
+    "key_points": [
+      "Z-score calculation formula",
+      "Standard deviation thresholds (|Z| > 3)",
+      "Seasonality adjustment prior to Z-score calculation",
+      "Automated alerting for pipeline ingestion failures"
+    ]
+  },
+  {
+    "id": "da-015",
+    "topic": "funnels",
+    "difficulty_rating": 1420,
+    "question": "How do you map user behavioral paths using sessionization logic in SQL (session idle timeout breakdown)?",
+    "model_answer": "Sessionization uses `LAG()` to calculate time differences between consecutive user events. If elapsed time exceeds 30 minutes, a new session flag `(diff > 30m ? 1 : 0)` is set, summing flags to generate unique session IDs.",
+    "key_points": [
+      "LAG() window function to compute event time differences",
+      "30-minute idle inactivity threshold",
+      "SUM() OVER() conditional running sum to generate session_id",
+      "Pathing analysis across session events"
+    ]
+  },
+  {
+    "id": "da-016",
+    "topic": "databases",
+    "difficulty_rating": 1430,
+    "question": "How do recursive SQL CTEs query hierarchical org charts or multi-level category taxonomies?",
+    "model_answer": "Recursive CTEs contain an Anchor Member (root selection) UNION ALL'd with a Recursive Member joining the CTE back to the child relation until no further children are returned.",
+    "key_points": [
+      "Anchor member query initialization",
+      "Recursive member iterative joining",
+      "UNION ALL combination and termination condition",
+      "Depth tracking column for tree level hierarchy"
+    ]
+  },
+  {
+    "id": "da-017",
+    "topic": "statistics",
+    "difficulty_rating": 1310,
+    "question": "What is Type I error (False Positive) vs Type II error (False Negative) in business decision hypothesis testing?",
+    "model_answer": "Type I error (alpha) occurs when we reject a true null hypothesis (e.g. declaring a feature winner when it had no effect). Type II error (beta) occurs when we fail to reject a false null hypothesis (missing a real winner).",
+    "key_points": [
+      "Type I error (False Positive, alpha = 0.05)",
+      "Type II error (False Negative, beta = 0.20)",
+      "Trade-offs between Type I vs Type II errors",
+      "Statistical Power (1 - beta)"
+    ]
+  },
+  {
+    "id": "da-018",
+    "topic": "metrics",
+    "difficulty_rating": 1290,
+    "question": "How do you design executive BI dashboards in Tableau/PowerBI to present high-level KPIs without data clutter?",
+    "model_answer": "Executive dashboards follow an inverted pyramid structure: Top-level summary KPIs (Revenue, Active Users) at top, trend charts in middle, and detailed drill-down filters at bottom. Avoid pie charts; use clean bar/line charts.",
+    "key_points": [
+      "Inverted pyramid layout (KPI cards -> Trend lines -> Granular tables)",
+      "Eliminating chart clutter and choosing clear chart types",
+      "Interactive filter controls (date range, region, segment)",
+      "Performance optimization (extracts vs direct live queries)"
+    ]
+  },
+  {
+    "id": "da-019",
+    "topic": "funnels",
+    "difficulty_rating": 1380,
+    "question": "Explain Attribution Modeling (First Touch, Last Touch, Linear, Multi-Touch) for marketing campaign performance.",
+    "model_answer": "First-Touch credits 100% conversion to the initial channel. Last-Touch credits 100% to the final touchpoint. Linear distributes credit equally. Multi-Touch (Position-based / Data-driven) weights channels based on Shapley value contributions.",
+    "key_points": [
+      "First-Touch vs Last-Touch attribution models",
+      "Linear and Time-Decay attribution rules",
+      "Data-Driven / Algorithmic Shapley attribution",
+      "Channel ROI evaluation trade-offs"
+    ]
+  },
+  {
+    "id": "da-020",
+    "topic": "databases",
+    "difficulty_rating": 1270,
+    "question": "How do UNION vs UNION ALL differ in performance when combining massive log reporting tables?",
+    "model_answer": "`UNION` combines query outputs and executes a distinct sort to eliminate duplicate rows. `UNION ALL` concatenates query outputs directly without checking for duplicates, executing significantly faster.",
+    "key_points": [
+      "UNION duplicate elimination sort overhead",
+      "UNION ALL direct concatenation speed",
+      "Memory and temporary disk spill risks of UNION",
+      "Appropriate use cases for each"
+    ]
+  }
+]

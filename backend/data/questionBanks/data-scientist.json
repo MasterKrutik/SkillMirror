@@ -1,0 +1,262 @@
+[
+  {
+    "id": "ds-001",
+    "topic": "modeling",
+    "difficulty_rating": 1450,
+    "question": "How do you handle severe class imbalance in tabular predictive modeling beyond naive oversampling (SMOTE vs focal loss)?",
+    "model_answer": "Class imbalance is handled by 1) Resampling (SMOTE interpolates minority samples in feature space). 2) Cost-sensitive learning (class-weighted loss). 3) Focal Loss dynamically down-weights well-classified easy examples. 4) Evaluating with PR-AUC instead of Accuracy.",
+    "key_points": [
+      "SMOTE synthetic minority oversampling in feature space",
+      "Class-weighted loss functions",
+      "Focal Loss down-weighting easy negative examples",
+      "Metric selection (PR-AUC vs Accuracy / ROC-AUC)"
+    ]
+  },
+  {
+    "id": "ds-002",
+    "topic": "experimentation",
+    "difficulty_rating": 1500,
+    "question": "Explain how variance reduction methods like CUPED increase sensitivity in online experimentation.",
+    "model_answer": "CUPED (Controlled-experiments Using Pre-Experiment Data) uses pre-experiment metric data `Y_pre` to remove variance from post-experiment metrics `Y_post`, shrinking metric variance and detecting smaller treatment effects faster with less sample size.",
+    "key_points": [
+      "CUPED formula removing pre-experiment metric variance",
+      "Covariate selection using historical user metrics",
+      "Increased statistical power and reduced sample size requirements",
+      "Unbiased treatment effect estimation"
+    ]
+  },
+  {
+    "id": "ds-003",
+    "topic": "causal_inference",
+    "difficulty_rating": 1520,
+    "question": "How do you use Propensity Score Matching to estimate treatment effects in observational data where A/B testing is impossible?",
+    "model_answer": "Propensity Score Matching predicts the probability of receiving treatment given observed covariates using logistic regression. Treated units are matched 1-to-1 with control units having similar propensity scores, balancing confounding covariates.",
+    "key_points": [
+      "Propensity score definition P(Treatment | Covariates)",
+      "Confounder balancing across treated and control groups",
+      "Matching algorithms (Nearest Neighbor, Caliper matching)",
+      "Unobserved confounding risk and sensitivity analysis"
+    ]
+  },
+  {
+    "id": "ds-004",
+    "topic": "evaluation",
+    "difficulty_rating": 1420,
+    "question": "Compare Precision-Recall AUC (PR-AUC) vs ROC-AUC for evaluating models trained on highly imbalanced fraud datasets.",
+    "model_answer": "ROC-AUC plots True Positive Rate vs False Positive Rate. On highly imbalanced datasets (e.g. 0.1% positive), FPR stays low even with thousands of false positives. PR-AUC plots Precision vs Recall, accurately reflecting false positive contamination.",
+    "key_points": [
+      "ROC-AUC sensitivity to large true negative counts",
+      "PR-AUC focus on positive class precision and recall",
+      "False Positive Rate masking in imbalanced domains",
+      "Selecting operational thresholds based on business costs"
+    ]
+  },
+  {
+    "id": "ds-005",
+    "topic": "feature_engineering",
+    "difficulty_rating": 1470,
+    "question": "Explain SHAP (Shapley Additive exPlanations) values based on game theory vs Permutation Feature Importance.",
+    "model_answer": "SHAP computes Shapley values from cooperative game theory, measuring each feature's marginal contribution across all possible feature subsets. Permutation Importance shuffles a single feature column and measures accuracy drop, but fails with correlated features.",
+    "key_points": [
+      "SHAP Shapley value mathematical axioms (Efficiency, Symmetry, Additivity)",
+      "Local feature contribution explanation per instance",
+      "Permutation Feature Importance accuracy drop metric",
+      "Handling correlated features (TreeSHAP vs Permutation breakdown)"
+    ]
+  },
+  {
+    "id": "ds-006",
+    "topic": "modeling",
+    "difficulty_rating": 1460,
+    "question": "Compare XGBoost, LightGBM, and CatBoost regarding tree building algorithms, categorical feature handling, and missing data speed.",
+    "model_answer": "XGBoost uses depth-wise tree growth and exact/approximate histogram splitting. LightGBM uses leaf-wise tree growth (faster, risks overfitting). CatBoost uses symmetric trees and ordered target encoding natively for high-cardinality categoricals.",
+    "key_points": [
+      "Depth-wise (XGBoost) vs Leaf-wise (LightGBM) vs Symmetric (CatBoost) tree growth",
+      "CatBoost native Ordered Target Encoding for categorical features",
+      "Histogram binning optimization for speed",
+      "Default handling of missing values"
+    ]
+  },
+  {
+    "id": "ds-007",
+    "topic": "experimentation",
+    "difficulty_rating": 1510,
+    "question": "Explain Multi-Armed Bandits (Thompson Sampling vs Upper Confidence Bound) vs traditional fixed-sample A/B testing.",
+    "model_answer": "Fixed A/B testing splits traffic 50/50 until significance. Multi-Armed Bandits dynamically allocate traffic to winning variations during the test. Thompson Sampling uses Beta distribution sampling; UCB adds an uncertainty bonus to arm estimates.",
+    "key_points": [
+      "Explore vs Exploit tradeoff optimization",
+      "Regret minimization during experimental period",
+      "Thompson Sampling (Bayesian posterior sampling)",
+      "Upper Confidence Bound (UCB) optimistic sampling"
+    ]
+  },
+  {
+    "id": "ds-008",
+    "topic": "causal_inference",
+    "difficulty_rating": 1530,
+    "question": "What is Difference-in-Differences (DiD) estimation? Explain the parallel trends assumption in causal impact evaluation.",
+    "model_answer": "DiD compares the outcome change over time between a treatment group and a control group: `(Y_treat_post - Y_treat_pre) - (Y_ctrl_post - Y_ctrl_pre)`. The parallel trends assumption requires that treatment and control groups would follow parallel paths without intervention.",
+    "key_points": [
+      "DiD 2x2 double-difference formula",
+      "Parallel Trends Assumption verification",
+      "Event-study plots for testing pre-treatment parallel trends",
+      "Confounding macro-economic trend removal"
+    ]
+  },
+  {
+    "id": "ds-009",
+    "topic": "evaluation",
+    "difficulty_rating": 1400,
+    "question": "Explain Cross-Validation strategies (Stratified K-Fold vs Time-Series GroupKFold) to prevent temporal data leakage.",
+    "model_answer": "Stratified K-Fold preserves class ratios across folds for independent tabular data. For time-series data, standard K-Fold causes data leakage (using future data to predict past). Time-Series Split (rolling window) trains ONLY on historical data and tests on future data.",
+    "key_points": [
+      "Stratified K-Fold class balance preservation",
+      "Time-Series Split rolling window validation",
+      "Data leakage hazards when shuffling temporal records",
+      "GroupKFold to prevent leakage across repeated user IDs"
+    ]
+  },
+  {
+    "id": "ds-010",
+    "topic": "feature_engineering",
+    "difficulty_rating": 1430,
+    "question": "How does Target Encoding work, and how do smoothing and out-of-fold target encoding prevent overfitting?",
+    "model_answer": "Target Encoding replaces categorical values with the mean target value for that category. To prevent severe target leakage and overfitting on rare categories, smoothing blends category mean with global mean, and out-of-fold calculation computes means on K-1 folds.",
+    "key_points": [
+      "Categorical replacement with mean target label",
+      "Target leakage and overfitting risks",
+      "Smoothing parameter m blending global target mean",
+      "Out-of-fold (OOF) target encoding calculation"
+    ]
+  },
+  {
+    "id": "ds-011",
+    "topic": "modeling",
+    "difficulty_rating": 1380,
+    "question": "Explain L1 (Lasso) vs L2 (Ridge) Regularization regarding sparsity and mathematical formulation of loss functions.",
+    "model_answer": "L1 (Lasso) adds absolute weight penalties `lambda * |w|`, driving non-important feature weights exactly to 0 (feature selection). L2 (Ridge) adds squared penalties `lambda * w^2`, shrinking weights evenly without producing true zero coefficients.",
+    "key_points": [
+      "L1 (Lasso) absolute penalty driving weights to zero (sparsity)",
+      "L2 (Ridge) squared penalty shrinking weights towards zero",
+      "ElasticNet combination of L1 and L2 penalties",
+      "Geometric diamond (L1) vs circular (L2) constraint boundaries"
+    ]
+  },
+  {
+    "id": "ds-012",
+    "topic": "experimentation",
+    "difficulty_rating": 1540,
+    "question": "What is Network Spillover (SUTVA violation) in social network A/B testing, and how do cluster-randomized trials mitigate it?",
+    "model_answer": "SUTVA (Stable Unit Treatment Value Assumption) requires that one user's treatment does not affect another's. In social networks, a treated user affects control friends (spillover). Cluster-randomized trials randomize isolated communities/clusters rather than individuals.",
+    "key_points": [
+      "SUTVA assumption definition",
+      "Network interference and treatment spillover to control units",
+      "Graph partitioning and cluster-randomized trial design",
+      "Ego-network cluster randomization"
+    ]
+  },
+  {
+    "id": "ds-013",
+    "topic": "causal_inference",
+    "difficulty_rating": 1560,
+    "question": "Explain Instrumental Variables (IV) and Two-Stage Least Squares (2SLS) for unobserved confounding correction.",
+    "model_answer": "Instrumental Variables isolate causal effects when unobserved confounders correlate with treatment and outcome. An instrument Z must affect treatment X (relevance) but affect outcome Y ONLY through X (exclusion restriction). 2SLS fits X on Z in stage 1, then Y on predicted X in stage 2.",
+    "key_points": [
+      "Instrumental Variable (IV) properties (Relevance and Exclusion Restriction)",
+      "Two-Stage Least Squares (2SLS) regression steps",
+      "Weak instrument diagnostic tests (F-statistic > 10)",
+      "Local Average Treatment Effect (LATE) interpretation"
+    ]
+  },
+  {
+    "id": "ds-014",
+    "topic": "evaluation",
+    "difficulty_rating": 1440,
+    "question": "Explain Log-Loss (Cross-Entropy Loss) vs Brier Score for evaluating probability calibration of classification outputs.",
+    "model_answer": "Log-Loss measures predicted probability accuracy, penalization scaling logarithmically for confident wrong predictions. Brier Score is the mean squared error between predicted probabilities and binary outcomes. Reliability diagrams verify probability calibration.",
+    "key_points": [
+      "Log-Loss / Cross-Entropy logarithmic penalty structure",
+      "Brier Score mean squared probability error",
+      "Probability calibration (Platt Scaling / Isotonic Regression)",
+      "Reliability diagrams and ECE (Expected Calibration Error)"
+    ]
+  },
+  {
+    "id": "ds-015",
+    "topic": "feature_engineering",
+    "difficulty_rating": 1410,
+    "question": "How does Principal Component Analysis (PCA) perform dimensionality reduction via SVD matrix factorization?",
+    "model_answer": "PCA projects high-dimensional data onto orthogonal axes (principal components) that maximize data variance. It computes the covariance matrix eigenvectors or uses Singular Value Decomposition (SVD) on centered data matrices.",
+    "key_points": [
+      "Maximizing data variance along orthogonal principal components",
+      "Covariance matrix eigendecomposition and SVD",
+      "Explained variance ratio plot (scree plot)",
+      "Data centering requirement prior to PCA"
+    ]
+  },
+  {
+    "id": "ds-016",
+    "topic": "modeling",
+    "difficulty_rating": 1390,
+    "question": "Explain Random Forests vs Gradient Boosted Decision Trees regarding bias-variance tradeoff and parallelization.",
+    "model_answer": "Random Forests use bagging (bootstrap aggregation of deep independent trees) to reduce variance. Trees can be trained in parallel. Gradient Boosted Trees sequentially fit shallow trees to the residual errors of previous trees to reduce bias.",
+    "key_points": [
+      "Bagging (Random Forest) vs Boosting (GBDT)",
+      "Variance reduction (RF) vs Bias reduction (GBDT)",
+      "Parallel training in RF vs Sequential training in GBDT",
+      "Hyperparameters (n_estimators, max_depth, learning_rate)"
+    ]
+  },
+  {
+    "id": "ds-017",
+    "topic": "experimentation",
+    "difficulty_rating": 1450,
+    "question": "What is Novelty Effect and Primacy Effect in web product experiments? How do long-term holdout groups measure true impact?",
+    "model_answer": "Novelty Effect causes temporary engagement spikes because a feature is new. Primacy Effect causes initial negative metrics as users resist UI changes. Long-term holdout groups (1-3 months) isolate true equilibrium feature impact.",
+    "key_points": [
+      "Novelty effect (transient positive user curiosity)",
+      "Primacy effect (transient negative user friction to change)",
+      "Long-term holdout groups (10% un-exposed users over months)",
+      "Metric stabilization over time"
+    ]
+  },
+  {
+    "id": "ds-018",
+    "topic": "causal_inference",
+    "difficulty_rating": 1550,
+    "question": "How do Synthetic Control methods estimate causal impact when measuring policy changes on a single region?",
+    "model_answer": "Synthetic Control constructs a weighted combination of un-treated control regions to match the pre-treatment trajectory of a single treated region. The post-treatment divergence between the treated region and synthetic control estimates causal impact.",
+    "key_points": [
+      "Single treated unit problem setup",
+      "Weighted combination of donor pool control units",
+      "Pre-treatment trajectory matching minimization",
+      "Placebo tests for statistical significance evaluation"
+    ]
+  },
+  {
+    "id": "ds-019",
+    "topic": "evaluation",
+    "difficulty_rating": 1320,
+    "question": "Explain Confusion Matrix metrics: Sensitivity (Recall), Specificity, Precision, and F1-Score trade-offs.",
+    "model_answer": "Precision = `TP / (TP + FP)`. Recall/Sensitivity = `TP / (TP + FN)`. Specificity = `TN / (TN + FP)`. F1-Score is the harmonic mean of Precision and Recall (`2 * P * R / (P + R)`). Threshold tuning trades Precision for Recall.",
+    "key_points": [
+      "Precision, Recall, Specificity formulas",
+      "Harmonic mean formulation of F1-Score",
+      "Decision threshold tuning trade-offs",
+      "Business cost-weighted threshold selection"
+    ]
+  },
+  {
+    "id": "ds-020",
+    "topic": "modeling",
+    "difficulty_rating": 1480,
+    "question": "How do Neural Collaborative Filtering and Matrix Factorization models generate personalized candidate recommendations?",
+    "model_answer": "Matrix Factorization decomposes user-item interaction matrices into low-rank user and item embedding vectors (`U * V^T`). Neural Collaborative Filtering replaces inner products with non-linear neural network layers learning user-item interactions.",
+    "key_points": [
+      "Matrix Factorization (SVD / ALS) low-rank user-item embeddings",
+      "Neural Collaborative Filtering (NCF) multi-layer perceptron interaction",
+      "Cold start problem for new users/items",
+      "Implicit feedback (clicks/views) vs explicit ratings"
+    ]
+  }
+]

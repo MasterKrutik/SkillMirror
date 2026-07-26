@@ -1,0 +1,262 @@
+[
+  {
+    "id": "fe-001",
+    "topic": "ui_architecture",
+    "difficulty_rating": 1400,
+    "question": "How do Virtual DOM diffing algorithms optimize render cycles in modern frontend frameworks like React?",
+    "model_answer": "Virtual DOM diffing uses heuristic O(N) algorithms comparing tree nodes by element type and keys. Unchanged components skip re-rendering via memoization, batching DOM updates efficiently.",
+    "key_points": [
+      "O(N) reconciliation algorithm instead of O(N^3)",
+      "Element type comparison and unique key properties",
+      "Batching DOM mutations to avoid layout thrashing",
+      "React Fiber fiber tree traversal and concurrent rendering"
+    ]
+  },
+  {
+    "id": "fe-002",
+    "topic": "performance",
+    "difficulty_rating": 1450,
+    "question": "Explain Core Web Vitals (LCP, INP, CLS) and how you optimize asset loading and main thread execution in single-page apps.",
+    "model_answer": "Core Web Vitals measure user experience: LCP (Largest Contentful Paint < 2.5s), INP (Interaction to Next Paint < 200ms), and CLS (Cumulative Layout Shift < 0.1). LCP is optimized by preloading hero images, INP by breaking long tasks, and CLS by reserving width/height image dimensions.",
+    "key_points": [
+      "LCP optimization via fetchpriority and image preloading",
+      "INP optimization by yielding main thread execution (yieldToMain)",
+      "CLS reduction by setting explicit dimensions and aspect ratios",
+      "Resource hints (preconnect, dns-prefetch, preload)"
+    ]
+  },
+  {
+    "id": "fe-003",
+    "topic": "state_management",
+    "difficulty_rating": 1350,
+    "question": "Compare prop drilling, Context API, and atomic state managers like Zustand for complex multi-level UI states.",
+    "model_answer": "Prop drilling passes state through unused intermediate components. Context API is suitable for low-frequency updates but causes re-render cascades across all consumers. Zustand uses selective atomic subscriptions, updating only components consuming altered state slices.",
+    "key_points": [
+      "Prop drilling maintenance bottlenecks",
+      "Context API re-render cascade limitations",
+      "Zustand/Jotai atomic state and selector subscriptions",
+      "Immutable state updates and devtools middleware"
+    ]
+  },
+  {
+    "id": "fe-004",
+    "topic": "accessibility",
+    "difficulty_rating": 1420,
+    "question": "How do you audit and implement keyboard navigation focus traps and ARIA live regions for accessible modal dialogs?",
+    "model_answer": "Accessible modal dialogs restrict TAB focus using a focus trap (cycling between first and last interactive elements), set `role=\"dialog\"` and `aria-modal=\"true\"`, preserve trigger focus on close, and use `aria-live=\"polite\"` for announcements.",
+    "key_points": [
+      "Focus trapping logic cycling TAB and SHIFT+TAB",
+      "ARIA roles (role=\"dialog\", aria-modal=\"true\")",
+      "Focus restoration to trigger element upon closing",
+      "ARIA live regions (polite vs assertive) for screen readers"
+    ]
+  },
+  {
+    "id": "fe-005",
+    "topic": "css_rendering",
+    "difficulty_rating": 1380,
+    "question": "Explain browser layout, paint, and composite rendering pipeline stages, and how CSS transform avoids layout thrashing.",
+    "model_answer": "The browser pipeline consists of JavaScript -> Style -> Layout (reflow) -> Paint (repaint) -> Composite. Mutating geometry (width/height) triggers layout reflow. CSS `transform` and `opacity` skip layout and paint, executing directly on the GPU composite thread.",
+    "key_points": [
+      "Rendering pipeline stages (Style, Layout, Paint, Composite)",
+      "Layout thrashing caused by reading geometric DOM properties",
+      "GPU-accelerated properties (transform, opacity, will-change)",
+      "Layer creation and hardware compositing"
+    ]
+  },
+  {
+    "id": "fe-006",
+    "topic": "performance",
+    "difficulty_rating": 1360,
+    "question": "Explain Code Splitting and Dynamic Imports using React.lazy and Suspense to reduce initial JavaScript bundle size.",
+    "model_answer": "Code splitting uses webpack/Vite dynamic `import()` to split monolithic bundles into route-based chunks, loaded on demand via React.lazy and Suspense fallback spinners.",
+    "key_points": [
+      "Dynamic import() syntax and Webpack chunking",
+      "React.lazy and Suspense fallback components",
+      "Route-based and component-based code splitting",
+      "Reduction of Initial Total Blocking Time (TBT)"
+    ]
+  },
+  {
+    "id": "fe-007",
+    "topic": "browser_apis",
+    "difficulty_rating": 1430,
+    "question": "How does Service Worker caching strategy (Stale-While-Revalidate vs Cache-First) enable offline Progressive Web Apps?",
+    "model_answer": "Service Workers intercept network requests. Cache-First serves cached assets immediately for static bundles. Stale-While-Revalidate serves cached content instantly while fetching updated assets in the background to update the cache.",
+    "key_points": [
+      "Service Worker lifecycle (install, activate, fetch)",
+      "Stale-While-Revalidate vs Cache-First vs Network-First",
+      "Offline fallback page handling",
+      "Cache Storage API management and versioning"
+    ]
+  },
+  {
+    "id": "fe-008",
+    "topic": "state_management",
+    "difficulty_rating": 1370,
+    "question": "How do immutability and shallow equality checks prevent unnecessary component re-renders in custom hooks?",
+    "model_answer": "React relies on shallow reference equality (`Object.is`) to detect state changes. Mutating objects directly keeps the reference identical, preventing re-renders. Immutable updates (e.g. `{ ...state, key: val }`) generate new references.",
+    "key_points": [
+      "Shallow equality checks (Object.is) in React reconciliation",
+      "Immutable state spread operations and Immer.js",
+      "useCallback and useMemo hook memoization",
+      "Custom hook state isolation"
+    ]
+  },
+  {
+    "id": "fe-009",
+    "topic": "ui_architecture",
+    "difficulty_rating": 1510,
+    "question": "Explain Micro-Frontends architecture using Module Federation vs iframe isolation for large enterprise web suites.",
+    "model_answer": "Micro-Frontends split large web suites into independent deployments. Module Federation allows runtime sharing of dependencies (React, design system) across builds, whereas iframe isolation provides strict CSS/JS sandboxing at the cost of high memory overhead.",
+    "key_points": [
+      "Webpack 5 Module Federation host/remote sharing",
+      "Runtime shared dependency singletons",
+      "Iframe sandboxing vs SPA smooth navigation",
+      "Independent team CI/CD deployment pipelines"
+    ]
+  },
+  {
+    "id": "fe-010",
+    "topic": "security",
+    "difficulty_rating": 1410,
+    "question": "How do you protect modern frontend web applications against Cross-Site Scripting (XSS) and CSRF attacks?",
+    "model_answer": "XSS is prevented by sanitizing user input (DOMPurify), escaping HTML output, avoiding `dangerouslySetInnerHTML`, and enforcing a strict Content Security Policy. CSRF is mitigated via SameSite cookies and Anti-CSRF tokens.",
+    "key_points": [
+      "Contextual HTML output escaping and DOMPurify",
+      "Content Security Policy (CSP) script-src directives",
+      "HttpOnly and SameSite=Strict/Lax cookie flags",
+      "Anti-CSRF tokens for mutating requests"
+    ]
+  },
+  {
+    "id": "fe-011",
+    "topic": "performance",
+    "difficulty_rating": 1470,
+    "question": "How does the Event Loop process Microtasks (Promises) vs Macrotasks (setTimeout, requestAnimationFrame) in V8?",
+    "model_answer": "The Event Loop executes the current call stack, then processes the ENTIRE Microtask queue (Promises, queueMicrotask, MutationObserver) before handling ONE Macrotask (setTimeout, setInterval). requestAnimationFrame executes prior to paint.",
+    "key_points": [
+      "Call stack execution and Task Queue prioritization",
+      "Microtask Queue (Promises) draining per loop tick",
+      "Macrotask Queue (setTimeout, I/O) execution",
+      "requestAnimationFrame execution timing relative to style/paint"
+    ]
+  },
+  {
+    "id": "fe-012",
+    "topic": "css_rendering",
+    "difficulty_rating": 1320,
+    "question": "Explain CSS Container Queries vs Media Queries and how component-driven responsive layouts are architected.",
+    "model_answer": "Media Queries adapt layouts based on global viewport width. Container Queries (`@container`) adapt layouts based on the parent container size, enabling modular components that self-adjust regardless of screen placement.",
+    "key_points": [
+      "Viewport-based Media Queries vs Container-based Queries",
+      "container-type and container-name declaration",
+      "Component-driven modular responsive design",
+      "Elimination of brittle utility class overrides"
+    ]
+  },
+  {
+    "id": "fe-013",
+    "topic": "accessibility",
+    "difficulty_rating": 1300,
+    "question": "How do color contrast ratios (4.5:1), screen reader semantics, and alt text rules contribute to WCAG 2.1 compliance?",
+    "model_answer": "WCAG 2.1 Level AA requires a 4.5:1 contrast ratio for normal text (3:1 for large text). Semantic HTML elements (`<main>`, `<nav>`, `<header>`) and descriptive image `alt` text provide screen reader navigation context.",
+    "key_points": [
+      "Color contrast ratio math (4.5:1 text, 3:1 UI components)",
+      "Semantic HTML5 landmarks over generic divs",
+      "Meaningful alt text vs decorative aria-hidden images",
+      "Testing with screen readers (VoiceOver, NVDA)"
+    ]
+  },
+  {
+    "id": "fe-014",
+    "topic": "browser_apis",
+    "difficulty_rating": 1340,
+    "question": "Explain the difference between localStorage, sessionStorage, IndexedDB, and HTTP-only cookies regarding security and storage limits.",
+    "model_answer": "localStorage (5MB) persists across sessions; sessionStorage (5MB) clears on tab close; both are accessible to JS (XSS risk). HTTP-only cookies are sent automatically with HTTP requests and blocked from JS access. IndexedDB (250MB+) provides structured client-side database storage.",
+    "key_points": [
+      "Storage capacity (5MB Web Storage vs 250MB+ IndexedDB)",
+      "Persistence lifecycles across browser tabs",
+      "XSS vulnerability of Web Storage vs HttpOnly cookies",
+      "IndexedDB async transactional API for large datasets"
+    ]
+  },
+  {
+    "id": "fe-015",
+    "topic": "ui_architecture",
+    "difficulty_rating": 1460,
+    "question": "How do Server Components (RSC) differ from Client Components in Next.js App Router regarding bundle size and execution context?",
+    "model_answer": "React Server Components execute strictly on the server, zeroing JS bundle overhead and allowing direct database access. Client Components (`'use client'`) ship JS to the browser for interactive state, event handlers, and browser APIs.",
+    "key_points": [
+      "Server-only execution context with 0kB client bundle size",
+      "Direct async data fetching and secret security in RSC",
+      "Client Components for interactivity and DOM event listeners",
+      "Composition boundaries (passing RSC as children to Client Components)"
+    ]
+  },
+  {
+    "id": "fe-016",
+    "topic": "performance",
+    "difficulty_rating": 1330,
+    "question": "How do debounce and throttle functions differ? Implement a custom debounce utility in TypeScript with cancel capability.",
+    "model_answer": "Debounce delays execution until N milliseconds after the last event trigger (ideal for search input). Throttle enforces execution at most once per N milliseconds (ideal for scroll listeners). A debounce utility uses `clearTimeout` to reset pending timers.",
+    "key_points": [
+      "Debounce (delay until quiet period) vs Throttle (rate-limiting calls)",
+      "Use cases (search autocomplete vs scroll/resize handlers)",
+      "Timer management via setTimeout and clearTimeout",
+      "TypeScript generics and cancel method binding"
+    ]
+  },
+  {
+    "id": "fe-017",
+    "topic": "state_management",
+    "difficulty_rating": 1390,
+    "question": "Explain optimistic UI updates with automatic rollback when backend mutation HTTP calls fail.",
+    "model_answer": "Optimistic UI immediately updates the client interface before receiving server confirmation. The previous state snapshot is retained; if the API call fails, the client rolls back to the snapshot and surfaces an error notification.",
+    "key_points": [
+      "Instant UI update preceding network response",
+      "State snapshot preservation for rollback capability",
+      "Error handling and user feedback on mutation failure",
+      "TanStack Query (React Query) onMutate / onError patterns"
+    ]
+  },
+  {
+    "id": "fe-018",
+    "topic": "browser_apis",
+    "difficulty_rating": 1380,
+    "question": "How do IntersectionObserver and ResizeObserver APIs optimize infinite scrolling lists and lazy image loading?",
+    "model_answer": "IntersectionObserver asynchronously observes element visibility relative to the viewport without binding to high-frequency scroll events, preventing layout thrashing. ResizeObserver monitors element dimension changes.",
+    "key_points": [
+      "Asynchronous viewport intersection detection",
+      "Elimination of scroll event listener performance overhead",
+      "Threshold array and rootMargin configuration",
+      "Unobserving elements post-intersection for cleanup"
+    ]
+  },
+  {
+    "id": "fe-019",
+    "topic": "security",
+    "difficulty_rating": 1440,
+    "question": "What is Content Security Policy (CSP)? How do nonces and hash directives prevent unauthorized inline script execution?",
+    "model_answer": "Content Security Policy (CSP) is an HTTP header restricting browser resources. Cryptographic nonces (`nonce-random123`) or SHA hashes allow only verified inline scripts to run, blocking injected malicious scripts.",
+    "key_points": [
+      "CSP script-src, style-src, and default-src directives",
+      "Cryptographic per-request nonces for inline scripts",
+      "SHA-256 hash directives for static script verification",
+      "report-to / report-uri for tracking policy violations"
+    ]
+  },
+  {
+    "id": "fe-020",
+    "topic": "ui_architecture",
+    "difficulty_rating": 1490,
+    "question": "How do you build a virtualized windowing list renderer handling 100,000 DOM rows smoothly without lag?",
+    "model_answer": "List virtualization calculates the visible viewport range based on scroll position and renders ONLY the rows currently in view (plus a small buffer), recycling a fixed number of DOM nodes regardless of list length.",
+    "key_points": [
+      "Calculating startIndex and endIndex from scrollTop and rowHeight",
+      "Absolute positioning of visible items with total height spacer",
+      "O(1) DOM node count rendering 100,000 items",
+      "Handling variable height items via dynamic measurement"
+    ]
+  }
+]

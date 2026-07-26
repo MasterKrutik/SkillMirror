@@ -1,0 +1,262 @@
+[
+  {
+    "id": "beh-001",
+    "topic": "leadership",
+    "difficulty_rating": 1300,
+    "question": "Describe a situation where you had to lead a critical initiative under tight deadlines with ambiguous or incomplete requirements.",
+    "model_answer": "A strong answer uses STAR format: 1) Situation: Tight project deadline with missing specs. 2) Task: Deliver project without delaying launch. 3) Action: Interviewed stakeholders, created rapid low-fi prototypes, established MVP scope. 4) Result: Delivered on time with 95% user satisfaction.",
+    "key_points": [
+      "Situation & Task context setting under ambiguity",
+      "Proactive action taken to clarify requirements and define MVP scope",
+      "Cross-functional stakeholder alignment actions",
+      "Quantified business result and lesson learned"
+    ]
+  },
+  {
+    "id": "beh-002",
+    "topic": "conflict_resolution",
+    "difficulty_rating": 1350,
+    "question": "Tell me about a time you experienced a major disagreement with a cross-functional peer. How did you handle it and what was the outcome?",
+    "model_answer": "A strong answer demonstrates emotional intelligence: 1) Listened actively to understand peer's underlying concerns. 2) Separated personal opinions from objective data/user feedback. 3) Ran a joint experiment or prototype to evaluate options. 4) Achieved alignment and strengthened partnership.",
+    "key_points": [
+      "Active listening and empathy for peer's perspective",
+      "Focusing on objective data/user value over ego",
+      "Collaborative problem-solving action (running a pilot or test)",
+      "Positive outcome and ongoing working relationship improvement"
+    ]
+  },
+  {
+    "id": "beh-003",
+    "topic": "failure",
+    "difficulty_rating": 1320,
+    "question": "Describe a project that failed or missed its primary target. What was your direct responsibility and what key lessons did you implement afterward?",
+    "model_answer": "A strong answer takes 100% personal accountability: 1) Clear description of failure without blaming others. 2) Immediate mitigation steps taken. 3) Deep root cause analysis. 4) Concrete process changes implemented to prevent recurrence.",
+    "key_points": [
+      "Full personal accountability without external finger-pointing",
+      "Honest assessment of what went wrong",
+      "Immediate mitigation and stakeholder communication",
+      "Specific process or structural improvements implemented afterward"
+    ]
+  },
+  {
+    "id": "beh-004",
+    "topic": "ownership",
+    "difficulty_rating": 1280,
+    "question": "Tell me about a time you identified a major process or code issue outside your immediate job scope and took full ownership to solve it.",
+    "model_answer": "A strong answer demonstrates bias for action: 1) Noticed a systemic flaw impacting customers or team velocity. 2) Researched root cause independently. 3) Proposed solution to leadership and executed fix. 4) Measured impact.",
+    "key_points": [
+      "Proactive problem identification beyond job description",
+      "Bias for action and independent research",
+      "Securing buy-in and implementing the solution",
+      "Quantifiable impact on team velocity or user experience"
+    ]
+  },
+  {
+    "id": "beh-005",
+    "topic": "prioritization",
+    "difficulty_rating": 1330,
+    "question": "Describe how you managed conflicting high-priority deliverables when two senior leaders demanded urgent execution simultaneously.",
+    "model_answer": "A strong answer demonstrates structured prioritization: 1) Evaluated business impact and deadlines objectively. 2) Facilitated an alignment conversation between both leaders showing trade-offs. 3) Negotiated revised timelines. 4) Executed successfully.",
+    "key_points": [
+      "Objective evaluation of business impact and deadlines",
+      "Transparent stakeholder alignment instead of silent overwork",
+      "Presenting trade-offs and options clearly",
+      "Delivering high-quality results on agreed priorities"
+    ]
+  },
+  {
+    "id": "beh-006",
+    "topic": "leadership",
+    "difficulty_rating": 1290,
+    "question": "Tell me about a time you mentored a junior teammate or peer who was struggling to meet expectations.",
+    "model_answer": "A strong answer shows supportive leadership: 1) Identified specific skill gaps through empathetic 1-on-1 observation. 2) Created a structured learning plan with regular check-ins. 3) Pair-programmed/coached. 4) Teammate achieved independence.",
+    "key_points": [
+      "Empathetic identification of specific growth areas",
+      "Structured coaching and mentorship plan",
+      "Investing time in pair sessions and constructive feedback",
+      "Measurable improvement in teammate's confidence and output"
+    ]
+  },
+  {
+    "id": "beh-007",
+    "topic": "conflict_resolution",
+    "difficulty_rating": 1370,
+    "question": "Describe a situation where you had to push back against a decision made by your manager. How did you structure your argument?",
+    "model_answer": "A strong answer demonstrates respectful conviction: 1) Gathered data and user evidence supporting alternative approach. 2) Scheduled private 1-on-1 to present risks and data. 3) Supported manager's final decision once made (Disagree and Commit).",
+    "key_points": [
+      "Data-driven argument formulation",
+      "Respectful private communication channel",
+      "Focusing on team success and risk mitigation",
+      "Adhering to 'Disagree and Commit' once decision is finalized"
+    ]
+  },
+  {
+    "id": "beh-008",
+    "topic": "failure",
+    "difficulty_rating": 1340,
+    "question": "Tell me about a time you made a costly technical or operational mistake. How did you communicate it to stakeholders?",
+    "model_answer": "A strong answer shows transparency: 1) Discovered mistake and immediately contained damage. 2) Communicated openly with affected stakeholders providing timeline. 3) Fixed root cause. 4) Created guardrails to eliminate single human point of failure.",
+    "key_points": [
+      "Immediate containment and transparent communication",
+      "No attempts to hide or downplay the error",
+      "Swift technical resolution",
+      "Systemic guardrails added to prevent repeat errors"
+    ]
+  },
+  {
+    "id": "beh-009",
+    "topic": "ownership",
+    "difficulty_rating": 1270,
+    "question": "Give an example of a project where you had to adapt quickly due to a sudden shift in business priorities.",
+    "model_answer": "A strong answer demonstrates adaptability: 1) Business pivot announced mid-project. 2) Assessed reusable components from current work. 3) Re-planned sprint goals quickly. 4) Successfully launched under new direction.",
+    "key_points": [
+      "Positive attitude towards business agility",
+      "Salvaging reusable work and minimizing wasted effort",
+      "Rapid re-planning and team alignment",
+      "Successful delivery under new constraints"
+    ]
+  },
+  {
+    "id": "beh-010",
+    "topic": "prioritization",
+    "difficulty_rating": 1260,
+    "question": "How do you maintain high quality and attention to detail when working under severe time pressure?",
+    "model_answer": "A strong answer balances speed and quality: 1) Establishes non-negotiable quality checklists (tests, code review, security). 2) Cuts scope instead of cutting quality. 3) Uses automation tools. 4) Ships robust MVP on time.",
+    "key_points": [
+      "Non-negotiable quality standards (testing, security)",
+      "Reducing scope rather than cutting quality corners",
+      "Leveraging automation and templates for speed",
+      "Calm execution under pressure"
+    ]
+  },
+  {
+    "id": "beh-011",
+    "topic": "leadership",
+    "difficulty_rating": 1360,
+    "question": "Tell me about a time you rallied a team around an unpopular operational mandate or technical pivot.",
+    "model_answer": "A strong answer shows inspirational leadership: 1) Explained the strategic 'Why' behind the mandate transparently. 2) Listened to team concerns and addressed frictions. 3) Created milestone rewards. 4) Team achieved smooth adoption.",
+    "key_points": [
+      "Communicating the strategic context and 'Why'",
+      "Acknowledging team frustration and addressing concerns",
+      "Leading by example and establishing clear milestones",
+      "Achieving team buy-in and successful execution"
+    ]
+  },
+  {
+    "id": "beh-012",
+    "topic": "conflict_resolution",
+    "difficulty_rating": 1380,
+    "question": "Describe a situation where a key stakeholder was dissatisfied with your team’s delivery. How did you rebuild trust?",
+    "model_answer": "A strong answer demonstrates relationship recovery: 1) Listened without defensiveness to stakeholder feedback. 2) Accepted responsibility for gaps. 3) Created an action plan with frequent progress updates. 4) Exceeded expectations on next release.",
+    "key_points": [
+      "Empathetic, non-defensive reception of feedback",
+      "Transparent action plan with clear milestone commitments",
+      "Increasing communication frequency to rebuild visibility",
+      "Consistent high-quality delivery restoring trust"
+    ]
+  },
+  {
+    "id": "beh-013",
+    "topic": "failure",
+    "difficulty_rating": 1250,
+    "question": "Tell me about a time when you received critical feedback during a review. How did you incorporate it into your work?",
+    "model_answer": "A strong answer demonstrates growth mindset: 1) Processed feedback constructively. 2) Asked clarifying questions to understand specific examples. 3) Implemented daily practice habits. 4) Verified improvement in subsequent review.",
+    "key_points": [
+      "Receptive growth mindset towards constructive criticism",
+      "Seeking actionable examples and clarity",
+      "Developing concrete habits/routines to address feedback",
+      "Demonstrable performance improvement over time"
+    ]
+  },
+  {
+    "id": "beh-014",
+    "topic": "ownership",
+    "difficulty_rating": 1310,
+    "question": "Describe a situation where you had to execute a complex task without any prior experience or documentation.",
+    "model_answer": "A strong answer demonstrates resourcefulness: 1) Broke problem down into fundamental components. 2) Researched external documentation and benchmarked best practices. 3) Built small prototypes to test assumptions. 4) Created documentation for future team use.",
+    "key_points": [
+      "Resourceful problem-solving and self-directed research",
+      "Incremental prototyping and assumption testing",
+      "Delivering the solution successfully",
+      "Creating documentation to help future engineers"
+    ]
+  },
+  {
+    "id": "beh-015",
+    "topic": "prioritization",
+    "difficulty_rating": 1320,
+    "question": "Tell me about a time you decided to cut scope on a feature to meet a strict deadline. What trade-offs did you evaluate?",
+    "model_answer": "A strong answer demonstrates pragmatic trade-off analysis: 1) Identified deadline constraint. 2) Evaluated feature requirements against core user value vs nice-to-haves. 3) Proposed reduced MVP scope to stakeholders. 4) Delivered core value on time.",
+    "key_points": [
+      "Evaluating core vs secondary feature value",
+      "Pragmatic scope trimming to protect quality and deadline",
+      "Proactive stakeholder alignment on revised scope",
+      "On-time delivery of functional MVP"
+    ]
+  },
+  {
+    "id": "beh-016",
+    "topic": "leadership",
+    "difficulty_rating": 1390,
+    "question": "Give an example of how you built consensus across cross-functional partners who had competing incentives.",
+    "model_answer": "A strong answer shows diplomacy: 1) Mapped out each department's incentives. 2) Framed the project proposal around a shared overarching metric (e.g. Customer LTV). 3) Included concessions addressing specific team concerns. 4) Reached unanimous sign-off.",
+    "key_points": [
+      "Understanding competing departmental incentives",
+      "Reframing goals around shared company North Star metrics",
+      "Designing win-win compromises",
+      "Securing cross-functional alignment and commitment"
+    ]
+  },
+  {
+    "id": "beh-017",
+    "topic": "conflict_resolution",
+    "difficulty_rating": 1300,
+    "question": "Tell me about a time you had to work with a notoriously difficult team member. How did you foster a productive working relationship?",
+    "model_answer": "A strong answer shows professional maturity: 1) Focused on understanding their work style and preferences. 2) Kept interactions professional and task-focused. 3) Established clear written agreements on responsibilities. 4) Successfully completed project.",
+    "key_points": [
+      "Professional detachment and emotional maturity",
+      "Adapting communication to match teammate's preferred style",
+      "Clear explicit role boundaries and written agreements",
+      "Delivering project goals collaboratively"
+    ]
+  },
+  {
+    "id": "beh-018",
+    "topic": "failure",
+    "difficulty_rating": 1350,
+    "question": "Describe a situation where you realized halfway through a project that your initial technical approach was flawed.",
+    "model_answer": "A strong answer shows intellectual honesty: 1) Discovered flaw during prototyping. 2) Evaluated cost of continuing vs pivoting. 3) Transparently informed team and presented corrected architecture. 4) Delivered revised solution efficiently.",
+    "key_points": [
+      "Intellectual honesty and early flaw detection",
+      "Objective evaluation of pivot vs sunk cost fallacy",
+      "Transparent communication with team and leadership",
+      "Successful implementation of revised architecture"
+    ]
+  },
+  {
+    "id": "beh-019",
+    "topic": "ownership",
+    "difficulty_rating": 1370,
+    "question": "Tell me about a time you advocated for an ethical or quality standard despite pressure to launch quickly.",
+    "model_answer": "A strong answer demonstrates integrity: 1) Identified security/privacy/quality risk. 2) Formulated clear risk assessment showing potential damage to brand/users. 3) Persuaded leadership to fix issue before release. 4) Hardened system safety.",
+    "key_points": [
+      "Uncompromising professional integrity",
+      "Risk assessment articulated in business/brand impact terms",
+      "Persuading leadership to prioritize safety/privacy",
+      "Establishing long-term guardrails"
+    ]
+  },
+  {
+    "id": "beh-020",
+    "topic": "prioritization",
+    "difficulty_rating": 1240,
+    "question": "How do you measure personal productivity and ensure continuous skill development alongside daily job duties?",
+    "model_answer": "A strong answer shows self-drive: 1) Blocks dedicated weekly time for deep work and learning. 2) Tracks personal goals using OKRs/Kanban. 3) Applies new skills directly to work projects. 4) Shares knowledge with team.",
+    "key_points": [
+      "Structured time management (Deep Work blocking)",
+      "Continuous self-directed learning habits",
+      "Applying new technical skills to improve work output",
+      "Sharing knowledge via team tech talks or documentation"
+    ]
+  }
+]

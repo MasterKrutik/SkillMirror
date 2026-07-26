@@ -1,0 +1,262 @@
+[
+  {
+    "id": "ux-001",
+    "topic": "design_systems",
+    "difficulty_rating": 1380,
+    "question": "How do you build and govern a multi-platform design system to ensure accessibility (WCAG) and component reuse?",
+    "model_answer": "Building a design system requires establishing foundational tokens (Color, Typography, Spacing), reusable UI components, clear usage documentation, automated accessibility checks, and a cross-functional governance model for updates.",
+    "key_points": [
+      "Design Token architecture (Color, Spacing, Typography)",
+      "Component library organization and variant states",
+      "WCAG accessibility compliance integration",
+      "Governance process for component contributions and updates"
+    ]
+  },
+  {
+    "id": "ux-002",
+    "topic": "usability",
+    "difficulty_rating": 1350,
+    "question": "How do you structure a remote qualitative usability test to evaluate a high-friction checkout flow redesign?",
+    "model_answer": "Usability testing involves recruiting 5-8 representative users, creating realistic scenario tasks, asking users to think aloud while navigating prototypes, measuring task completion rate, and identifying cognitive friction points.",
+    "key_points": [
+      "Target user recruitment and realistic task scenario creation",
+      "Think-aloud protocol execution during testing",
+      "Qualitative friction observation and quantitative task completion rates",
+      "Synthesizing usability findings into prioritized UX iterations"
+    ]
+  },
+  {
+    "id": "ux-003",
+    "topic": "accessibility",
+    "difficulty_rating": 1320,
+    "question": "What key design heuristics and contrast ratios do you evaluate to ensure a visual UI design meets WCAG 2.1 AA compliance?",
+    "model_answer": "WCAG 2.1 AA compliance requires 4.5:1 color contrast for normal body text (3:1 for large text / UI controls), distinct focus state indicators, non-color dependent status cues, and adaptable text scaling up to 200%.",
+    "key_points": [
+      "4.5:1 text contrast ratio calculation (3:1 for large text and icons)",
+      "Focus state indicator visibility for keyboard navigation",
+      "Avoiding color as the sole indicator of status or error",
+      "Reflow and text resizing compliance up to 200%"
+    ]
+  },
+  {
+    "id": "ux-004",
+    "topic": "user_flows",
+    "difficulty_rating": 1340,
+    "question": "How do you map user wireframes and interactive prototypes for a complex multi-role dashboard workspace?",
+    "model_answer": "Mapping multi-role dashboards begins with user journey mapping per role, defining information architecture, creating low-fidelity wireframes to iterate on layout structures, and building high-fidelity interactive prototypes for validation.",
+    "key_points": [
+      "Role-based user journey mapping",
+      "Information architecture and navigation hierarchy",
+      "Low-fidelity wireframing for rapid layout iteration",
+      "High-fidelity prototyping for interactive task testing"
+    ]
+  },
+  {
+    "id": "ux-005",
+    "topic": "design_systems",
+    "difficulty_rating": 1390,
+    "question": "Explain Design Tokens (Color, Typography, Spacing, Motion) and how they synchronize Figma designs with frontend codebases.",
+    "model_answer": "Design Tokens are agnostic key-value pairs representing design decisions (e.g. `color.brand.primary: #4A5B8C`). Tools like Style Dictionary transform token JSON files into CSS variables, iOS Swift, and Android XML tokens automatically.",
+    "key_points": [
+      "Design Token key-value taxonomy (Global, Alias, Component tokens)",
+      "Figma Variables integration",
+      "Style Dictionary build pipelines emitting CSS/Tailwind/Swift/XML",
+      "Single source of truth between design and engineering"
+    ]
+  },
+  {
+    "id": "ux-006",
+    "topic": "usability",
+    "difficulty_rating": 1360,
+    "question": "How do you apply Jakob Nielsen’s 10 Usability Heuristics when auditing a legacy enterprise SaaS application?",
+    "model_answer": "A heuristic evaluation audits screens against Nielsen's 10 principles (e.g. Visibility of System Status, Match between System and Real World, Error Prevention, Consistency), severity-scoring violations from 1 (minor) to 4 (catastrophic).",
+    "key_points": [
+      "Nielsen's 10 Usability Heuristics application",
+      "Severity rating scale (1-4) for usability defects",
+      "Focusing on Error Prevention and Recognition over Recall",
+      "Actionable UX redesign recommendations"
+    ]
+  },
+  {
+    "id": "ux-007",
+    "topic": "accessibility",
+    "difficulty_rating": 1310,
+    "question": "How do you design accessible error states, inline form validations, and assistive technology notifications?",
+    "model_answer": "Accessible form validation provides inline error messages positioned next to inputs, uses `aria-invalid=\"true\"` and `aria-describedby=\"error-id\"`, avoids clearing user inputs on error, and uses `aria-live` regions for dynamic alerts.",
+    "key_points": [
+      "Inline error messages linked via aria-describedby",
+      "Setting aria-invalid=true on failing inputs",
+      "Multi-sensory cues (icons + text + color) for error states",
+      "Keyboard focus management to the first error input on submit"
+    ]
+  },
+  {
+    "id": "ux-008",
+    "topic": "user_flows",
+    "difficulty_rating": 1370,
+    "question": "Explain Information Architecture (Card Sorting, Tree Testing) for structuring deep navigation taxonomies.",
+    "model_answer": "Information Architecture structures content intuitively. Card Sorting (open vs closed) asks users to group topics to uncover mental models. Tree Testing evaluates navigation tree findability without visual design distractions.",
+    "key_points": [
+      "Open vs Closed Card Sorting for mental model discovery",
+      "Tree Testing for quantitative navigation hierarchy validation",
+      "Sitemap and navigation depth optimization (3-click rule guidelines)",
+      "Labeling clarity and taxonomy consistency"
+    ]
+  },
+  {
+    "id": "ux-009",
+    "topic": "design_systems",
+    "difficulty_rating": 1400,
+    "question": "How do you manage component deprecation and breaking visual changes across active product design libraries?",
+    "model_answer": "Deprecation requires: 1) Marking components with `[Deprecated]` flags in Figma and code. 2) Providing migration guides to replacement components. 3) Maintaining deprecation grace periods before hard removal.",
+    "key_points": [
+      "Semantic versioning for design system releases",
+      "Visual and code deprecation status flags",
+      "Migration documentation and alternative component guidance",
+      "Deprecation sunset timelines"
+    ]
+  },
+  {
+    "id": "ux-010",
+    "topic": "usability",
+    "difficulty_rating": 1330,
+    "question": "How do you conduct A/B visual design preference testing without compromising brand design integrity?",
+    "model_answer": "Visual A/B testing tests specific layout hypotheses (e.g. hero CTA placement, card layouts) against key conversion metrics while maintaining consistent brand tokens, typography, and accessibility standards.",
+    "key_points": [
+      "Formulating clear visual design hypotheses",
+      "Isolating single design variables per variation",
+      "Measuring behavioral conversion over subjective opinions",
+      "Enforcing brand design token boundaries"
+    ]
+  },
+  {
+    "id": "ux-011",
+    "topic": "accessibility",
+    "difficulty_rating": 1350,
+    "question": "Explain screen reader focus order management and ARIA landmark region placement in single-page apps.",
+    "model_answer": "Single-page apps must manage focus dynamically during page transitions, moving focus to the `<h1>` of newly loaded views. ARIA landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`) allow screen reader users to skip navigation.",
+    "key_points": [
+      "Focus management on SPA route transitions",
+      "Semantic HTML5 landmarks (<main>, <nav>, <aside>)",
+      "Skip-to-content links for keyboard users",
+      "Avoiding improper use of tabindex > 0"
+    ]
+  },
+  {
+    "id": "ux-012",
+    "topic": "user_flows",
+    "difficulty_rating": 1300,
+    "question": "How do you design frictionless mobile onboarding experiences that minimize initial user drop-off?",
+    "model_answer": "Frictionless mobile onboarding defers registration until value is demonstrated (progressive disclosure), offers social auth, provides clear progress indicators, and limits permission requests (notifications, location) to contextual moments.",
+    "key_points": [
+      "Progressive disclosure and lazy registration",
+      "Social OAuth sign-in options",
+      "Clear multi-step progress indicators",
+      "Contextual permission requests when needed"
+    ]
+  },
+  {
+    "id": "ux-013",
+    "topic": "design_systems",
+    "difficulty_rating": 1280,
+    "question": "How do responsive layout grids (12-column fluid grids) adapt across mobile, tablet, desktop, and ultra-wide displays?",
+    "model_answer": "Fluid layout grids use percentage columns and fixed gutters/margins. Layouts adapt at defined breakpoints (e.g. 4-column on mobile 360px, 8-column on tablet 768px, 12-column on desktop 1200px+).",
+    "key_points": [
+      "12-column fluid grid fundamentals",
+      "Breakpoint definitions (mobile, tablet, desktop, ultra-wide)",
+      "Fixed vs fluid gutters and outer margins",
+      "Flexbox and CSS Grid implementation patterns"
+    ]
+  },
+  {
+    "id": "ux-014",
+    "topic": "usability",
+    "difficulty_rating": 1380,
+    "question": "How do you conduct cognitive walkthroughs to evaluate user mental models against actual interface logic?",
+    "model_answer": "A cognitive walkthrough evaluates an interface step-by-step from a novice user's perspective, answering 4 questions per step: Will the user try to achieve the right effect? Will they notice the control? Will they understand the control? Will they get feedback?",
+    "key_points": [
+      "Step-by-step task sequence breakdown",
+      "Evaluating user intent vs interface feedback",
+      "Identifying mental model mismatches",
+      "Focusing on learnability for first-time users"
+    ]
+  },
+  {
+    "id": "ux-015",
+    "topic": "accessibility",
+    "difficulty_rating": 1290,
+    "question": "Explain motor disability accessibility design: tap target sizing (minimum 44x44px) and keyboard focus indicator styling.",
+    "model_answer": "Designing for motor disabilities requires touch targets at least 44x44px (iOS) / 48x48dp (Android) with adequate spacing, support for switch devices, and highly visible, un-styled outline focus rings.",
+    "key_points": [
+      "Minimum touch target dimensions (44x44px / 48x48dp)",
+      "Spacing between interactive elements to prevent accidental taps",
+      "Prominent, high-contrast custom focus indicators",
+      "Support for alternative input hardware (switch access)"
+    ]
+  },
+  {
+    "id": "ux-016",
+    "topic": "user_flows",
+    "difficulty_rating": 1320,
+    "question": "How do you design micro-interactions and subtle UI animation feedback to guide user task completion?",
+    "model_answer": "Micro-interactions provide feedback for single actions (e.g. button loading spinner, success checkmark animation, pull-to-refresh). Good micro-interactions are fast (< 300ms), functional, and adhere to `prefers-reduced-motion` settings.",
+    "key_points": [
+      "4 micro-interaction stages (Trigger, Rule, Feedback, Loops/Modes)",
+      "Functional animation timing (< 300ms duration)",
+      "Providing immediate visual acknowledgement of user input",
+      "Respecting prefers-reduced-motion CSS media queries"
+    ]
+  },
+  {
+    "id": "ux-017",
+    "topic": "design_systems",
+    "difficulty_rating": 1410,
+    "question": "How do you advocate for UX research funding and design debt paydown to skeptical executive leads?",
+    "model_answer": "Advocating for UX requires connecting design quality to business ROI: showing how usability research reduces engineering re-work costs, improves conversion rates, and reduces customer support ticket volume.",
+    "key_points": [
+      "Linking UX improvements to business metrics (conversion, support costs)",
+      "Calculating cost of engineering re-work caused by unvalidated designs",
+      "Sharing clip reels of actual user struggle moments with executives",
+      "Establishing a UX Debt backlog prioritized alongside technical debt"
+    ]
+  },
+  {
+    "id": "ux-018",
+    "topic": "usability",
+    "difficulty_rating": 1370,
+    "question": "Explain System Usability Scale (SUS) benchmarking and how quantitative usability scores track redesign impact.",
+    "model_answer": "The System Usability Scale (SUS) is a 10-item survey yielding a score from 0 to 100. A score above 68 is average; above 80 is excellent. Comparing pre/post-redesign SUS scores quantifies overall usability improvement.",
+    "key_points": [
+      "SUS 10-item Likert scale methodology",
+      "SUS scoring normalization math (0-100 scale)",
+      "Benchmark interpretation (68 average score cutoff)",
+      "Combining SUS with task completion time and error rates"
+    ]
+  },
+  {
+    "id": "ux-019",
+    "topic": "accessibility",
+    "difficulty_rating": 1340,
+    "question": "How do dark mode color themes handle elevation, surface opacity, and contrast compliance differently from light themes?",
+    "model_answer": "Dark mode themes avoid pure black (`#000000`) to reduce eye strain, using dark gray surfaces (`#121212`). Elevation is communicated via lighter surface opacity overlays rather than drop shadows.",
+    "key_points": [
+      "Dark gray base surfaces over pure black to prevent halation",
+      "Communicating elevation through surface lightness/opacity overlays instead of shadows",
+      "Ensuring color contrast compliance for text on dark surfaces",
+      "Desaturating primary brand accent colors for dark mode"
+    ]
+  },
+  {
+    "id": "ux-020",
+    "topic": "user_flows",
+    "difficulty_rating": 1310,
+    "question": "How do you design graceful zero-data empty states and loading skeletons that maintain user engagement?",
+    "model_answer": "Empty states should explain why no data exists and provide a clear call-to-action (e.g. 'No projects yet — Create your first project'). Skeleton screens mimic upcoming content layouts, reducing perceived load time.",
+    "key_points": [
+      "Informative empty states with actionable primary CTAs",
+      "Skeleton loading screens matching incoming layout dimensions",
+      "Perceived performance benefits of skeletons over spinner wheels",
+      "Illustrations and encouraging tone of voice"
+    ]
+  }
+]

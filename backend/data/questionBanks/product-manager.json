@@ -1,0 +1,262 @@
+[
+  {
+    "id": "pm-001",
+    "topic": "strategy",
+    "difficulty_rating": 1400,
+    "question": "How would you prioritize product features when engineering capacity is suddenly constrained by 50%?",
+    "model_answer": "Prioritization under capacity constraints requires evaluating feature ROI using RICE or MoSCoW. I would preserve high-impact core North Star features, defer non-essential expansions, communicate transparently with stakeholders, and re-scope deliverables.",
+    "key_points": [
+      "RICE / MoSCoW prioritization framework application",
+      "Protecting core North Star retention features",
+      "Cutting scope on secondary enhancements",
+      "Transparent stakeholder communication and expectation management"
+    ]
+  },
+  {
+    "id": "pm-002",
+    "topic": "metrics",
+    "difficulty_rating": 1450,
+    "question": "Walk me through a metric drop investigation for daily active users (DAU) on a core product onboarding funnel.",
+    "model_answer": "A systematic metric investigation checks: 1) Data integrity (tracking bugs, broken events). 2) External factors (seasonality, holiday, competitor launch). 3) Segmentation (by platform, OS, country, user cohort). 4) Recent code deployments / release regressions.",
+    "key_points": [
+      "Data tracking pipeline integrity check",
+      "Segmentation analysis (device, platform, region, cohort)",
+      "Correlating drop with recent product releases or technical outages",
+      "External macro/seasonality factor investigation"
+    ]
+  },
+  {
+    "id": "pm-003",
+    "topic": "roadmap",
+    "difficulty_rating": 1380,
+    "question": "How do you balance short-term technical debt paydown against high-visibility user-facing product features?",
+    "model_answer": "Balancing technical debt requires allocating a dedicated engineering capacity budget (e.g. 20% per sprint) and quantifying technical debt in business terms (e.g. reduction in bug rate, faster release velocity, improved system uptime).",
+    "key_points": [
+      "Allocating dedicated percentage capacity per sprint for tech debt",
+      "Translating tech debt into business impact metrics (latency, crash rate, velocity)",
+      "Co-owning debt prioritization with engineering leads",
+      "Preventing tech debt accumulation through definition of done"
+    ]
+  },
+  {
+    "id": "pm-004",
+    "topic": "execution",
+    "difficulty_rating": 1320,
+    "question": "How do you write a Product Requirement Document (PRD) with clear success metrics and explicit out-of-scope boundaries?",
+    "model_answer": "A PRD outlines: Problem Statement, User Stories, Key Assumptions, Functional Requirements, Success Metrics (North Star & Guardrail metrics), UX Wireframes, and explicit Out-of-Scope boundaries to prevent scope creep.",
+    "key_points": [
+      "Clear problem statement and target user personas",
+      "Measurable success metrics and guardrail metrics",
+      "Functional requirements and acceptance criteria",
+      "Explicit out-of-scope boundaries to control scope creep"
+    ]
+  },
+  {
+    "id": "pm-005",
+    "topic": "user_research",
+    "difficulty_rating": 1350,
+    "question": "How do you synthesize conflicting feedback from 20 user interviews into actionable product roadmap initiatives?",
+    "model_answer": "Synthesizing research involves affinity mapping feedback into recurring pain-point clusters, quantifying frequency across user segments, validating qualitative patterns against quantitative product analytics, and prioritizing top user friction points.",
+    "key_points": [
+      "Affinity mapping feedback into core thematic clusters",
+      "Quantifying pain-point frequency across user cohorts",
+      "Triangulating qualitative quotes with quantitative usage data",
+      "Focusing on underlying user needs rather than requested solutions"
+    ]
+  },
+  {
+    "id": "pm-006",
+    "topic": "strategy",
+    "difficulty_rating": 1420,
+    "question": "How would you evaluate launching a freemium self-serve tier for an enterprise B2B SaaS product?",
+    "model_answer": "Evaluating a freemium tier involves analyzing product virality potential, self-serve onboarding friction, feature gating boundaries (reserving team management/SSO for paid tiers), and calculating conversion rate from free to paid contracts.",
+    "key_points": [
+      "Self-serve onboarding friction and time-to-value",
+      "Feature gating boundaries (Free tier value vs Enterprise upgrade triggers)",
+      "Freemium-to-paid conversion rate benchmarks (2-5%)",
+      "Cannibalization risks vs top-of-funnel lead expansion"
+    ]
+  },
+  {
+    "id": "pm-007",
+    "topic": "metrics",
+    "difficulty_rating": 1440,
+    "question": "Define the North Star Metric for an AI learning platform. What counter-metrics prevent gaming the North Star?",
+    "model_answer": "The North Star metric for an AI learning platform could be 'Weekly Active Learning Hours per User'. Counter-metrics (Guardrail metrics) like 'Course Completion Rate' and '7-Day Retention' prevent gaming the metric with superficial clicks.",
+    "key_points": [
+      "Selecting a North Star metric reflecting long-term customer value",
+      "Guardrail / counter-metrics to prevent unintended negative behaviors",
+      "Leading vs lagging indicator distinction",
+      "Aligning team roadmap initiatives to drive the North Star"
+    ]
+  },
+  {
+    "id": "pm-008",
+    "topic": "roadmap",
+    "difficulty_rating": 1360,
+    "question": "Explain the RICE (Reach, Impact, Confidence, Effort) prioritization framework with a concrete feature trade-off example.",
+    "model_answer": "RICE calculates score = `(Reach * Impact * Confidence) / Effort`. Reach is users affected per period. Impact is 0.5-3 scale. Confidence is percentage certainty. Effort is person-months. It ranks feature backlog objectively.",
+    "key_points": [
+      "Reach (users impacted per timeframe)",
+      "Impact (qualitative scale 0.25 to 3)",
+      "Confidence percentage weighting to account for research uncertainty",
+      "Effort estimation in engineering person-months"
+    ]
+  },
+  {
+    "id": "pm-009",
+    "topic": "execution",
+    "difficulty_rating": 1390,
+    "question": "How do you handle a critical bug discovered 2 hours before a major scheduled product announcement launch?",
+    "model_answer": "When a launch-blocking bug occurs: 1) Assess severity and user blast radius with engineering. 2) If critical (data loss, security leak), halt or rollback the release. 3) Align marketing on a delayed launch statement. 4) Run post-mortem.",
+    "key_points": [
+      "Evaluating severity and blast radius with engineering",
+      "Decisive call to delay launch over shipping broken software",
+      "Cross-functional communication (PR, Marketing, Sales, Support)",
+      "Root cause post-mortem and launch playbook update"
+    ]
+  },
+  {
+    "id": "pm-010",
+    "topic": "user_research",
+    "difficulty_rating": 1370,
+    "question": "How do you conduct Jobs-to-be-Done (JTBD) interviews to discover underlying user motivations over feature requests?",
+    "model_answer": "JTBD interviews focus on the user's struggle and context ('the job they hired the product to do'). Instead of asking what features they want, ask about the emotional/functional situation that triggered their purchase decision.",
+    "key_points": [
+      "Focusing on the functional and emotional job-to-be-done",
+      "Exploring the triggering event and decision timeline",
+      "Distinguishing stated feature wishes from actual user struggles",
+      "Defining push/pull forces driving product switching"
+    ]
+  },
+  {
+    "id": "pm-011",
+    "topic": "strategy",
+    "difficulty_rating": 1410,
+    "question": "How would you defend your product roadmap when senior executive stakeholders push for unvetted pet features?",
+    "model_answer": "Defending a roadmap requires using data and user evidence. Acknowledge executive intent, present current roadmap metrics aligned with company OKRs, estimate the trade-off cost (what gets dropped), and offer to run a quick discovery test.",
+    "key_points": [
+      "Aligning roadmap priorities with company OKRs",
+      "Presenting explicit trade-off opportunity costs",
+      "Using data and user research evidence over opinion",
+      "Proposing rapid low-cost validation experiments"
+    ]
+  },
+  {
+    "id": "pm-012",
+    "topic": "metrics",
+    "difficulty_rating": 1460,
+    "question": "A feature redesign increased engagement by 20% but decreased retention by 5%. How do you evaluate this trade-off?",
+    "model_answer": "This signals potential dark patterns or initial user friction. Short-term engagement boosts mean little if long-term retention drops. I would segment by user cohorts, investigate if the metric change affects power vs new users, and iterate on the design.",
+    "key_points": [
+      "Prioritizing long-term retention over short-term engagement spikes",
+      "Investigating user cohort behavior (new vs existing power users)",
+      "Detecting dark patterns or high UI friction",
+      "Iterating design to recover retention while preserving engagement"
+    ]
+  },
+  {
+    "id": "pm-013",
+    "topic": "roadmap",
+    "difficulty_rating": 1380,
+    "question": "How do you manage product internationalization (i18n) and localization expansion into regional global markets?",
+    "model_answer": "Internationalization involves preparing product architecture for multi-language, currency, and date formats. Localization involves tailoring content, payment gateways, and cultural nuances to regional user preferences.",
+    "key_points": [
+      "Technical i18n readiness (string extraction, RTL layout, currency)",
+      "Regional localization (local payment gateways, compliance laws)",
+      "Market sizing and regional user research",
+      "Phased rollout strategy per geographical region"
+    ]
+  },
+  {
+    "id": "pm-014",
+    "topic": "execution",
+    "difficulty_rating": 1310,
+    "question": "Explain how you run effective agile sprint planning and backlog grooming sessions with engineering leads.",
+    "model_answer": "Effective sprint planning relies on well-groomed user stories with clear acceptance criteria. In grooming, PM clarifies business intent while engineering estimates effort (story points), identifies technical dependencies, and commits to sprint goals.",
+    "key_points": [
+      "Pre-grooming PRDs and user story readiness",
+      "Collaborative effort estimation (Story Points / T-shirt sizes)",
+      "Clarifying technical dependencies and acceptance criteria",
+      "Defining clear sprint goals and team commitment"
+    ]
+  },
+  {
+    "id": "pm-015",
+    "topic": "user_research",
+    "difficulty_rating": 1340,
+    "question": "How do you use product analytics tools (Mixpanel / Amplitude) to segment power users from churning cohorts?",
+    "model_answer": "Product analytics isolate behavioral event sequences. By comparing feature usage frequency between retained power users and churning users, PMs identify 'magic moments' (e.g. completing 3 actions in 7 days) that drive long-term habit formation.",
+    "key_points": [
+      "Event tracking setup and funnel behavioral analysis",
+      "Identifying the 'Magic Moment' correlated with retention",
+      "Cohort segmentation based on activity frequency",
+      "Optimizing onboarding flows to guide users to habit milestones"
+    ]
+  },
+  {
+    "id": "pm-016",
+    "topic": "strategy",
+    "difficulty_rating": 1470,
+    "question": "How would you build a product defense strategy against a dominant competitor copying your core feature set?",
+    "model_answer": "Defending against fast-follower competitors requires doubling down on proprietary moats: network effects, workflow integration depth, proprietary user data models, superior brand trust, and faster execution velocity.",
+    "key_points": [
+      "Identifying defensible competitive moats (network effects, switching costs)",
+      "Deepening integration into user workflows",
+      "Leveraging proprietary data assets for personalization",
+      "Focusing on execution speed and customer delight"
+    ]
+  },
+  {
+    "id": "pm-017",
+    "topic": "metrics",
+    "difficulty_rating": 1450,
+    "question": "Walk me through how you establish pricing and packaging tiers (Seat-based vs Usage-based) for an API product.",
+    "model_answer": "API pricing aligns with customer value metric (e.g. API requests, data volume). Seat-based pricing works for internal tools; usage-based works for developer APIs. Tiers should feature clear value metric limits and enterprise upgrade triggers.",
+    "key_points": [
+      "Value metric identification (API calls, storage, seats)",
+      "Usage-based vs Seat-based model trade-offs",
+      "Tier packaging (Developer, Team, Enterprise with SLA/SSO)",
+      "Willingness-to-pay research and competitor benchmarking"
+    ]
+  },
+  {
+    "id": "pm-018",
+    "topic": "roadmap",
+    "difficulty_rating": 1430,
+    "question": "How do you sunset a legacy product feature used by 5% of active enterprise customers without brand backlash?",
+    "model_answer": "Sunsetting requires: 1) Analyzing usage data and revenue impact. 2) Providing 3-6 months advance notice. 3) Building export tools or migration paths to replacement features. 4) Providing direct support to high-value enterprise accounts.",
+    "key_points": [
+      "Usage data evaluation and customer revenue impact assessment",
+      "Transparent timeline communication (Deprecation notices)",
+      "Providing migration tools or alternative workflows",
+      "Dedicated account management support for enterprise clients"
+    ]
+  },
+  {
+    "id": "pm-019",
+    "topic": "execution",
+    "difficulty_rating": 1330,
+    "question": "How do you align cross-functional dependencies across Engineering, Design, Legal, Marketing, and Sales teams?",
+    "model_answer": "Cross-functional alignment uses weekly milestone syncs, clear RACI ownership frameworks, shared product launch checklists, and transparent demo sessions ensuring all teams prepare in lockstep for launch.",
+    "key_points": [
+      "RACI matrix definition for launch deliverables",
+      "Cross-functional launch readiness checklists",
+      "Early involvement of Legal, Compliance, and Support teams",
+      "Establishing clear escalation paths for launch blockers"
+    ]
+  },
+  {
+    "id": "pm-020",
+    "topic": "user_research",
+    "difficulty_rating": 1360,
+    "question": "How do you validate a new product concept using low-fidelity prototypes before committing engineering cycles?",
+    "model_answer": "Concept validation uses painted door tests (fake landing page buttons measuring click intent), interactive Figma prototypes, and concierge MVP tests to measure real user commitment before writing production code.",
+    "key_points": [
+      "Painted door / fake door intent testing",
+      "Interactive Figma prototype usability sessions",
+      "Wizard of Oz / Concierge manual workflow validation",
+      "Measuring behavioral commitment over verbal opinion"
+    ]
+  }
+]

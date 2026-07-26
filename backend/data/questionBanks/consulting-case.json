@@ -1,0 +1,262 @@
+[
+  {
+    "id": "case-001",
+    "topic": "frameworks",
+    "difficulty_rating": 1450,
+    "question": "A major retail client is experiencing a 15% decline in profitability despite rising top-line revenue. How would you structure your investigation using a MECE framework?",
+    "model_answer": "A MECE profitability framework breaks Profit = Revenue - Costs. Since revenue is rising, profitability drop must stem from disproportionate cost escalation. I would split costs into Fixed Costs (rent, overhead) and Variable Costs (COGS, distribution, marketing), probing margin contraction per product line.",
+    "key_points": [
+      "Profitability equation breakdown (Profit = Revenue - Costs)",
+      "MECE categorization of Fixed vs Variable costs",
+      "Analyzing revenue mix shift toward lower-margin products",
+      "Evaluating unit economics and cost driver escalation"
+    ]
+  },
+  {
+    "id": "case-002",
+    "topic": "market_sizing",
+    "difficulty_rating": 1480,
+    "question": "Estimate the annual market size for electric vehicle charging stations across North America, walking through your key assumptions.",
+    "model_answer": "Top-down estimation: 1) Population of North America ~370M -> 140M households -> 250M total vehicles. 2) EV penetration ~5% = 12.5M EVs. 3) Assume 1 public charger per 20 EVs = 625,000 chargers. 4) Hardware + installation cost $10k per charger + annual electricity revenue $2k = $1.5B+ market size.",
+    "key_points": [
+      "Clear population and household base assumptions",
+      "EV penetration percentage estimation",
+      "Ratio of public chargers to electric vehicles",
+      "Unit hardware, installation, and operating revenue math"
+    ]
+  },
+  {
+    "id": "case-003",
+    "topic": "strategy",
+    "difficulty_rating": 1500,
+    "question": "Our client is considering acquiring a boutique cloud security startup. What strategic and financial vectors would you evaluate?",
+    "model_answer": "M&A evaluation vectors: 1) Strategic Fit (synergies, product integration, IP acquisition). 2) Market & Growth Potential (TAM, CAGR). 3) Financial Valuation (DCF, revenue multiples, ARR growth). 4) Integration Risks (culture, key talent retention).",
+    "key_points": [
+      "Strategic Fit and revenue/cost synergies",
+      "Market opportunity (TAM, SAM, competitive moat)",
+      "Financial valuation and deal structure (DCF, ARR multiples)",
+      "Integration risks and post-merger execution"
+    ]
+  },
+  {
+    "id": "case-004",
+    "topic": "mece",
+    "difficulty_rating": 1420,
+    "question": "Structure a MECE framework to evaluate entering the direct-to-consumer healthcare device market.",
+    "model_answer": "A MECE market entry framework evaluates: 1) Market Attractiveness (TAM, growth rate, margins). 2) Competitive Landscape (incumbents, barrier to entry). 3) Client Capabilities (R&D, supply chain, regulatory approval). 4) Financials & Entry Mode (DTC build, JV, acquisition).",
+    "key_points": [
+      "Market Attractiveness (size, growth, regulatory barriers)",
+      "Competitive Landscape and differentiation",
+      "Internal Capabilities (manufacturing, distribution)",
+      "Financial Feasibility and Entry Strategy options"
+    ]
+  },
+  {
+    "id": "case-005",
+    "topic": "synthesis",
+    "difficulty_rating": 1390,
+    "question": "Summarize your case findings and provide a 60-second executive recommendation to a C-suite client board.",
+    "model_answer": "An executive recommendation follows the Answer-First principle: 1) Direct recommendation statement. 2) Three supporting rationale bullet points backed by quantitative case findings. 3) Key risks and next steps.",
+    "key_points": [
+      "Pyramid Principle / Answer-First recommendation structure",
+      "Concise top-line recommendation upfront",
+      "3 quantitative supporting arguments",
+      "Explicit key risks and immediate next steps"
+    ]
+  },
+  {
+    "id": "case-006",
+    "topic": "frameworks",
+    "difficulty_rating": 1460,
+    "question": "A legacy airline wants to launch a low-cost carrier subsidiary. How do you evaluate cost structure vs brand cannibalization risks?",
+    "model_answer": "Evaluating a low-cost subsidiary requires analyzing: 1) Cost Structure Advantages (point-to-point routing, single aircraft fleet type, unbundled fees). 2) Brand Cannibalization (segmenting price-sensitive leisure travelers from high-margin business travelers). 3) Operational Separation.",
+    "key_points": [
+      "Low-cost carrier operating model economics (fleet harmonization, turnaround time)",
+      "Unbundled revenue models (ancillary fees for bags/seats)",
+      "Customer segmentation to prevent premium brand cannibalization",
+      "Operational separation vs shared backend synergies"
+    ]
+  },
+  {
+    "id": "case-007",
+    "topic": "market_sizing",
+    "difficulty_rating": 1400,
+    "question": "Estimate the total daily coffee cups consumed in New York City using top-down vs bottom-up estimation methods.",
+    "model_answer": "Top-down: 8.5M NYC residents * 70% adult population (6M) * 60% coffee drinkers (3.6M) * 1.5 cups/day = ~5.4M cups/day. Bottom-up: ~3,000 coffee shops * 1,500 cups/day average = ~4.5M cups + office coffee.",
+    "key_points": [
+      "Top-down demographic breakdown methodology",
+      "Bottom-up retail supply store count estimation",
+      "Sanity checking assumptions across methods",
+      "Triangulating result to 4-5 million daily cups range"
+    ]
+  },
+  {
+    "id": "case-008",
+    "topic": "strategy",
+    "difficulty_rating": 1430,
+    "question": "A telecom company faces 8% annual subscriber churn. How would you diagnose root causes and structure retention programs?",
+    "model_answer": "Diagnosing churn requires: 1) Segmenting churn by tenure, plan tier, device, and customer support contact history. 2) Identifying root cause drivers (price sensitivity, network coverage dead zones, poor customer service). 3) Designing targeted retention interventions.",
+    "key_points": [
+      "Churn segmentation analysis (Tenure, Plan Type, Geographic Region)",
+      "Identifying root cause levers (Network Quality, Pricing, Support Friction)",
+      "Proactive churn prediction modeling and targeted incentives",
+      "Calculating Customer Lifetime Value (LTV) vs retention cost trade-offs"
+    ]
+  },
+  {
+    "id": "case-009",
+    "topic": "mece",
+    "difficulty_rating": 1470,
+    "question": "How do you structure a supply chain resilience assessment for a global consumer electronics manufacturer?",
+    "model_answer": "A MECE supply chain framework evaluates: 1) Tier-1 & Tier-2 Supplier Concentration (single-source risks). 2) Geographic & Geopolitical Exposure. 3) Logistics & Transportation Bottlenecks (chokepoint ports). 4) Buffer Inventory & Dual-Sourcing Strategies.",
+    "key_points": [
+      "Supplier concentration and single-point-of-failure risks",
+      "Geopolitical and natural disaster regional vulnerability",
+      "Logistics, freight, and customs port bottlenecks",
+      "Dual-sourcing and safety stock inventory mitigations"
+    ]
+  },
+  {
+    "id": "case-010",
+    "topic": "synthesis",
+    "difficulty_rating": 1440,
+    "question": "How do you deliver a recommendation when quantitative data is incomplete and client management is divided?",
+    "model_answer": "When data is incomplete: 1) State clear working assumptions and sensitivity ranges. 2) Focus on robust strategic options that perform well across multiple scenarios. 3) Propose a phased, milestone-gated pilot approach to de-risk investment.",
+    "key_points": [
+      "Stating explicit assumptions and sensitivity analysis bounds",
+      "Evaluating scenario-robust strategic options",
+      "De-risking via phased milestone pilots",
+      "Facilitating alignment through objective decision criteria"
+    ]
+  },
+  {
+    "id": "case-011",
+    "topic": "frameworks",
+    "difficulty_rating": 1490,
+    "question": "How do you evaluate pricing strategies (Cost-Plus, Value-Based, Competitive) for a novel pharmaceutical drug launch?",
+    "model_answer": "Evaluating drug pricing: 1) Value-Based Pricing sets price according to healthcare cost savings (reduced hospital stays) and quality-adjusted life years (QALY). 2) Competitive Benchmarking evaluates alternative treatments. 3) Payor & Insurance coverage negotiations.",
+    "key_points": [
+      "Value-Based pricing based on economic healthcare savings and QALY",
+      "Competitive benchmarking against standard-of-care alternatives",
+      "Insurance payor reimbursement and formulary tier negotiations",
+      "Patient assistance programs and price elasticity"
+    ]
+  },
+  {
+    "id": "case-012",
+    "topic": "market_sizing",
+    "difficulty_rating": 1450,
+    "question": "Estimate the annual revenue potential for commercial drone delivery services in suburban logistics.",
+    "model_answer": "1) Target geography: Suburban US population (~150M) = 50M households. 2) Deliverable packages per year (small medical/food items) ~20 per household = 1B addressable deliveries. 3) Drone capture rate ~2% = 20M deliveries. 4) Price per delivery $5 = $100M annual revenue.",
+    "key_points": [
+      "Addressable household and package volume estimation",
+      "Filtering for drone-compatible weight/distance constraints (<5 lbs)",
+      "Market adoption percentage estimation",
+      "Unit delivery fee revenue calculation"
+    ]
+  },
+  {
+    "id": "case-013",
+    "topic": "strategy",
+    "difficulty_rating": 1520,
+    "question": "A global bank is contemplating divesting its retail wealth management division. Evaluate strategic trade-offs.",
+    "model_answer": "Divestiture evaluation: 1) Strategic Focus (reallocating capital to core investment banking). 2) Financial Valuation (sale proceeds vs lost recurring fee revenue). 3) Operational Disentanglement (shared IT systems, customer cross-selling loss).",
+    "key_points": [
+      "Strategic alignment and core focus refocusing",
+      "Financial proceeds valuation vs ongoing dividend loss",
+      "Operational separation complexity (shared IT/compliance)",
+      "Impact on cross-selling institutional products"
+    ]
+  },
+  {
+    "id": "case-014",
+    "topic": "mece",
+    "difficulty_rating": 1410,
+    "question": "Structure an operational cost reduction framework targeting 20% savings across IT procurement and vendor licensing.",
+    "model_answer": "IT cost reduction framework: 1) Demand Management (eliminating unused software licenses). 2) Rate Reduction (re-negotiating vendor contract pricing). 3) Specification Optimization (downgrading over-provisioned cloud instances). 4) Process Automation.",
+    "key_points": [
+      "Demand Management (license audit and shadow IT cleanup)",
+      "Vendor Rate Reduction (contract renegotiation and volume discounts)",
+      "Specification Optimization (right-sizing cloud compute/storage)",
+      "Process Automation replacing manual operational tasks"
+    ]
+  },
+  {
+    "id": "case-015",
+    "topic": "synthesis",
+    "difficulty_rating": 1460,
+    "question": "How do you pivot your case hypothesis when interim market research invalidates your primary growth thesis?",
+    "model_answer": "Pivoting requires: 1) Objective acknowledgment of new data without confirmation bias. 2) Re-examining secondary hypotheses in the case tree. 3) Communicating updated direction clearly to the team and client.",
+    "key_points": [
+      "Dispassionate evaluation of invalidating evidence",
+      "Re-branching the hypothesis decision tree",
+      "Formulating alternative growth vectors",
+      "Maintaining client trust through transparent data-driven reasoning"
+    ]
+  },
+  {
+    "id": "case-016",
+    "topic": "frameworks",
+    "difficulty_rating": 1530,
+    "question": "Evaluate a private equity firm considering a leveraged buyout (LBO) of a legacy SaaS software business.",
+    "model_answer": "LBO evaluation: 1) Cash Flow Stability (predictable recurring ARR to service debt). 2) Debt Capacity (EBITDA multiples, interest coverage ratio). 3) Operational Value Creation (margin expansion, pricing optimization). 4) Exit Multiple & IRR expectations (>20%).",
+    "key_points": [
+      "Predictable recurring revenue (ARR) and low churn for debt servicing",
+      "Leverage capacity (Debt/EBITDA ratios) and interest coverage",
+      "Operational margin expansion levers (R&D / G&A optimization)",
+      "Target IRR (Internal Rate of Return) and multiple-on-invested-capital (MOIC)"
+    ]
+  },
+  {
+    "id": "case-017",
+    "topic": "market_sizing",
+    "difficulty_rating": 1380,
+    "question": "Estimate the total annual volume of smartphone battery replacements globally.",
+    "model_answer": "1) Global active smartphones ~4 billion. 2) Average replacement lifecycle = 3 years -> 1.33B phones reach battery degradation per year. 3) 25% replace battery instead of buying new phone = ~330M battery replacements annually.",
+    "key_points": [
+      "Global active smartphone install base assumption",
+      "Battery degradation lifecycle replacement rate (2-3 years)",
+      "Phone replacement vs battery repair consumer preference split",
+      "Calculating total annual global unit volume"
+    ]
+  },
+  {
+    "id": "case-018",
+    "topic": "strategy",
+    "difficulty_rating": 1430,
+    "question": "A fast-fashion retailer wants to transition to sustainable organic materials. How do you evaluate margin impacts?",
+    "model_answer": "Sustainable transition evaluation: 1) Cost Structure Impact (higher raw material COGS). 2) Pricing Power (willingness-to-pay premium for sustainable fashion). 3) Brand Positioning & Customer Acquisition benefits vs supply chain sourcing bottlenecks.",
+    "key_points": [
+      "COGS increase from organic raw materials and certified suppliers",
+      "Price elasticity and consumer willingness-to-pay premium",
+      "Brand equity and customer acquisition/retention uplift",
+      "Supply chain transition risks and certification compliance"
+    ]
+  },
+  {
+    "id": "case-019",
+    "topic": "mece",
+    "difficulty_rating": 1480,
+    "question": "Structure a competitive response framework when an aggressive entrant cuts prices by 30% in your core market.",
+    "model_answer": "Competitive response framework: 1) Assess Threat Severity (entrant capacity, target segment overlap). 2) Evaluate Non-Price Defenses (value-add features, long-term contracts, service bundling). 3) Selective Price Matching (fighter brand launch).",
+    "key_points": [
+      "Assessing competitor capacity and economic viability of price cuts",
+      "Non-price differentiation defenses (bundling, brand trust, SLAs)",
+      "Targeted competitive response (fighter brand vs broad price match)",
+      "Protecting core high-margin enterprise accounts"
+    ]
+  },
+  {
+    "id": "case-020",
+    "topic": "synthesis",
+    "difficulty_rating": 1470,
+    "question": "Walk through an executive elevator pitch recommending an $800M digital transformation investment.",
+    "model_answer": "Pitch structure: 1) Core Recommendation ($800M investment over 3 years). 2) Primary Value Drivers ($1.5B operational savings + $400M incremental revenue via digital channels). 3) Risk Mitigation (phased rollout with exit gates).",
+    "key_points": [
+      "Clear top-line recommendation and investment figure",
+      "Quantified financial ROI and payback timeline",
+      "Strategic alignment with competitive survival",
+      "Phased execution roadmap with risk mitigation gates"
+    ]
+  }
+]

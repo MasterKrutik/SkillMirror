@@ -1,0 +1,262 @@
+[
+  {
+    "id": "dev-001",
+    "topic": "reliability",
+    "difficulty_rating": 1450,
+    "question": "How do you set up SLOs, SLIs, and Error Budgets to balance product feature velocity with infrastructure stability?",
+    "model_answer": "SLIs (Service Level Indicators) measure telemetry performance (e.g. 99.9% successful HTTP responses). SLOs (Service Level Objectives) define target reliability goals. Error Budgets represent allowable failure margins; when exhausted, feature deployments pause to focus on reliability.",
+    "key_points": [
+      "SLI quantifiable telemetry metrics (latency, error rate)",
+      "SLO target goals matching business requirements",
+      "Error budget calculation (100% - SLO)",
+      "Feature freeze policy enforcement upon budget exhaustion"
+    ]
+  },
+  {
+    "id": "dev-002",
+    "topic": "containers",
+    "difficulty_rating": 1480,
+    "question": "Explain Kubernetes Pod scheduling, ingress controllers, HPA scaling policies, and zero-downtime rolling updates.",
+    "model_answer": "kube-scheduler matches Pod resource requests to node capacity. Ingress controllers manage HTTP routing. HPA scales Pod replicas based on CPU/memory metrics. Rolling updates replace old Pods with new Pods gradually, checking readiness probes.",
+    "key_points": [
+      "Kube-scheduler node filtering and scoring",
+      "Ingress controller (Nginx/Traefik) layer 7 routing",
+      "Horizontal Pod Autoscaler (HPA) metric scaling",
+      "RollingUpdate strategy with maxSurge and maxUnavailable"
+    ]
+  },
+  {
+    "id": "dev-003",
+    "topic": "ci_cd",
+    "difficulty_rating": 1460,
+    "question": "How do you design a secure GitOps CI/CD pipeline using ArgoCD or Flux for multi-region cluster deployments?",
+    "model_answer": "GitOps uses Git repositories as the single source of truth. CI pipelines build and sign container images, updating Kubernetes manifest repos. ArgoCD running inside the cluster continuously syncs desired Git state to target multi-region clusters.",
+    "key_points": [
+      "Git as single source of truth for infrastructure state",
+      "Pull-based cluster synchronization (ArgoCD / Flux)",
+      "Separation of code repository and deployment manifest repo",
+      "Multi-region deployment sync and automated rollback"
+    ]
+  },
+  {
+    "id": "dev-004",
+    "topic": "iac",
+    "difficulty_rating": 1410,
+    "question": "Explain Terraform state file management, remote state locking with S3/DynamoDB, and module versioning.",
+    "model_answer": "Terraform tracks real infrastructure in state files. Remote backends (S3) centralize state storage. DynamoDB state locking prevents concurrent executions from corrupting state files. Terraform modules isolate reusable infrastructure code with explicit version pinning.",
+    "key_points": [
+      "Remote state storage in encrypted cloud object stores (S3)",
+      "State locking via DynamoDB to prevent concurrent terraform apply collisions",
+      "Terraform module architecture and version constraints",
+      "State isolation using Terraform Workspaces vs separate directories"
+    ]
+  },
+  {
+    "id": "dev-005",
+    "topic": "observability",
+    "difficulty_rating": 1440,
+    "question": "Compare Prometheus metrics collection (Pull model) with OpenTelemetry trace collection (Push model) for microservice debugging.",
+    "model_answer": "Prometheus uses a pull model, scraping `/metrics` endpoints from discovered targets at fixed intervals. OpenTelemetry uses a push model, emitting distributed traces and spans asynchronously to a collector for APM analysis.",
+    "key_points": [
+      "Prometheus pull model via HTTP endpoint scraping and Service Discovery",
+      "OpenTelemetry push model for distributed traces and logs",
+      "PromQL time-series metrics querying",
+      "Context propagation (TraceID, SpanID) across microservices"
+    ]
+  },
+  {
+    "id": "dev-006",
+    "topic": "containers",
+    "difficulty_rating": 1520,
+    "question": "Explain Kubernetes CNI (Container Network Interface) plugins like Calico/Cilium and eBPF network packet tracing.",
+    "model_answer": "CNI plugins assign IP addresses to Pods and manage inter-pod network policy routing. Cilium uses eBPF (extended Berkeley Packet Filter) to trace and filter network packets directly inside the Linux kernel without iptables overhead.",
+    "key_points": [
+      "CNI plugin responsibility for Pod IP allocation and routing",
+      "Calico BGP routing and network policy enforcement",
+      "Cilium eBPF kernel-level packet filtering bypassing iptables",
+      "Layer 3/4 and Layer 7 network security policies"
+    ]
+  },
+  {
+    "id": "dev-007",
+    "topic": "reliability",
+    "difficulty_rating": 1470,
+    "question": "What is Chaos Engineering (Chaos Mesh / Gremlin)? How do injected network latency tests harden production resilience?",
+    "model_answer": "Chaos Engineering proactively injects infrastructure failures (killing Pods, throttling network latency, simulating packet loss) into staging/production to verify that auto-scaling, failover, and circuit breakers operate correctly.",
+    "key_points": [
+      "Controlled failure injection (network delay, node loss, memory stress)",
+      "Hypothesis testing against steady-state system metrics",
+      "Validation of auto-healing, failover, and fallback mechanisms",
+      "Blast radius containment and automated emergency stop abort switches"
+    ]
+  },
+  {
+    "id": "dev-008",
+    "topic": "ci_cd",
+    "difficulty_rating": 1430,
+    "question": "Compare Blue/Green deployments with Canary deployments using Istio service mesh traffic splitting.",
+    "model_answer": "Blue/Green deployment maintains two identical environments, switching 100% router traffic instantly. Canary deployment splits traffic dynamically (e.g. 95% to stable v1, 5% to new v2) using Istio VirtualService weights, monitoring error rates before full rollout.",
+    "key_points": [
+      "Blue/Green instant 100% traffic cutover and instant rollback",
+      "Canary progressive traffic splitting (5% -> 25% -> 100%)",
+      "Istio Service Mesh VirtualService and DestinationRule weights",
+      "Automated canary analysis using Prometheus error rate signals"
+    ]
+  },
+  {
+    "id": "dev-009",
+    "topic": "iac",
+    "difficulty_rating": 1390,
+    "question": "How do you prevent secret leakage in Infrastructure as Code using Vault, SOPS, or AWS Secrets Manager?",
+    "model_answer": "Secrets must never be committed to Git repos. SOPS encrypts secret files using KMS keys before committing. HashiCorp Vault or AWS Secrets Manager inject secrets at runtime into Pod environment variables or mounted RAM volumes.",
+    "key_points": [
+      "Git pre-commit secret scanners (gitleaks, detect-secrets)",
+      "SOPS / Sealed Secrets for encrypted in-repo secret storage",
+      "Vault / AWS Secrets Manager dynamic secret generation and rotation",
+      "Injecting secrets via Kubernetes Secret CSI driver / RAM volumes"
+    ]
+  },
+  {
+    "id": "dev-010",
+    "topic": "observability",
+    "difficulty_rating": 1490,
+    "question": "Explain Distributed Tracing (Trace ID, Span ID, Context Propagation) when debugging latency bottlenecks across 20 microservices.",
+    "model_answer": "Distributed Tracing tracks requests across microservices. A root Trace ID is generated at entry and propagated via HTTP headers (W3C Trace Context). Each microservice creates child Span IDs measuring exact execution time per internal operation.",
+    "key_points": [
+      "W3C Trace Context header propagation (traceparent)",
+      "Root Trace ID and nested child Span IDs",
+      "Visualization of waterfall latency bottlenecks in Jaeger/Zipkin",
+      "Sampling strategies (head-based vs tail-based sampling)"
+    ]
+  },
+  {
+    "id": "dev-011",
+    "topic": "containers",
+    "difficulty_rating": 1320,
+    "question": "How do Docker multi-stage builds reduce final container image footprint and eliminate compilation toolchains?",
+    "model_answer": "Multi-stage builds use multiple `FROM` instructions. Early stages compile source code using full SDKs/toolchains. The final stage copies ONLY compiled binaries into a minimal distroless or Alpine base image, stripping build tools.",
+    "key_points": [
+      "Multiple FROM instructions in single Dockerfile",
+      "Build stage for compilation and test execution",
+      "Copying binary artifacts into distroless / alpine runtime images",
+      "Reduction of image size and attack surface vulnerabilities"
+    ]
+  },
+  {
+    "id": "dev-012",
+    "topic": "reliability",
+    "difficulty_rating": 1360,
+    "question": "How do you manage incident response escalation paths (PagerDuty) and run productive blameless post-mortems?",
+    "model_answer": "Incident response uses automated PagerDuty schedules with primary/secondary escalations. Post-mortems follow a blameless philosophy focusing on systemic process/tooling improvements, root cause analysis, timeline creation, and action items.",
+    "key_points": [
+      "Automated alert escalation policies and on-call rotations",
+      "Incident Commander, Operations Lead, and Communications roles",
+      "Blameless post-mortem culture focusing on system fixes over human error",
+      "Root cause analysis (5 Whys) and tracked remediation action items"
+    ]
+  },
+  {
+    "id": "dev-013",
+    "topic": "containers",
+    "difficulty_rating": 1460,
+    "question": "Explain Kubernetes Persistent Volumes (PV), PVCs, and CSI drivers for stateful workloads like Postgres/Kafka.",
+    "model_answer": "Persistent Volumes (PV) represent cluster storage resources. Persistent Volume Claims (PVC) request specific storage capacity and access modes (`ReadWriteOnce`). CSI (Container Storage Interface) drivers dynamically provision cloud disk storage.",
+    "key_points": [
+      "PV (cluster storage resource) vs PVC (storage claim request)",
+      "CSI driver dynamic storage provisioning (EBS / GPD)",
+      "Access modes (ReadWriteOnce, ReadWriteMany)",
+      "StatefulSets for stable network identifiers and persistent storage mapping"
+    ]
+  },
+  {
+    "id": "dev-014",
+    "topic": "observability",
+    "difficulty_rating": 1380,
+    "question": "What are the Golden Signals of Monitoring (Latency, Traffic, Errors, Saturation)? How do alert thresholds prevent alert fatigue?",
+    "model_answer": "The 4 Golden Signals are: Latency (time to serve requests), Traffic (demand volume), Errors (rate of failing requests), and Saturation (resource capacity limits). Alert fatigue is avoided by alerting on SLO burn rates rather than raw CPU spikes.",
+    "key_points": [
+      "4 Golden Signals (Latency, Traffic, Errors, Saturation)",
+      "Symptom-based alerting vs cause-based noise",
+      "SLO Burn Rate alerts (multi-window multi-burn-rate alerts)",
+      "Actionable alerts requiring immediate human intervention"
+    ]
+  },
+  {
+    "id": "dev-015",
+    "topic": "ci_cd",
+    "difficulty_rating": 1410,
+    "question": "How do you secure container images in CI/CD using vulnerability scanners (Trivy/Grype) and cryptographic signing (Cosign)?",
+    "model_answer": "CI pipelines scan container images using Trivy to block CVE vulnerabilities above critical severity. Cosign cryptographically signs image digests in the registry. Kyverno/OPA policies in Kubernetes block unsigned images from running.",
+    "key_points": [
+      "Automated CVE vulnerability scanning in CI (Trivy / Grype)",
+      "Sigstore / Cosign cryptographic image signing",
+      "Software Bill of Materials (SBOM) generation (Syft)",
+      "Kubernetes admission controllers enforcing signed image policies"
+    ]
+  },
+  {
+    "id": "dev-016",
+    "topic": "iac",
+    "difficulty_rating": 1400,
+    "question": "Explain Infrastructure drift detection and how automated Terraform plan runs enforce GitOps compliance.",
+    "model_answer": "Infrastructure drift occurs when manual console edits alter resources outside Terraform. Automated scheduled `terraform plan` CI jobs refresh state against live infrastructure, alerting when drift is detected and re-applying Git state.",
+    "key_points": [
+      "Root cause of infrastructure drift (manual console edits)",
+      "Scheduled terraform plan / refresh CI workflows",
+      "Automated drift notification and remediation apply steps",
+      "Restricting manual cloud console write permissions"
+    ]
+  },
+  {
+    "id": "dev-017",
+    "topic": "reliability",
+    "difficulty_rating": 1540,
+    "question": "Design a multi-region Disaster Recovery plan targeting RTO < 5 minutes and RPO < 1 minute.",
+    "model_answer": "Achieving RTO < 5m and RPO < 1m requires active-active multi-region deployment. Multi-region database replication (CockroachDB / Aurora Global) handles sync. Route53 DNS health checks route traffic to surviving regions during outage.",
+    "key_points": [
+      "RTO (Recovery Time Objective) vs RPO (Recovery Point Objective) definitions",
+      "Active-Active multi-region architecture",
+      "Cross-region database replication and low-latency storage",
+      "Automated Global DNS failover routing (Route53 / Cloudflare)"
+    ]
+  },
+  {
+    "id": "dev-018",
+    "topic": "containers",
+    "difficulty_rating": 1500,
+    "question": "Explain Linux Control Groups (cgroups v2) and Namespaces (net, pid, mnt) and how they isolate containers at the kernel level.",
+    "model_answer": "Linux Namespaces provide process isolation (PID, Network, Mount, User). cgroups (v2) enforce resource resource limits (CPU quotas, memory caps). Combined, they allow containers to run as isolated Linux processes sharing the host kernel.",
+    "key_points": [
+      "Namespaces (pid, net, mnt, ipc, uts) for process isolation",
+      "cgroups v2 for CPU, memory, and I/O resource resource limits",
+      "Container execution as host kernel process without hypervisor overhead",
+      "Memory OOM killer behavior when cgroup limits are exceeded"
+    ]
+  },
+  {
+    "id": "dev-019",
+    "topic": "observability",
+    "difficulty_rating": 1420,
+    "question": "How do log aggregation systems (Grafana Loki / ELK Stack) parse structured JSON logs at scale without high index overhead?",
+    "model_answer": "ELK indexes full log text using Elasticsearch Lucene indexes, consuming high storage. Grafana Loki indexes only log labels (environment, app), storing log lines unindexed in object storage (S3), reducing storage costs by 90%.",
+    "key_points": [
+      "ELK full-text inverted index overhead",
+      "Grafana Loki label-based indexing strategy",
+      "Structured JSON log emission best practices",
+      "Object storage (S3) retention for cost-effective log storage"
+    ]
+  },
+  {
+    "id": "dev-020",
+    "topic": "ci_cd",
+    "difficulty_rating": 1450,
+    "question": "How do self-hosted CI/CD runners (GitHub Actions / GitLab CI) securely access cloud infrastructure using OIDC identity federation?",
+    "model_answer": "OIDC eliminates long-lived cloud credentials in CI. GitHub Actions requests a short-lived OIDC JSON Web Token (JWT). AWS/GCP validates the JWT trust relationship and issues a temporary 1-hour IAM role session.",
+    "key_points": [
+      "Elimination of long-lived static AWS secret keys in CI settings",
+      "OIDC token issuance with claim assertions (repo, branch, event)",
+      "Cloud IAM Role trust policy validation",
+      "Short-lived temporary credential generation"
+    ]
+  }
+]

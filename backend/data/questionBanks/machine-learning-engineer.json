@@ -1,0 +1,262 @@
+[
+  {
+    "id": "mle-001",
+    "topic": "ml_pipelines",
+    "difficulty_rating": 1500,
+    "question": "How do you detect and mitigate data drift and concept drift in production inference pipelines?",
+    "model_answer": "Data drift occurs when input feature distributions change ($P(X)$). Concept drift occurs when the relationship between features and targets changes ($P(Y|X)$). Detection uses statistical tests (KS-test, PSI). Mitigation involves continuous re-training triggers and fallback model routing.",
+    "key_points": [
+      "Data drift P(X) vs Concept drift P(Y|X) definitions",
+      "Statistical metrics (Kolmogorov-Smirnov test, Population Stability Index PSI)",
+      "Automated pipeline re-training triggers",
+      "Shadow deployments and continuous evaluation"
+    ]
+  },
+  {
+    "id": "mle-002",
+    "topic": "optimization",
+    "difficulty_rating": 1550,
+    "question": "Explain INT8 quantization and structured pruning techniques for deploying LLMs onto resource-constrained edge devices.",
+    "model_answer": "Quantization converts 32-bit floating point weights to 8-bit integers (INT8), reducing memory footprint by 4x. Structured pruning removes entire weight matrix rows/columns or attention heads, accelerating matrix multiplication on hardware tensor cores.",
+    "key_points": [
+      "Post-Training Quantization (PTQ) vs Quantization-Aware Training (QAT)",
+      "FP32 to INT8 weight mapping and scaling factors",
+      "Structured pruning (channel/head removal) vs Unstructured pruning",
+      "Hardware tensor core acceleration and memory bandwidth reduction"
+    ]
+  },
+  {
+    "id": "mle-003",
+    "topic": "feature_stores",
+    "difficulty_rating": 1480,
+    "question": "How do you design a real-time feature store that guarantees point-in-time correctness for online prediction models?",
+    "model_answer": "Feature stores (Feast) maintain dual storage: an offline store (Snowflake/Parquet) for historical point-in-time joins during training, and an online store (Redis/DynamoDB) for low-latency key-value feature retrieval during live inference.",
+    "key_points": [
+      "Dual storage architecture (Offline batch store vs Online low-latency store)",
+      "Point-in-time joins (time-travel) preventing data leakage during training",
+      "Streaming ingestion (Kafka/Flink) to online feature store",
+      "Feature schema registry and version control"
+    ]
+  },
+  {
+    "id": "mle-004",
+    "topic": "inference",
+    "difficulty_rating": 1520,
+    "question": "Compare TensorRT, ONNX Runtime, and vLLM for optimizing Transformer model inference latency and throughput.",
+    "model_answer": "TensorRT optimizes CUDA execution graphs for NVIDIA GPUs. ONNX Runtime provides cross-platform execution across hardware backends. vLLM uses PagedAttention memory management to maximize LLM serving throughput.",
+    "key_points": [
+      "TensorRT layer fusion and kernel auto-tuning for NVIDIA GPUs",
+      "ONNX cross-framework model serialization and runtime execution",
+      "vLLM PagedAttention KV-cache management for high throughput",
+      "Batching strategies (Continuous batching vs static batching)"
+    ]
+  },
+  {
+    "id": "mle-005",
+    "topic": "ml_pipelines",
+    "difficulty_rating": 1540,
+    "question": "Explain the Transformer self-attention mechanism (Q, K, V) and why its computational complexity is O(N^2) with sequence length.",
+    "model_answer": "Self-attention computes `Softmax(Q * K^T / sqrt(d_k)) * V`. Multiplying Query (N x d) and Key (N x d) matrices produces an N x N attention map, causing O(N^2) memory and compute scaling with sequence length N.",
+    "key_points": [
+      "Query, Key, and Value vector projections",
+      "Softmax scaling factor (1/sqrt(d_k)) for gradient stability",
+      "O(N^2) quadratic complexity scaling with sequence length",
+      "Linear attention variants (FlashAttention, Sliding Window)"
+    ]
+  },
+  {
+    "id": "mle-006",
+    "topic": "optimization",
+    "difficulty_rating": 1510,
+    "question": "What is LoRA (Low-Rank Adaptation) fine-tuning? How does updating low-rank decomposition matrices drastically cut GPU memory during training?",
+    "model_answer": "LoRA freezes pre-trained model weights `W` and injects trainable rank decomposition matrices `A` and `B` (`W + A*B`). Where `W` is d x d, `A` is d x r and `B` is r x d (r << d), reducing trainable parameters by 99%.",
+    "key_points": [
+      "Freezing base pre-trained weight matrices W",
+      "Low-rank matrix decomposition (A * B with rank r << d)",
+      "99% reduction in trainable parameters and optimizer memory",
+      "Zero-latency merging of LoRA weights back into base model for deployment"
+    ]
+  },
+  {
+    "id": "mle-007",
+    "topic": "feature_stores",
+    "difficulty_rating": 1460,
+    "question": "How do batch feature computation (Spark) and streaming feature computation (Flink) synchronize in Feast feature store architecture?",
+    "model_answer": "Batch pipelines compute slow historical features periodically into Parquet/BigQuery. Streaming pipelines compute real-time features from Kafka topics in Flink, writing directly to Redis for immediate online retrieval.",
+    "key_points": [
+      "Lambda / Kappa architecture integration in Feature Stores",
+      "Batch pipeline feature materialization to offline store",
+      "Streaming ingestion (Flink/Spark Streaming) to online Redis store",
+      "Feature freshness and reconciliation auditing"
+    ]
+  },
+  {
+    "id": "mle-008",
+    "topic": "inference",
+    "difficulty_rating": 1560,
+    "question": "Explain PagedAttention in vLLM and how dynamic KV-cache memory management eliminates GPU RAM fragmentation.",
+    "model_answer": "Traditional LLM serving allocates contiguous GPU RAM for maximum sequence length KV-caches, wasting up to 60-80% RAM. PagedAttention partitions KV-caches into virtual non-contiguous memory blocks like OS virtual memory.",
+    "key_points": [
+      "KV-cache memory fragmentation bottleneck in traditional LLM serving",
+      "OS virtual memory paging concepts applied to GPU memory",
+      "Non-contiguous block allocation for sequence expansion",
+      "Memory sharing for parallel decoding and beam search"
+    ]
+  },
+  {
+    "id": "mle-009",
+    "topic": "monitoring",
+    "difficulty_rating": 1470,
+    "question": "How do Population Stability Index (PSI) and Kolmogorov-Smirnov (KS) tests quantify feature distribution drift in production?",
+    "model_answer": "PSI measures shift between baseline training data and production serving data across binned buckets (PSI > 0.2 indicates significant shift). The KS-test computes maximum distance between cumulative distribution functions.",
+    "key_points": [
+      "PSI bucket frequency comparison (PSI < 0.1 stable, > 0.2 drift)",
+      "Kolmogorov-Smirnov (KS) test non-parametric CDF distance metric",
+      "Monitoring input feature distributions vs target label distribution",
+      "Automated alerting triggers for model retraining"
+    ]
+  },
+  {
+    "id": "mle-010",
+    "topic": "ml_pipelines",
+    "difficulty_rating": 1530,
+    "question": "Explain gradient accumulation and distributed data parallel (DDP) training across multi-node GPU clusters.",
+    "model_answer": "DDP replicates the model on each GPU, computing gradients on distinct data batches and synchronizing gradients via AllReduce. Gradient accumulation sums gradients across N micro-batches before calling `optimizer.step()`, simulating large batch sizes.",
+    "key_points": [
+      "Distributed Data Parallel (DDP) model replication",
+      "AllReduce collective communication for gradient synchronization",
+      "Gradient accumulation for large effective batch sizes on limited VRAM",
+      "NCCL library GPU inter-connect optimization (NVLink)"
+    ]
+  },
+  {
+    "id": "mle-011",
+    "topic": "optimization",
+    "difficulty_rating": 1440,
+    "question": "What is Knowledge Distillation? How does a smaller Student model learn soft probability distributions from a large Teacher model?",
+    "model_answer": "Knowledge Distillation trains a compact Student model using soft probability targets generated by a large Teacher model using a high temperature Softmax, transferring dark knowledge about inter-class relationships.",
+    "key_points": [
+      "Teacher model (large, high capacity) vs Student model (compact)",
+      "Soft targets via Temperature-scaled Softmax",
+      "Dark knowledge transfer (probabilities of non-target classes)",
+      "Loss function combining hard label loss and KL-divergence distillation loss"
+    ]
+  },
+  {
+    "id": "mle-012",
+    "topic": "inference",
+    "difficulty_rating": 1490,
+    "question": "Compare Continuous Batching with static batching for multi-tenant LLM serving endpoints under variable input prompt lengths.",
+    "model_answer": "Static batching waits for N requests and pads sequences to max length, wasting compute on padding tokens. Continuous batching operates at iteration level, dynamically inserting new requests as soon as completed requests finish generation.",
+    "key_points": [
+      "Static batching padding overhead and head-of-line blocking",
+      "Iteration-level (Orca) continuous batching",
+      "Dynamic insertion and removal of request tokens per step",
+      "Throughput increases of 2x-4x for multi-tenant LLM APIs"
+    ]
+  },
+  {
+    "id": "mle-013",
+    "topic": "feature_stores",
+    "difficulty_rating": 1450,
+    "question": "How do embeddings generated by vector encoders get stored and queried using HNSW graph indexes in Milvus/Qdrant?",
+    "model_answer": "Vector databases index high-dimensional embeddings. HNSW (Hierarchical Navigable Small World) constructs multi-layer proximity graphs, navigating top layers for fast coarse search and lower layers for precise nearest-neighbor retrieval in O(log N) time.",
+    "key_points": [
+      "High-dimensional vector embedding storage",
+      "HNSW multi-layer proximity graph construction",
+      "Approximate Nearest Neighbor (ANN) search trade-offs (Recall vs Latency)",
+      "Distance metrics (Cosine Similarity, Dot Product, Euclidean Distance)"
+    ]
+  },
+  {
+    "id": "mle-014",
+    "topic": "ml_pipelines",
+    "difficulty_rating": 1550,
+    "question": "Explain RoPE (Rotary Position Embedding) vs Absolute Positional Encodings in modern open-weights LLMs.",
+    "model_answer": "Absolute positional encodings add fixed/learned vectors to token embeddings, struggling to generalize to longer context windows. RoPE rotates Query and Key vectors in complex space based on relative position, enabling context length extrapolation.",
+    "key_points": [
+      "Absolute positional encodings limitations on context length extrapolation",
+      "RoPE (Rotary Position Embedding) rotation matrix formulation",
+      "Relative position preservation via inner product scalar decay",
+      "Context window extension techniques (YaRN, RoPE scaling)"
+    ]
+  },
+  {
+    "id": "mle-015",
+    "topic": "monitoring",
+    "difficulty_rating": 1390,
+    "question": "How do shadow deployments and canary deployments allow live model evaluation without impacting real candidate predictions?",
+    "model_answer": "Shadow deployment clones live production traffic to a new candidate model in parallel. The candidate model processes inputs and logs predictions for offline evaluation without returning results to users, validating safety before canary rollout.",
+    "key_points": [
+      "Traffic mirroring / shadowing to candidate models",
+      "Zero user impact during shadow evaluation",
+      "Latency and prediction distribution comparison",
+      "Canary progressive traffic allocation"
+    ]
+  },
+  {
+    "id": "mle-016",
+    "topic": "optimization",
+    "difficulty_rating": 1580,
+    "question": "What is FlashAttention? How does tiling SRAM memory accesses speed up self-attention computations without HBM bandwidth bottlenecks?",
+    "model_answer": "Standard attention reads/writes intermediate N x N attention matrices to High Bandwidth Memory (HBM). FlashAttention tiles Q, K, V blocks into fast GPU SRAM, computing Softmax online without materializing the full N x N matrix in HBM.",
+    "key_points": [
+      "GPU memory hierarchy (SRAM speed vs HBM bandwidth bottleneck)",
+      "Tiling blocks of Q, K, V into fast SRAM",
+      "Online Softmax calculation without storing full N x N attention matrix",
+      "2x-4x speedup and O(N) memory complexity"
+    ]
+  },
+  {
+    "id": "mle-017",
+    "topic": "inference",
+    "difficulty_rating": 1520,
+    "question": "Explain Speculative Decoding using a small draft model to accelerate generation from a large target model.",
+    "model_answer": "Speculative decoding uses a fast, lightweight Draft model to generate K candidate tokens sequentially. The large Target model verifies all K tokens in a single parallel forward pass, accepting valid tokens and accelerating generation by 2x-3x.",
+    "key_points": [
+      "Small draft model rapid token generation",
+      "Large target model single parallel verification pass",
+      "Modified rejection sampling preserving exact target model probability distribution",
+      "Latency reduction without quality degradation"
+    ]
+  },
+  {
+    "id": "mle-018",
+    "topic": "feature_stores",
+    "difficulty_rating": 1380,
+    "question": "How do you handle missing values and out-of-vocabulary (OOV) categorical features in real-time inference payloads?",
+    "model_answer": "Missing numerical features are imputed using training medians or explicit missingness indicator flags. OOV categorical features are mapped to a dedicated `<UNK>` bucket or processed using hash-trick hashing vectorizers.",
+    "key_points": [
+      "Imputation strategies (training median / mode vs indicator flags)",
+      "Out-of-vocabulary (OOV) handling with <UNK> token buckets",
+      "Feature hashing trick for open-vocabulary categoricals",
+      "Schema validation middleware rejecting malformed payloads"
+    ]
+  },
+  {
+    "id": "mle-019",
+    "topic": "ml_pipelines",
+    "difficulty_rating": 1410,
+    "question": "Compare MLflow vs Kubeflow for experiment tracking, model registry artifact versioning, and pipeline orchestration.",
+    "model_answer": "MLflow is lightweight, focusing on experiment tracking parameters/metrics, code versioning, and model registry artifacts. Kubeflow is a Kubernetes-native platform for orchestrating scalable containerized MLOps DAG workflows.",
+    "key_points": [
+      "MLflow experiment logging (params, metrics, artifacts)",
+      "MLflow Model Registry stage transitions (Staging -> Production)",
+      "Kubeflow Pipelines containerized DAG execution on Kubernetes",
+      "Use case: MLflow for lightweight tracking vs Kubeflow for production cluster orchestration"
+    ]
+  },
+  {
+    "id": "mle-020",
+    "topic": "monitoring",
+    "difficulty_rating": 1470,
+    "question": "How do SHAP (SHapley Additive exPlanations) and LIME provide real-time feature attribution explainability for black-box models?",
+    "model_answer": "SHAP calculates Shapley values from cooperative game theory, measuring each feature's marginal contribution across all feature subsets. LIME fits a local interpretable surrogate model around a specific instance prediction.",
+    "key_points": [
+      "SHAP (Shapley Additive exPlanations) game theory formulation",
+      "LIME local surrogate interpretable model approximation",
+      "Global feature importance vs local prediction attribution",
+      "TreeSHAP optimization for fast tree-based model explainability"
+    ]
+  }
+]

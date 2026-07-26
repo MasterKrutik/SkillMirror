@@ -1,0 +1,262 @@
+[
+  {
+    "id": "mob-001",
+    "topic": "architecture",
+    "difficulty_rating": 1400,
+    "question": "Compare MVVM and Clean Architecture patterns in iOS/Android apps regarding state management and memory retention cycles.",
+    "model_answer": "MVVM decouples View from ViewModel using reactive bindings (Combine/StateFlow). Clean Architecture adds Use Cases and Repositories to isolate domain logic. Memory retention cycles are prevented by capturing weak references (`[weak self]` in Swift, `WeakReference` in Kotlin).",
+    "key_points": [
+      "MVVM View and ViewModel reactive state binding",
+      "Clean Architecture domain layer, Use Cases, and Repositories",
+      "Weak reference capture ([weak self] / WeakReference) to prevent retain cycles",
+      "Unidirectional Data Flow (UDF) state handling"
+    ]
+  },
+  {
+    "id": "mob-002",
+    "topic": "offline_sync",
+    "difficulty_rating": 1450,
+    "question": "How do you handle offline-first data persistence and conflict resolution when rejoining network connectivity?",
+    "model_answer": "Offline-first apps write data locally (Room / CoreData / Realm) immediately. Background sync workers push local changes when network restores, resolving conflicts using vector clocks, last-write-wins (LWW), or CRDTs.",
+    "key_points": [
+      "Local-first database writes (Room / CoreData / Realm)",
+      "Background sync worker queueing (WorkManager / BGTaskScheduler)",
+      "Conflict resolution strategies (Last-Write-Wins vs Vector Clocks)",
+      "Sync state indicators in mobile UI"
+    ]
+  },
+  {
+    "id": "mob-003",
+    "topic": "performance",
+    "difficulty_rating": 1420,
+    "question": "How do you diagnose and eliminate frame drops and memory leaks in long-scrolling recycler views or list components?",
+    "model_answer": "Frame drops (< 60fps / 120fps) are caused by heavy main thread operations during list item rendering. Fixes include cell recycling, dynamic image downsampling (Glide/Kingfisher), avoiding layout passes inside `onBindViewHolder`, and using diffing algorithms (DiffUtil).",
+    "key_points": [
+      "Main thread frame budget (16.6ms for 60fps, 8.3ms for 120fps)",
+      "ViewHolder pattern and DOM cell recycling",
+      "DiffUtil / AsyncListDiffer for efficient list mutations",
+      "Asynchronous image loading and bitmap downsampling"
+    ]
+  },
+  {
+    "id": "mob-004",
+    "topic": "native_bridge",
+    "difficulty_rating": 1480,
+    "question": "Explain how React Native TurboModules and JSI (JavaScript Interface) improve native bridge performance over JSON serialization.",
+    "model_answer": "Legacy React Native used an async JSON bridge causing serialization bottlenecks. The new architecture uses JSI (JavaScript Interface) to expose C++ host objects directly to JS, allowing synchronous, zero-copy method calls to native modules.",
+    "key_points": [
+      "Legacy async JSON bridge serialization bottlenecks",
+      "JSI (JavaScript Interface) C++ host object binding",
+      "Synchronous zero-copy method invocation",
+      "Lazy loading of TurboModules on demand"
+    ]
+  },
+  {
+    "id": "mob-005",
+    "topic": "security",
+    "difficulty_rating": 1410,
+    "question": "How do you implement SSL Pinning and Keychain/Keystore encryption for sensitive client tokens in mobile apps?",
+    "model_answer": "SSL Pinning validates server certificate public keys against hardcoded pins, preventing Man-in-the-Middle (MitM) proxy attacks. Sensitive tokens are stored in iOS Keychain or Android Keystore backed by hardware security modules (HSM).",
+    "key_points": [
+      "SSL Certificate Public Key Pinning to block MitM proxies",
+      "iOS Keychain / Android Keystore hardware-backed encryption",
+      "Root / Jailbreak detection mitigations",
+      "Certificate pin rotation management"
+    ]
+  },
+  {
+    "id": "mob-006",
+    "topic": "architecture",
+    "difficulty_rating": 1380,
+    "question": "Explain SwiftUI / Jetpack Compose reactive state propagation vs imperative UIKit / View layout passes.",
+    "model_answer": "Declarative frameworks (SwiftUI / Compose) recompute UI components automatically when `@State` / `State` changes using immutable view descriptions. Imperative frameworks (UIKit / Android Views) require manual DOM element manipulation (`findViewById`, `setText`).",
+    "key_points": [
+      "Declarative UI state functions vs Imperative DOM manipulation",
+      "State-driven re-composition / re-rendering",
+      "Re-composition optimization (remember, derivedStateOf, @Stable)",
+      "Interoperability bridges (UIViewRepresentable, AndroidView)"
+    ]
+  },
+  {
+    "id": "mob-007",
+    "topic": "performance",
+    "difficulty_rating": 1390,
+    "question": "How do memory retention cycles (retain cycles / strong reference cycles) occur in Swift closures and Kotlin lambdas?",
+    "model_answer": "Retain cycles happen when object A holds a strong reference to closure B, and closure B captures a strong reference to object A. Neither object can reach reference count zero. Resolved by `[weak self]` or `[unowned self]`.",
+    "key_points": [
+      "ARC (Automatic Reference Counting) principles",
+      "Strong reference cycle creation via closure self capture",
+      "Weak ([weak self]) vs unowned reference capture",
+      "Memory leak detection using Memory Graph Debugger / LeakCanary"
+    ]
+  },
+  {
+    "id": "mob-008",
+    "topic": "offline_sync",
+    "difficulty_rating": 1360,
+    "question": "Compare SQLite (Room / CoreData) vs Realm mobile databases for local object persistence and migration handling.",
+    "model_answer": "Room/CoreData are ORM wrappers over native SQLite. Realm is an object database storing native objects without ORM translation layers. Room uses explicit SQL migrations; Realm uses object schema version migration callbacks.",
+    "key_points": [
+      "SQLite abstraction (Room / CoreData) vs native Object DB (Realm)",
+      "Zero-copy live object linking in Realm",
+      "Schema migration scripts and database versioning",
+      "Thread safety rules for mobile database instances"
+    ]
+  },
+  {
+    "id": "mob-009",
+    "topic": "native_bridge",
+    "difficulty_rating": 1400,
+    "question": "How does Flutter engine communicate with native platform channels (MethodChannels) via binary messaging?",
+    "model_answer": "Flutter runs on a C++ engine. MethodChannels serialize Dart calls into binary messages, passing them over the native platform thread where Android (Java/Kotlin) or iOS (Swift/ObjC) handlers execute native APIs.",
+    "key_points": [
+      "Dart isolate to native OS thread communication",
+      "MethodChannel, EventChannel, and BasicMessageChannel",
+      "StandardMessageCodec binary encoding",
+      "Async execution and error handling across platform channels"
+    ]
+  },
+  {
+    "id": "mob-010",
+    "topic": "performance",
+    "difficulty_rating": 1460,
+    "question": "How do you optimize mobile app cold start launch time (main thread initialization, binary size reduction)?",
+    "model_answer": "Cold start time is optimized by deferring non-critical SDK initializations out of `Application.onCreate()` or `AppDelegate.didFinishLaunching`, baseline profiles, R8/ProGuard code shrinking, and dynamic feature modules.",
+    "key_points": [
+      "Application.onCreate / AppDelegate launch time profiling",
+      "Lazy initialization of analytics and third-party SDKs",
+      "Code shrinking and dead code elimination (R8 / ProGuard / App Thinning)",
+      "Android Baseline Profiles to eliminate JIT compilation latency"
+    ]
+  },
+  {
+    "id": "mob-011",
+    "topic": "architecture",
+    "difficulty_rating": 1430,
+    "question": "Explain Dependency Injection in mobile apps using Dagger/Hilt or Swinject for modular unit testing.",
+    "model_answer": "Dependency Injection passes dependencies into objects rather than hardcoding instantiations. Hilt provides compile-time dependency graph generation for Android. Swinject provides runtime resolution for Swift, allowing mock injections in tests.",
+    "key_points": [
+      "Inversion of Control (IoC) principles",
+      "Compile-time DI (Hilt / Dagger) vs Runtime DI (Koin / Swinject)",
+      "Module scoping (@Singleton, @ActivityScoped)",
+      "Injecting mock services for isolated unit testing"
+    ]
+  },
+  {
+    "id": "mob-012",
+    "topic": "security",
+    "difficulty_rating": 1440,
+    "question": "How do biometric authentication APIs (FaceID / TouchID / BiometricPrompt) interface with hardware secure enclaves?",
+    "model_answer": "Biometric APIs do not process raw fingerprint/face images in app code. The OS prompts the Secure Enclave / Hardware TEE, which authenticates biometrics internally and unlocks cryptographic keys stored in Keystore/Keychain.",
+    "key_points": [
+      "Secure Enclave / Trusted Execution Environment (TEE) hardware isolation",
+      "BiometricPrompt (Android) and LocalAuthentication (iOS) API flows",
+      "Unlocking cryptographic keys without exposing biometric raw data",
+      "Fallback to device passcode/PIN"
+    ]
+  },
+  {
+    "id": "mob-013",
+    "topic": "performance",
+    "difficulty_rating": 1370,
+    "question": "How do background task schedulers (WorkManager / BGTaskScheduler) operate under OS battery optimization constraints?",
+    "model_answer": "WorkManager and BGTaskScheduler defer non-urgent background tasks until execution constraints are met (device charging, unmetered Wi-Fi, idle CPU), respecting OS battery optimization modes (Doze mode, App Standby).",
+    "key_points": [
+      "WorkManager (Android) and BGTaskScheduler (iOS) constraint models",
+      "Doze mode and App Standby battery optimization impacts",
+      "Expedited jobs and foreground services for critical tasks",
+      "Task retry policies and exponential backoff"
+    ]
+  },
+  {
+    "id": "mob-014",
+    "topic": "architecture",
+    "difficulty_rating": 1420,
+    "question": "Explain MVI (Model-View-Intent) architecture and unidirectional data flow in modern Android development.",
+    "model_answer": "MVI enforces single state source of truth. User actions generate `Intents`. The `Model` reduces Intents and current state into immutable `ViewState` emitted to the `View`, guaranteeing reproducible UI states.",
+    "key_points": [
+      "Single immutable ViewState emission",
+      "User actions modeled as discrete Intents / Actions",
+      "State reducers producing new state copies",
+      "Elimination of race conditions across UI components"
+    ]
+  },
+  {
+    "id": "mob-015",
+    "topic": "offline_sync",
+    "difficulty_rating": 1510,
+    "question": "How do CRDTs (Conflict-free Replicated Data Types) enable offline-first collaborative mobile data sync?",
+    "model_answer": "CRDTs (State-based or Operation-based) allow distributed mobile clients to edit offline independently. When reconnected, data structures merge deterministically without requiring a central master server.",
+    "key_points": [
+      "State-based (CvRDT) vs Operation-based (CmRDT) CRDTs",
+      "Mathematical commutativity, associativity, and idempotency",
+      "Deterministic offline merge resolution without server locks",
+      "Memory and storage overhead of history metadata"
+    ]
+  },
+  {
+    "id": "mob-016",
+    "topic": "native_bridge",
+    "difficulty_rating": 1490,
+    "question": "How do you write a custom C++ native plugin using JNI (Java Native Interface) for Android performance routines?",
+    "model_answer": "High-performance routines (image processing, audio DSP) are compiled into C++ `.so` libraries using Android NDK. Java/Kotlin classes declare `external` methods, and JNI bridges parameters and memory pointers between JVM and C++.",
+    "key_points": [
+      "Android NDK C++ compilation to shared libraries (.so)",
+      "JNI method signatures and pointer type mapping",
+      "Direct byte buffer sharing to avoid memory copies",
+      "Memory management and garbage collection interaction"
+    ]
+  },
+  {
+    "id": "mob-017",
+    "topic": "security",
+    "difficulty_rating": 1330,
+    "question": "What is App Thinning / Dynamic Delivery / On-Demand Resources in App Store deployment pipelines?",
+    "model_answer": "App Thinning customizes app installation per device. Slicing delivers assets tailored to device resolution. Dynamic Feature Modules download optional features on demand, reducing initial app download size.",
+    "key_points": [
+      "App Slicing for device-specific binary and asset delivery",
+      "On-Demand Resources (ODR) for delayed asset downloads",
+      "Android App Bundles (AAB) and Dynamic Delivery modules",
+      "Reduction of App Store download size barriers"
+    ]
+  },
+  {
+    "id": "mob-018",
+    "topic": "performance",
+    "difficulty_rating": 1350,
+    "question": "How do image caching pipelines (Glide / Kingfisher) manage memory cache, disk cache, and bitmap downsampling?",
+    "model_answer": "Image loaders check 1) Memory Cache (LRU bitmap cache) -> 2) Disk Cache (compressed image files) -> 3) Network. Downsampling decodes image streams directly into target view dimensions, avoiding huge bitmap RAM consumption.",
+    "key_points": [
+      "Multi-tier caching (LRU Memory -> Disk Cache -> Network)",
+      "Bitmap downsampling via `inSampleSize` matching view target bounds",
+      "Bitmap memory pooling (inBitmap) to prevent GC churn",
+      "Automatic request cancellation when scroll cells are recycled"
+    ]
+  },
+  {
+    "id": "mob-019",
+    "topic": "architecture",
+    "difficulty_rating": 1340,
+    "question": "Compare Deep Linking vs Universal Links / App Links regarding URI routing and fallback browser web landing pages.",
+    "model_answer": "Custom URI schemes (`app://path`) lack ownership verification and fail if app is uninstalled. Universal Links (iOS) and App Links (Android) use domain-verified JSON files (`apple-app-site-association` / `assetlinks.json`), gracefully falling back to web URLs.",
+    "key_points": [
+      "Custom URI schemes vs domain-verified HTTPS links",
+      "apple-app-site-association and assetlinks.json verification",
+      "Graceful fallback to web browser when app is uninstalled",
+      "Routing deep link parameters into app navigation state"
+    ]
+  },
+  {
+    "id": "mob-020",
+    "topic": "performance",
+    "difficulty_rating": 1450,
+    "question": "How do you profile ANR (Application Not Responding) crashes and main thread UI blocking using Android Studio Profiler or Xcode Instruments?",
+    "model_answer": "ANR occurs when main thread blocks for > 5s. Profilers inspect thread stack traces during main thread freezes to identify disk I/O, database queries, or lock contention executed on the UI thread, moving them to background dispatchers.",
+    "key_points": [
+      "ANR 5-second main thread blocking threshold",
+      "CPU method tracing and thread state inspection",
+      "Identifying disk/network I/O on main thread",
+      "Offloading I/O to Dispatchers.IO (Kotlin) or DispatchQueue.global (Swift)"
+    ]
+  }
+]

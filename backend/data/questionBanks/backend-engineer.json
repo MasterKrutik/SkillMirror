@@ -1,0 +1,262 @@
+[
+  {
+    "id": "be-001",
+    "topic": "api_design",
+    "difficulty_rating": 1420,
+    "question": "How do you design scalable REST vs gRPC endpoints for microservice communication under high throughput?",
+    "model_answer": "gRPC utilizes HTTP/2 binary framing and Protocol Buffers for high-throughput inter-service communication with minimal payload size and multiplexing. REST over HTTP/1.1 uses text JSON, making it ideal for public client APIs.",
+    "key_points": [
+      "gRPC HTTP/2 multiplexing vs REST HTTP/1.1",
+      "Protocol Buffers binary serialization vs JSON text",
+      "Internal microservice IPC vs public client API considerations",
+      "Strongly typed Protobuf contracts vs OpenAPI/Swagger"
+    ]
+  },
+  {
+    "id": "be-002",
+    "topic": "databases",
+    "difficulty_rating": 1480,
+    "question": "Explain database indexing B-Trees vs LSM-Trees and how index cardinality affects query execution plans.",
+    "model_answer": "B-Trees organize data in balanced tree pages, offering O(log N) read/write performance for relational workloads. LSM-Trees (Log-Structured Merge-Trees) buffer writes in memory (MemTable) before flushing sequentially to disk (SSTables), drastically accelerating write throughput. High index cardinality allows selective index scans, while low cardinality forces full table scans.",
+    "key_points": [
+      "B-Tree page-based balanced structure vs LSM-Tree append-only SSTables",
+      "Write optimization of LSM-Trees (Cassandra/RocksDB) vs read optimization of B-Trees",
+      "Index cardinality impact on query optimizer selectivity",
+      "Compaction strategies (Size-Tiered vs Leveled compaction)"
+    ]
+  },
+  {
+    "id": "be-003",
+    "topic": "concurrency",
+    "difficulty_rating": 1500,
+    "question": "How do distributed locks work using Redis (Redlock) or Zookeeper, and how do you prevent deadlocks and split-brain scenarios?",
+    "model_answer": "Distributed locks manage shared resources across nodes. Redis Redlock acquires locks across N independent nodes with TTL expiry and fencing tokens to prevent split-brain issues when node clocks drift or network partitions occur.",
+    "key_points": [
+      "Redis Redlock quorum algorithm across independent nodes",
+      "TTL lock expiry and monotonic fencing tokens",
+      "Clock drift and network partition split-brain risks",
+      "Zookeeper ephemeral sequential nodes for distributed locking"
+    ]
+  },
+  {
+    "id": "be-004",
+    "topic": "message_queues",
+    "difficulty_rating": 1460,
+    "question": "Compare RabbitMQ AMQP routing topologies with Kafka append-only log partitioning for async background processing.",
+    "model_answer": "RabbitMQ is a smart broker / dumb consumer system using exchanges and queues to push messages to consumers, deleting messages upon ACK. Kafka is a dumb broker / smart consumer system using persistent append-only logs partitioned by key, allowing offset replay.",
+    "key_points": [
+      "RabbitMQ push-based AMQP broker routing vs Kafka pull-based log streams",
+      "Message deletion on ACK vs persistent partitioned log retention",
+      "Message ordering within Kafka partitions",
+      "Use case: complex task routing (RabbitMQ) vs high-throughput event streaming (Kafka)"
+    ]
+  },
+  {
+    "id": "be-005",
+    "topic": "architecture",
+    "difficulty_rating": 1520,
+    "question": "Explain the Outbox Pattern for guaranteed event delivery in microservices during database state updates.",
+    "model_answer": "The Transactional Outbox pattern writes domain entity updates and event payloads into an `outbox` database table within the SAME local database transaction. An asynchronous CDC or polling worker reads the outbox table and publishes events to Kafka.",
+    "key_points": [
+      "Local DB transaction coupling domain update and outbox insertion",
+      "Elimination of dual-write race conditions and partial failures",
+      "Asynchronous publisher worker (Debezium / CDC / Poller)",
+      "At-least-once message delivery guarantee to message brokers"
+    ]
+  },
+  {
+    "id": "be-006",
+    "topic": "databases",
+    "difficulty_rating": 1490,
+    "question": "Explain database Isolation levels (Read Uncommitted, Read Committed, Repeatable Read, Serializable) and anomalous phenomena like Phantom Reads.",
+    "model_answer": "Database isolation levels control transaction visibility. Read Uncommitted allows Dirty Reads. Read Committed prevents Dirty Reads. Repeatable Read prevents Non-Repeatable Reads. Serializable prevents Phantom Reads using range locks or SSI.",
+    "key_points": [
+      "4 SQL isolation levels (Read Uncommitted to Serializable)",
+      "Anomalies: Dirty Read, Non-Repeatable Read, Phantom Read",
+      "Multi-Version Concurrency Control (MVCC) snapshot isolation",
+      "Performance trade-offs of strict serializability"
+    ]
+  },
+  {
+    "id": "be-007",
+    "topic": "api_design",
+    "difficulty_rating": 1410,
+    "question": "How do idempotency keys ensure API request safety when retrying failed POST payments over unreliable networks?",
+    "model_answer": "Clients generate a unique UUID idempotency key sent via HTTP headers (`Idempotency-Key`). The backend checks if the key exists in Redis/Database; if found, it returns the cached response without re-executing the payment charge.",
+    "key_points": [
+      "Client-generated unique Idempotency-Key header",
+      "Atomic database/cache check-and-set locking",
+      "Caching initial transaction response payload for retries",
+      "Prevention of double-charging payment mutations"
+    ]
+  },
+  {
+    "id": "be-008",
+    "topic": "distributed_systems",
+    "difficulty_rating": 1540,
+    "question": "Explain the Two-Phase Commit (2PC) protocol vs Saga Pattern (Orchestration vs Choreography) for distributed transactions.",
+    "model_answer": "2PC provides synchronous atomic commits across databases using a Coordinator (Prepare & Commit phases), but suffers from blocking risk. The Saga Pattern breaks transactions into local steps with compensating rollback transactions.",
+    "key_points": [
+      "2PC Coordinator Prepare & Commit phases and blocking risks",
+      "Saga pattern local transactions and compensating actions",
+      "Choreography (event-driven) vs Orchestration (central coordinator)",
+      "Eventual consistency in Sagas vs strict atomic consistency in 2PC"
+    ]
+  },
+  {
+    "id": "be-009",
+    "topic": "security",
+    "difficulty_rating": 1430,
+    "question": "How does OAuth 2.0 Authorization Code Flow with PKCE secure single-page and mobile client backends?",
+    "model_answer": "OAuth 2.0 with PKCE (Proof Key for Code Exchange) generates a dynamic `code_verifier` and hashed `code_challenge`. The authorization code can only be exchanged for tokens if the client proves possession of the verifier, mitigating authorization code interception.",
+    "key_points": [
+      "Authorization Code Grant flow steps",
+      "PKCE code_challenge (SHA-256) and code_verifier exchange",
+      "Mitigation of authorization code interception on public clients",
+      "Access token vs Refresh token rotation"
+    ]
+  },
+  {
+    "id": "be-010",
+    "topic": "concurrency",
+    "difficulty_rating": 1370,
+    "question": "Explain Connection Pooling parameters (min idle, max pool size, connection timeout) and how connection leaks crash backends.",
+    "model_answer": "Connection pools manage reusable TCP connections to databases. If code fails to return connections to the pool (`connection.close()`), the pool exhausts all available sockets, blocking threads until application request timeouts occur.",
+    "key_points": [
+      "Min idle, max pool size, and connection validation queries",
+      "Connection leak root cause (unclosed connections in try/catch)",
+      "Thread blocking and pool waiter queue timeouts",
+      "Monitoring HikariCP / generic connection pool metrics"
+    ]
+  },
+  {
+    "id": "be-011",
+    "topic": "message_queues",
+    "difficulty_rating": 1470,
+    "question": "How do consumer group rebalancing and partition offsets work in Apache Kafka under worker node failure?",
+    "model_answer": "Kafka divides topic messages into partitions. A Consumer Group assigns partitions among worker nodes. If a consumer node fails, a Group Coordinator triggers a rebalance, reassigning orphan partitions to remaining active workers based on committed offsets.",
+    "key_points": [
+      "Consumer Group partition assignment strategies",
+      "Heartbeat signals and Group Coordinator rebalancing",
+      "Committed offsets (__consumer_offsets topic)",
+      "At-least-once processing and duplicate message handling"
+    ]
+  },
+  {
+    "id": "be-012",
+    "topic": "databases",
+    "difficulty_rating": 1440,
+    "question": "Explain Connection Pooling vs Database Proxy (e.g. PgBouncer) when scaling thousands of transient lambdas to Postgres.",
+    "model_answer": "Postgres uses a process-per-connection architecture, consuming ~10MB RAM per connection. Transient serverless lambdas can spawn thousands of concurrent connections, exhausting DB memory. A DB proxy like PgBouncer pools transaction connections efficiently.",
+    "key_points": [
+      "Postgres process-per-connection memory footprint",
+      "Serverless connection spikes and connection exhaustion",
+      "PgBouncer transaction-level pooling mode",
+      "Prepared statement limitations with transaction proxies"
+    ]
+  },
+  {
+    "id": "be-013",
+    "topic": "api_design",
+    "difficulty_rating": 1390,
+    "question": "Compare GraphQL query execution and N+1 query problem mitigation using DataLoader batching.",
+    "model_answer": "GraphQL resolves fields recursively, causing N+1 database queries when fetching nested child lists. DataLoader solves this by batching individual ID requests into a single SQL `WHERE id IN (...)` query within the Event Loop tick.",
+    "key_points": [
+      "N+1 query problem in nested resolver execution",
+      "DataLoader event loop tick batching mechanism",
+      "Request-scoped caching in DataLoader",
+      "GraphQL query complexity and depth limiting security"
+    ]
+  },
+  {
+    "id": "be-014",
+    "topic": "architecture",
+    "difficulty_rating": 1400,
+    "question": "What is the Circuit Breaker Pattern (Resilience4j / Hystrix)? Explain Closed, Open, and Half-Open states.",
+    "model_answer": "Circuit Breakers prevent cascade failures when calling failing downstream services. In Closed state, requests pass through. If error thresholds fail, it flips to Open, fast-failing calls. After a timeout, it transitions to Half-Open to test recovery.",
+    "key_points": [
+      "Closed (normal), Open (fast-fail), Half-Open (trial recovery) states",
+      "Failure rate percentage and minimum call volume thresholds",
+      "Fallback execution strategies",
+      "Prevention of cascading microservice thread pool exhaustion"
+    ]
+  },
+  {
+    "id": "be-015",
+    "topic": "distributed_systems",
+    "difficulty_rating": 1510,
+    "question": "Explain Consistent Hashing and how virtual nodes prevent hot-spotting in distributed key-value stores like Cassandra.",
+    "model_answer": "Consistent Hashing maps both cluster nodes and keys onto a circular 2^32 hash ring. When nodes join or leave, only K/N keys are remapped. Virtual nodes assign multiple ring locations per physical machine to ensure uniform load distribution.",
+    "key_points": [
+      "Circular hash ring mapping (0 to 2^32-1)",
+      "Remapping minimal keys (K/N) on node addition/removal",
+      "Virtual nodes (vnodes) to prevent data hotspotting",
+      "Replication factor and coordinator node routing"
+    ]
+  },
+  {
+    "id": "be-016",
+    "topic": "security",
+    "difficulty_rating": 1360,
+    "question": "How do HMAC signatures prevent request tampering in webhook receiver backends?",
+    "model_answer": "Webhook senders generate a SHA-256 HMAC hash of the raw HTTP request body using a shared secret key, sent in a header (e.g. `X-Signature`). The receiver computes the HMAC on arrival and compares it using constant-time comparison to prevent timing attacks.",
+    "key_points": [
+      "HMAC-SHA256 hash creation with shared secret",
+      "Header transmission of signature payload",
+      "Constant-time string comparison to prevent timing attacks",
+      "Timestamp verification to prevent replay attacks"
+    ]
+  },
+  {
+    "id": "be-017",
+    "topic": "concurrency",
+    "difficulty_rating": 1450,
+    "question": "Explain Non-blocking I/O and Event Loops (Node.js libuv / Netty) vs Thread-per-request models (Spring MVC).",
+    "model_answer": "Thread-per-request allocates dedicated worker threads per connection, idling during I/O wait and scaling poorly to 50k+ connections. Non-blocking I/O uses OS epoll/kqueue selectors where a single event loop dispatches callbacks when I/O completes.",
+    "key_points": [
+      "Thread-per-request blocking memory and context-switching overhead",
+      "Non-blocking I/O multiplexing (epoll / kqueue / select)",
+      "Single-threaded event loop callback dispatching",
+      "Offloading CPU-bound tasks to worker pools"
+    ]
+  },
+  {
+    "id": "be-018",
+    "topic": "databases",
+    "difficulty_rating": 1430,
+    "question": "What is Write-Ahead Logging (WAL) in relational databases and how does it guarantee durability across unexpected power loss?",
+    "model_answer": "Write-Ahead Logging records transaction changes sequentially to an append-only WAL disk log BEFORE modifying actual data pages in memory or disk. Upon system crash recovery, the DB replays WAL records to restore durability.",
+    "key_points": [
+      "Sequential append-only log writes preceding data page mutations",
+      "fsync operation guaranteeing physical disk persistence",
+      "Crash recovery via WAL Redo and Undo phases",
+      "Replication stream foundation for read replicas"
+    ]
+  },
+  {
+    "id": "be-019",
+    "topic": "api_design",
+    "difficulty_rating": 1380,
+    "question": "How do HTTP/2 Multiplexing and Server Push compare to HTTP/1.1 Keep-Alive overhead?",
+    "model_answer": "HTTP/1.1 uses persistent Keep-Alive connections but suffers from Head-of-Line (HOL) blocking where requests must wait for preceding responses. HTTP/2 introduces binary framing, multiplexing multiple parallel streams over a single TCP connection.",
+    "key_points": [
+      "HTTP/1.1 Head-of-Line (HOL) blocking",
+      "HTTP/2 binary frame multiplexing over single TCP connection",
+      "Header compression via HPACK",
+      "Stream prioritization and server push"
+    ]
+  },
+  {
+    "id": "be-020",
+    "topic": "architecture",
+    "difficulty_rating": 1480,
+    "question": "How do you structure a multi-tenant backend database model (Shared DB Shared Schema vs Separate Schema)?",
+    "model_answer": "Multi-tenancy models balance cost and isolation. Shared DB Shared Schema uses a `tenant_id` column on all tables with row-level security (RLS). Separate Schema uses tenant-specific schemas. Separate DB assigns isolated database instances per tenant.",
+    "key_points": [
+      "Shared DB Shared Schema with tenant_id filtering",
+      "Postgres Row-Level Security (RLS) policies",
+      "Separate Schema per tenant isolation",
+      "Data noisy neighbor and backup/restore trade-offs"
+    ]
+  }
+]
