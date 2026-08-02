@@ -52,18 +52,23 @@ function LoginForm() {
   useEffect(() => {
     const initializeGoogleSignIn = () => {
       if (typeof window !== 'undefined' && window.google) {
-        google.accounts.id.initialize({
-          client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || 'mock-id',
-          callback: handleGoogleSignIn
-        });
-        const container = document.getElementById('google-signin-button');
-        if (container) {
-          google.accounts.id.renderButton(container, { 
-            theme: 'outline', 
-            size: 'large',
-            width: '100%',
-            text: 'signin_with'
+        try {
+          const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '1049355735471-lf6tojm268ndcg26rigaacjam3q0elkh.apps.googleusercontent.com';
+          google.accounts.id.initialize({
+            client_id: clientId,
+            callback: handleGoogleSignIn
           });
+          const container = document.getElementById('google-signin-button');
+          if (container) {
+            google.accounts.id.renderButton(container, { 
+              theme: 'outline', 
+              size: 'large',
+              width: '100%',
+              text: 'signin_with'
+            });
+          }
+        } catch (e) {
+          console.warn('Google Sign-In initialization fallback:', e);
         }
       }
     };
